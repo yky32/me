@@ -69,7 +69,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} min-h-dvh font-sans antialiased`}
       >
         <ThemeProvider>
-          <div className="flex min-h-dvh flex-col">
+          <div className="flex min-h-dvh flex-col pt-14 sm:pt-16">
             <SiteHeader />
             <main className="flex-1">{children}</main>
             <SiteFooter />

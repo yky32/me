@@ -69,63 +69,71 @@ function NavLinks({
   );
 }
 
-/** Scroll-driven fade: full opacity at top → softer as user scrolls down. */
-function useHeaderScrollFade(options?: {
-  scrollRangePx?: number;
-  minOpacity?: number;
-  freeze?: boolean;
-}) {
-  const scrollRangePx = options?.scrollRangePx ?? 200;
-  const minOpacity = options?.minOpacity ?? 0.38;
-  const freeze = options?.freeze ?? false;
-
-  const [opacity, setOpacity] = React.useState(1);
-  const frame = React.useRef<number>(0);
+/**
+ * Hide bar when scrolling down, show when scrolling up (past a small threshold).
+ * Near top of page the bar always stays visible. Paused while mobile menu is open.
+ */
+function useHeaderScrollReveal(freeze: boolean) {
+  const [visible, setVisible] = React.useState(true);
+  const lastY = React.useRef(0);
+  const frame = React.useRef(0);
 
   React.useEffect(() => {
     if (freeze) {
-      setOpacity(1);
+      setVisible(true);
       return;
     }
 
-    const update = () => {
+    const TOP_ALWAYS_VISIBLE = 32;
+    const DELTA = 8;
+
+    const tick = () => {
       frame.current = 0;
-      const y =
-        typeof window !== "undefined"
-          ? window.scrollY || document.documentElement.scrollTop || 0
-          : 0;
-      const t = Math.min(Math.max(y / scrollRangePx, 0), 1);
-      const reduced =
-        typeof window !== "undefined" &&
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const eased = reduced ? t : t * t * (3 - 2 * t);
-      setOpacity(1 - eased * (1 - minOpacity));
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      const prev = lastY.current;
+      const dy = y - prev;
+
+      if (y <= TOP_ALWAYS_VISIBLE) {
+        setVisible(true);
+      } else if (dy > DELTA) {
+        setVisible(false);
+      } else if (dy < -DELTA) {
+        setVisible(true);
+      }
+
+      lastY.current = y;
     };
 
     const onScroll = () => {
       if (frame.current) return;
-      frame.current = window.requestAnimationFrame(update);
+      frame.current = window.requestAnimationFrame(tick);
     };
 
-    update();
+    lastY.current = window.scrollY || document.documentElement.scrollTop || 0;
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", onScroll);
       if (frame.current) window.cancelAnimationFrame(frame.current);
     };
-  }, [freeze, scrollRangePx, minOpacity]);
+  }, [freeze]);
 
-  return opacity;
+  return visible;
 }
 
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const scrollOpacity = useHeaderScrollFade({ freeze: mobileOpen });
+  const headerVisible = useHeaderScrollReveal(mobileOpen);
 
   return (
     <header
-      className="chrome-blur chrome-hairline sticky top-0 z-50 w-full transition-opacity duration-500 ease-out motion-reduce:transition-none"
-      style={{ opacity: scrollOpacity }}
+      className={cn(
+        "chrome-blur chrome-hairline fixed inset-x-0 top-0 z-50 w-full transform-gpu will-change-transform",
+        "transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+        "motion-reduce:transition-opacity motion-reduce:duration-200",
+        headerVisible
+          ? "translate-y-0 opacity-100"
+          : "pointer-events-none -translate-y-full opacity-0 motion-reduce:translate-y-0",
+      )}
     >
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 sm:h-16 sm:px-6 lg:px-8">
         <Link
