@@ -16,7 +16,7 @@ export function SiteFooter() {
         <div className="flex flex-col gap-3 text-sm sm:items-end">
           <Link
             href={siteConfig.links.github}
-            className="text-muted-foreground transition-colors hover:text-foreground"
+            className="text-muted-foreground transition-colors hover:text-primary"
             target="_blank"
             rel="noopener noreferrer"
           >

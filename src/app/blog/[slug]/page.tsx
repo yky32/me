@@ -34,7 +34,7 @@ export default async function BlogPostPage({ params }: Props) {
     <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
       <Link
         href="/blog"
-        className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+        className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
         <ArrowLeft className="size-4" aria-hidden />
         Back to blog
@@ -68,7 +68,7 @@ export default async function BlogPostPage({ params }: Props) {
           ))}
         </div>
       </header>
-      <div className="prose prose-neutral prose-lg mt-12 max-w-none dark:prose-invert prose-headings:scroll-mt-24 prose-headings:font-semibold prose-a:text-foreground prose-a:underline prose-pre:rounded-xl prose-pre:bg-muted/80">
+      <div className="prose prose-neutral prose-lg mt-12 max-w-none dark:prose-invert prose-headings:scroll-mt-24 prose-headings:font-semibold prose-a:text-primary prose-pre:rounded-xl prose-pre:bg-muted/80">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>
     </article>

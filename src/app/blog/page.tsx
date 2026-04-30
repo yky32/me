@@ -50,7 +50,7 @@ export default function BlogPage() {
                       {post.readTimeMinutes} min read
                     </span>
                   </div>
-                  <CardTitle className="text-xl transition-colors group-hover:text-foreground sm:text-2xl">
+                  <CardTitle className="text-xl transition-colors group-hover:text-primary sm:text-2xl">
                     {post.title}
                   </CardTitle>
                   <CardDescription className="text-base leading-relaxed">
@@ -69,7 +69,7 @@ export default function BlogPage() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <span className="text-sm font-medium text-muted-foreground">
+                  <span className="text-sm font-medium text-primary">
                     Continue reading →
                   </span>
                 </CardContent>

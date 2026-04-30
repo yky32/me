@@ -31,11 +31,11 @@ export function HomeHero() {
       />
       {/* Large ambient shapes */}
       <div
-        className="pointer-events-none absolute -right-24 top-0 h-[min(70vh,520px)] w-[min(90vw,520px)] rounded-full bg-gradient-to-bl from-foreground/6 via-foreground/3 to-transparent blur-3xl dark:from-white/8 dark:via-white/4"
+        className="pointer-events-none absolute -right-24 top-0 h-[min(70vh,520px)] w-[min(90vw,520px)] rounded-full bg-gradient-to-bl from-primary/8 via-cyan-500/5 to-transparent blur-3xl dark:from-primary/12"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-foreground/5 blur-3xl dark:bg-white/6"
+        className="pointer-events-none absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-primary/6 blur-3xl dark:bg-primary/10"
         aria-hidden
       />
 
@@ -48,7 +48,7 @@ export function HomeHero() {
           <motion.p
             custom={0}
             variants={fade}
-            className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground"
+            className="text-xs font-semibold uppercase tracking-[0.2em] text-primary"
           >
             Hong Kong · altech
           </motion.p>
@@ -92,7 +92,7 @@ export function HomeHero() {
               href="/tools"
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "group h-12 gap-2 rounded-full px-8 text-base shadow-md shadow-black/8 dark:shadow-black/40",
+                "group h-12 gap-2 rounded-full px-8 text-base shadow-md shadow-primary/15",
               )}
             >
               Tools

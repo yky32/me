@@ -16,7 +16,7 @@ export default function AboutPage() {
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
         <div className="relative mx-auto w-full max-w-sm lg:mx-0">
-          <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-foreground/12 via-foreground/6 to-transparent blur-2xl dark:from-white/15 dark:via-white/8" />
+          <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-primary/25 via-cyan-400/15 to-transparent blur-2xl dark:from-primary/30" />
           <div className="relative overflow-hidden rounded-[1.75rem] bg-muted/15 shadow-2xl shadow-black/[0.05] dark:bg-white/[0.03] dark:shadow-black/50">
             <Image
               src="/wayne-avatar.svg"
@@ -29,7 +29,7 @@ export default function AboutPage() {
           </div>
         </div>
         <div>
-          <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
+          <p className="text-sm font-medium uppercase tracking-widest text-primary">
             About
           </p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">

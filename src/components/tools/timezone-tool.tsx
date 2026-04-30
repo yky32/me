@@ -148,7 +148,7 @@ export function TimezoneTool() {
       <div className="space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Clock className="size-4 text-muted-foreground" aria-hidden />
+            <Clock className="size-4 text-primary" aria-hidden />
             Live clocks · updates every second
           </div>
           <div className="flex flex-wrap gap-2">
@@ -212,7 +212,7 @@ export function TimezoneTool() {
                     onClick={() => toggleFavorite(zone)}
                   >
                     <Star
-                      className={`size-4 ${favorites.includes(zone) ? "fill-foreground text-foreground" : ""}`}
+                      className={`size-4 ${favorites.includes(zone) ? "fill-primary text-primary" : ""}`}
                     />
                   </Button>
                   <Button

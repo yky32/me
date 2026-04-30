@@ -12,7 +12,7 @@ const tiles = [
     icon: Boxes,
     layout:
       "md:col-span-2 md:row-span-2 min-h-[200px] md:min-h-[min(340px,42vh)]",
-    gradient: "from-foreground/10 via-foreground/5 to-transparent dark:from-white/12 dark:via-white/6",
+    gradient: "from-primary/25 via-cyan-500/12 to-transparent",
   },
   {
     href: "/about",
@@ -28,7 +28,7 @@ const tiles = [
     sub: "Short notes",
     icon: PenLine,
     layout: "md:col-start-3 md:row-start-2",
-    gradient: "from-foreground/8 to-transparent dark:from-white/10",
+    gradient: "from-primary/18 to-transparent",
   },
 ] as const;
 
@@ -63,7 +63,7 @@ export function FeatureStrip() {
                       {tile.sub}
                     </p>
                   </div>
-                  <div className="shrink-0 self-start rounded-2xl bg-background/70 p-4 text-foreground shadow-sm backdrop-blur-sm transition-transform group-hover:scale-[1.02] dark:bg-white/[0.06] sm:p-5">
+                  <div className="shrink-0 self-start rounded-2xl bg-background/70 p-4 text-primary shadow-sm backdrop-blur-sm transition-transform group-hover:scale-[1.02] dark:bg-white/[0.06] sm:p-5">
                     <tile.icon
                       className="size-10 sm:size-12 md:size-14"
                       strokeWidth={1.1}
@@ -71,7 +71,7 @@ export function FeatureStrip() {
                     />
                   </div>
                 </div>
-                <span className="relative mt-8 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-muted-foreground">
+                <span className="relative mt-8 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-primary">
                   Enter
                   <span className="text-lg transition-transform group-hover:translate-x-1" aria-hidden>
                     →
