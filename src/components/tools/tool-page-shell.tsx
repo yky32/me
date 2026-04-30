@@ -27,7 +27,7 @@ export function ToolPageShell({
           <p className="text-sm font-medium uppercase tracking-widest text-primary">
             Tools
           </p>
-          <h1 className="font-heading mt-3 text-4xl font-semibold tracking-tight sm:text-[2.5rem] sm:leading-tight">
+          <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-[2.5rem] sm:leading-tight">
             {title}
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">

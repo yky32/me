@@ -34,7 +34,7 @@ export default function AboutPage() {
           <p className="text-sm font-medium uppercase tracking-widest text-primary">
             About
           </p>
-          <h1 className="font-heading mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+          <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
             Wayne Yu <span className="text-muted-foreground">伊斯高</span>
           </h1>
           <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground">

@@ -52,7 +52,7 @@ export default function ToolsPage() {
         <p className="text-sm font-medium uppercase tracking-widest text-primary">
           Tools
         </p>
-        <h1 className="font-heading mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
           Bright utilities for everyday work
         </h1>
         <p className="mt-4 text-lg text-muted-foreground">

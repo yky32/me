@@ -59,7 +59,7 @@ export default async function BlogPostPage({ params }: Props) {
             {post.readTimeMinutes} min read
           </span>
         </div>
-        <h1 className="font-heading mt-3 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="mt-3 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
           {post.title}
         </h1>
         <p className="mt-4 text-xl leading-relaxed text-muted-foreground">

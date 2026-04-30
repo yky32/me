@@ -150,7 +150,7 @@ export function SiteHeader() {
           className="group flex items-center gap-2 font-bold tracking-tight"
         >
           <span className="inline-flex size-2 rounded-full bg-primary/90 ring-2 ring-primary/20" />
-          <span className="font-heading text-foreground transition-colors group-hover:text-primary">
+          <span className="text-foreground transition-colors group-hover:text-primary">
             {siteConfig.name}
           </span>
           <span className="hidden text-muted-foreground sm:inline">

@@ -10,7 +10,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-space-mono), ui-monospace, monospace;
-  --font-heading: var(--font-patrick-hand), "Patrick Hand", ui-sans-serif, cursive;
+  --font-heading: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -141,10 +141,6 @@
   }
   html {
     @apply font-sans scroll-smooth;
-  }
-  /** Display handwriting reads clearer with a hair more air between glyphs */
-  .font-heading {
-    letter-spacing: 0.015em;
   }
 }
 

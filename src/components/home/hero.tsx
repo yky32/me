@@ -56,7 +56,7 @@ export function HomeHero() {
           <motion.h1
             custom={1}
             variants={fade}
-            className="font-heading mt-4 text-balance text-[clamp(2.5rem,6vw,4.25rem)] font-bold leading-[1.05] tracking-tight"
+            className="mt-4 text-balance text-[clamp(2.5rem,6vw,4.25rem)] font-bold leading-[1.05] tracking-tight"
           >
             <span className="text-gradient-hero">{siteConfig.name}</span>
           </motion.h1>
