@@ -52,13 +52,22 @@ function NavLinks({
             key={item.href}
             href={item.href}
             onClick={onNavigate}
+            aria-current={active ? "page" : undefined}
             className={cn(
-              "px-3 py-2 text-sm font-medium transition-colors",
-              orientation === "row" ? "rounded-full" : "rounded-xl",
-              orientation === "column" && "w-full",
-              active
-                ? "font-semibold text-foreground"
-                : "text-muted-foreground hover:text-foreground",
+              "relative px-3 py-2 text-sm font-medium transition-[color,background-color] duration-300 ease-out",
+              orientation === "row" ? "pb-2.5 pt-2" : "rounded-lg",
+              orientation === "column" && "w-full pb-2.5",
+              !active && "rounded-md hover:bg-muted/45 hover:text-foreground dark:hover:bg-white/[0.05]",
+              active &&
+                cn(
+                  "font-semibold text-primary",
+                  "drop-shadow-[0_0_18px_color-mix(in_oklab,var(--color-primary)_28%,transparent)]",
+                  orientation === "row" &&
+                    "after:pointer-events-none after:absolute after:inset-x-2 after:bottom-0 after:h-[2px] after:rounded-full after:bg-gradient-to-r after:from-transparent after:via-primary after:to-cyan-400 after:opacity-95 after:shadow-[0_0_10px_color-mix(in_oklab,var(--color-primary)_45%,transparent)]",
+                  orientation === "column" &&
+                    "after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-primary after:to-transparent",
+                ),
+              !active && "text-muted-foreground",
             )}
           >
             {item.label}
