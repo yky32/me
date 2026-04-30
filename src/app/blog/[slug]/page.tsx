@@ -33,7 +33,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <InnerPageSurface>
-      <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+      <article className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
       <Link
         href="/blog"
         className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
@@ -59,7 +59,7 @@ export default async function BlogPostPage({ params }: Props) {
             {post.readTimeMinutes} min read
           </span>
         </div>
-        <h1 className="mt-3 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="font-heading mt-3 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
           {post.title}
         </h1>
         <p className="mt-4 text-xl leading-relaxed text-muted-foreground">
@@ -73,7 +73,7 @@ export default async function BlogPostPage({ params }: Props) {
           ))}
         </div>
       </header>
-      <div className="prose prose-neutral prose-lg mt-12 max-w-none dark:prose-invert prose-headings:scroll-mt-28 prose-headings:font-semibold prose-a:text-primary prose-pre:rounded-xl prose-pre:bg-muted/80 prose-pre:ring-1 prose-pre:ring-border/50">
+      <div className="prose prose-neutral prose-lg mt-12 max-w-none dark:prose-invert prose-headings:scroll-mt-28 prose-headings:font-semibold prose-p:leading-[1.72] prose-p:text-pretty prose-li:leading-relaxed prose-a:text-primary prose-code:rounded-md prose-code:font-mono prose-code:font-normal prose-pre:rounded-xl prose-pre:bg-muted/80 prose-pre:font-mono prose-pre:ring-1 prose-pre:ring-border/50">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>
     </article>

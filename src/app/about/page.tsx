@@ -34,10 +34,10 @@ export default function AboutPage() {
           <p className="text-sm font-medium uppercase tracking-widest text-primary">
             About
           </p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+          <h1 className="font-heading mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
             Wayne Yu <span className="text-muted-foreground">伊斯高</span>
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground">
             I&apos;m a Hong Kong–based software engineer at{" "}
             <span className="font-medium text-foreground">altech</span>, where I
             help build systems that need to stay fast, observable, and honest
@@ -47,7 +47,7 @@ export default function AboutPage() {
             <span className="text-foreground">product impact</span> — because
             great engineering is measured in outcomes, not abstractions alone.
           </p>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
             I care about{" "}
             <span className="text-foreground">developer experience</span> as much
             as runtime performance: clear APIs, thoughtful defaults, and tools

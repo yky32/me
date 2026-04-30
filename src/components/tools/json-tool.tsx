@@ -157,7 +157,7 @@ export function JsonTool() {
   };
 
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
+    <div className="font-mono grid gap-6 lg:grid-cols-2">
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between gap-2">
           <h2 className="text-sm font-medium text-muted-foreground">Input</h2>

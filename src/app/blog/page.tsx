@@ -33,14 +33,14 @@ export default function BlogPage() {
         <p className="text-sm font-medium uppercase tracking-widest text-primary">
           Blog
         </p>
-        <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="font-heading mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
           Essays &amp; notes
         </h1>
         <p className="mt-4 text-lg text-muted-foreground">
           Notes on systems, teams, and tools — useful first, loud never.
         </p>
         </div>
-        <ul className="mx-auto mt-14 grid max-w-3xl gap-6">
+        <ul className="mx-auto mt-14 grid max-w-2xl gap-6">
         {sorted.map((post) => (
           <li key={post.slug}>
             <Link href={`/blog/${post.slug}`} className="group block">

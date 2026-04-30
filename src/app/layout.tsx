@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Space_Mono } from "next/font/google";
+import { Outfit, Patrick_Hand, Space_Mono } from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -12,6 +12,12 @@ import "./globals.css";
 const fontSans = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
+});
+
+const fontHand = Patrick_Hand({
+  variable: "--font-patrick-hand",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 const fontMono = Space_Mono({
@@ -67,7 +73,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${fontSans.variable} ${fontMono.variable} min-h-dvh font-sans antialiased`}
+        className={`${fontSans.variable} ${fontHand.variable} ${fontMono.variable} min-h-dvh font-sans antialiased`}
       >
         <ThemeProvider>
           <div className="flex min-h-dvh flex-col pt-14 sm:pt-16">

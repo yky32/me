@@ -66,7 +66,7 @@ export function FeatureStrip() {
                 />
                 <div className="relative flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between md:flex-col md:gap-8">
                   <div>
-                    <p className="text-3xl font-bold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-none">
+                    <p className="font-heading text-3xl font-bold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-none">
                       {tile.label}
                     </p>
                     <p className="mt-2 text-sm font-medium text-muted-foreground">

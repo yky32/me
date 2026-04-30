@@ -129,7 +129,7 @@ export function HeroIntroSnippet({
         ease: [0.22, 1, 0.36, 1],
       }}
       className={cn(
-        "relative mx-auto w-full max-w-lg lg:mx-0",
+        "font-mono relative mx-auto w-full max-w-lg lg:mx-0",
         // Showcase frame — gradient halo like snippet preview cards
         "rounded-2xl bg-gradient-to-br from-primary/28 via-cyan-400/18 to-transparent p-[1px] shadow-[0_24px_80px_-28px_color-mix(in_oklab,var(--color-primary)_45%,transparent)]",
         className,
