@@ -29,8 +29,8 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: siteConfig.title,
-    template: `%s — ${siteConfig.name}`,
+    default: siteConfig.shortTitle,
+    template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [
