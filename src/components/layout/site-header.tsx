@@ -54,7 +54,7 @@ function NavLinks({
             onClick={onNavigate}
             aria-current={active ? "page" : undefined}
             className={cn(
-              "relative px-3 py-2 text-sm font-medium transition-[color,background-color] duration-300 ease-out",
+              "relative px-3 py-2 text-sm font-semibold transition-[color,background-color] duration-300 ease-out",
               orientation === "row" ? "pb-2.5 pt-2" : "rounded-lg",
               orientation === "column" && "w-full pb-2.5",
               !active && "rounded-md hover:bg-muted/45 hover:text-foreground dark:hover:bg-white/[0.05]",
@@ -147,7 +147,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 sm:h-16 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="group flex items-center gap-2 font-semibold tracking-tight"
+          className="group flex items-center gap-2 font-bold tracking-tight"
         >
           <span className="inline-flex size-2 rounded-full bg-primary/90 ring-2 ring-primary/20" />
           <span className="text-foreground transition-colors group-hover:text-primary">

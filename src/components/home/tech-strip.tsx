@@ -35,7 +35,7 @@ export function TechStrip() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="mb-6 text-center text-sm font-semibold uppercase tracking-[0.25em] text-primary"
+          className="mb-6 text-center text-sm font-bold uppercase tracking-[0.25em] text-primary"
         >
           <span className="mr-2 inline-block" aria-hidden>
             ⚡

@@ -49,14 +49,14 @@ export function HomeHero() {
           <motion.p
             custom={0}
             variants={fade}
-            className="text-xs font-semibold uppercase tracking-[0.2em] text-primary"
+            className="text-xs font-bold uppercase tracking-[0.22em] text-primary"
           >
             Hong Kong · altech
           </motion.p>
           <motion.h1
             custom={1}
             variants={fade}
-            className="mt-4 text-balance text-[clamp(2.5rem,6vw,4.25rem)] font-semibold leading-[1.05] tracking-tight"
+            className="mt-4 text-balance text-[clamp(2.5rem,6vw,4.25rem)] font-bold leading-[1.05] tracking-tight"
           >
             <span className="text-gradient-hero">{siteConfig.name}</span>
           </motion.h1>
@@ -85,7 +85,7 @@ export function HomeHero() {
                   transition: { type: "spring", stiffness: 400, damping: 18 },
                 }}
                 whileTap={{ scale: 0.97 }}
-                className="rounded-full bg-muted/60 px-4 py-1.5 text-sm font-medium text-foreground shadow-sm backdrop-blur-sm dark:bg-white/[0.06]"
+                className="rounded-full bg-muted/60 px-4 py-1.5 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm dark:bg-white/[0.06]"
               >
                 {t}
               </motion.li>
