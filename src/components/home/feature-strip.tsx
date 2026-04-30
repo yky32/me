@@ -1,48 +1,86 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Boxes, Cpu, Users } from "lucide-react";
+import Link from "next/link";
+import { Boxes, Cpu, PenLine } from "lucide-react";
 
-const items = [
+const tiles = [
   {
-    icon: Cpu,
-    title: "Distributed systems",
-    body: "Designing reliable services that scale with traffic and complexity.",
-  },
-  {
+    href: "/tools",
+    label: "Tools",
+    sub: "In the browser",
     icon: Boxes,
-    title: "Backend craft",
-    body: "Performance, observability, and pragmatic architecture decisions.",
+    layout:
+      "md:col-span-2 md:row-span-2 min-h-[200px] md:min-h-[min(340px,42vh)]",
+    gradient: "from-primary/25 via-cyan-500/12 to-transparent",
   },
   {
-    icon: Users,
-    title: "Customer-centric",
-    body: "Shipping products that respect both users and the teams building them.",
+    href: "/about",
+    label: "About",
+    sub: "Who I am",
+    icon: Cpu,
+    layout: "md:col-start-3 md:row-start-1",
+    gradient: "from-muted/90 to-transparent",
+  },
+  {
+    href: "/blog",
+    label: "Writing",
+    sub: "Short notes",
+    icon: PenLine,
+    layout: "md:col-start-3 md:row-start-2",
+    gradient: "from-primary/18 to-transparent",
   },
 ] as const;
 
 export function FeatureStrip() {
   return (
-    <section className="border-b border-border/60 bg-muted/20 py-16 sm:py-20">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:grid-cols-3 sm:gap-8 sm:px-6 lg:px-8">
-        {items.map((item, i) => (
-          <motion.div
-            key={item.title}
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ delay: i * 0.08, duration: 0.4 }}
-            className="rounded-2xl border border-border/80 bg-card/80 p-6 shadow-sm backdrop-blur-sm"
-          >
-            <div className="mb-4 inline-flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-              <item.icon className="size-5" aria-hidden />
-            </div>
-            <h2 className="text-lg font-semibold tracking-tight">{item.title}</h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              {item.body}
-            </p>
-          </motion.div>
-        ))}
+    <section className="border-b border-border/60 py-14 sm:py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="grid auto-rows-fr gap-3 md:grid-cols-3 md:grid-rows-2 md:gap-4">
+          {tiles.map((tile, i) => (
+            <motion.div
+              key={tile.href}
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-20px" }}
+              transition={{ delay: i * 0.06, duration: 0.45 }}
+              className={tile.layout}
+            >
+              <Link
+                href={tile.href}
+                className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-border/70 bg-card/50 p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-xl md:p-8"
+              >
+                <div
+                  className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${tile.gradient}`}
+                  aria-hidden
+                />
+                <div className="relative flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between md:flex-col md:gap-8">
+                  <div>
+                    <p className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-none">
+                      {tile.label}
+                    </p>
+                    <p className="mt-2 text-sm font-medium text-muted-foreground">
+                      {tile.sub}
+                    </p>
+                  </div>
+                  <div className="shrink-0 self-start rounded-2xl border border-border/60 bg-background/80 p-4 text-primary shadow-md backdrop-blur-sm transition-transform group-hover:scale-105 sm:p-5">
+                    <tile.icon
+                      className="size-10 sm:size-12 md:size-14"
+                      strokeWidth={1.1}
+                      aria-hidden
+                    />
+                  </div>
+                </div>
+                <span className="relative mt-8 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-primary">
+                  Enter
+                  <span className="text-lg transition-transform group-hover:translate-x-1" aria-hidden>
+                    →
+                  </span>
+                </span>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
