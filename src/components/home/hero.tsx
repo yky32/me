@@ -20,7 +20,11 @@ const fade = {
   }),
 };
 
-const tags = ["Systems", "Backend", "DX"] as const;
+const tags = [
+  { text: "Systems", emoji: "🧩" },
+  { text: "Backend", emoji: "⚙️" },
+  { text: "DX", emoji: "🛠️" },
+] as const;
 
 export function HomeHero() {
   return (
@@ -50,7 +54,13 @@ export function HomeHero() {
             variants={fade}
             className="text-xs font-semibold uppercase tracking-[0.2em] text-primary"
           >
+            <span className="mr-1.5" aria-hidden>
+              ✨
+            </span>
             Hong Kong · altech
+            <span className="ml-1.5" aria-hidden>
+              🚀
+            </span>
           </motion.p>
           <motion.h1
             custom={1}
@@ -74,12 +84,21 @@ export function HomeHero() {
             aria-label="Focus areas"
           >
             {tags.map((t) => (
-              <li
-                key={t}
-                className="rounded-full bg-muted/60 px-4 py-1.5 text-sm font-medium text-foreground backdrop-blur-sm dark:bg-white/[0.06]"
+              <motion.li
+                key={t.text}
+                whileHover={{
+                  scale: 1.06,
+                  rotate: -2,
+                  transition: { type: "spring", stiffness: 400, damping: 18 },
+                }}
+                whileTap={{ scale: 0.97 }}
+                className="rounded-full bg-muted/60 px-4 py-1.5 text-sm font-medium text-foreground shadow-sm backdrop-blur-sm dark:bg-white/[0.06]"
               >
-                {t}
-              </li>
+                <span className="mr-1.5" aria-hidden>
+                  {t.emoji}
+                </span>
+                {t.text}
+              </motion.li>
             ))}
           </motion.ul>
 
@@ -92,19 +111,21 @@ export function HomeHero() {
               href="/tools"
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "group h-12 gap-2 rounded-full px-8 text-base shadow-md shadow-primary/15",
+                "group h-12 gap-2 rounded-full px-8 text-base shadow-md shadow-primary/20 transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]",
               )}
             >
+              <span aria-hidden>🧰</span>
               Tools
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="/about"
               className={cn(
                 buttonVariants({ variant: "ghost", size: "lg" }),
-                "group h-12 gap-1 rounded-full px-6 text-base text-muted-foreground hover:text-foreground",
+                "group h-12 gap-1 rounded-full px-6 text-base text-muted-foreground transition-transform duration-200 hover:scale-[1.03] hover:text-foreground active:scale-[0.98]",
               )}
             >
+              <span aria-hidden>👋</span>
               Profile
               <ArrowUpRight className="size-4 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>

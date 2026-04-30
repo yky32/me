@@ -45,10 +45,19 @@ export default function ToolsPage() {
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
       <div className="mx-auto max-w-2xl text-center">
         <p className="text-sm font-medium uppercase tracking-widest text-primary">
+          <span aria-hidden className="mr-2">
+            ✨
+          </span>
           Tools
+          <span aria-hidden className="ml-2">
+            ✨
+          </span>
         </p>
         <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-          Bright utilities for everyday work
+          Bright utilities for everyday work{" "}
+          <span className="inline-block" aria-hidden>
+            🛠️
+          </span>
         </h1>
         <p className="mt-4 text-lg text-muted-foreground">
           Opinionated, fast, and pleasant to use — built the same way I approach
@@ -59,7 +68,7 @@ export default function ToolsPage() {
         {tools.map((tool) => (
           <li key={tool.href}>
             <Link href={tool.href} className="group block h-full">
-              <Card className="h-full rounded-2xl border-0 bg-muted/25 shadow-none ring-0 transition-all hover:-translate-y-0.5 hover:bg-muted/40 hover:shadow-lg hover:shadow-black/[0.04] dark:hover:shadow-black/25">
+              <Card className="h-full rounded-2xl border-0 bg-muted/25 shadow-none ring-0 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:bg-muted/40 hover:shadow-lg hover:shadow-primary/10 dark:hover:shadow-black/25">
                 <CardHeader>
                   <div className="mb-2 inline-flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/15">
                     <tool.icon className="size-5" aria-hidden />

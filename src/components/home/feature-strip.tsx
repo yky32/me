@@ -8,6 +8,7 @@ const tiles = [
   {
     href: "/tools",
     label: "Tools",
+    emoji: "🧰",
     sub: "In the browser",
     icon: Boxes,
     layout:
@@ -17,6 +18,7 @@ const tiles = [
   {
     href: "/about",
     label: "About",
+    emoji: "🧠",
     sub: "Who I am",
     icon: Cpu,
     layout: "md:col-start-3 md:row-start-1",
@@ -25,6 +27,7 @@ const tiles = [
   {
     href: "/blog",
     label: "Writing",
+    emoji: "✍️",
     sub: "Short notes",
     icon: PenLine,
     layout: "md:col-start-3 md:row-start-2",
@@ -40,15 +43,25 @@ export function FeatureStrip() {
           {tiles.map((tile, i) => (
             <motion.div
               key={tile.href}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 18, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-20px" }}
-              transition={{ delay: i * 0.06, duration: 0.45 }}
+              transition={{
+                delay: i * 0.07,
+                type: "spring",
+                stiffness: 280,
+                damping: 24,
+              }}
+              whileHover={{
+                y: -6,
+                scale: 1.02,
+                transition: { type: "spring", stiffness: 400, damping: 22 },
+              }}
               className={tile.layout}
             >
               <Link
                 href={tile.href}
-                className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl bg-muted/35 p-6 shadow-none transition-[transform,box-shadow,background-color] duration-300 hover:-translate-y-0.5 hover:bg-muted/50 hover:shadow-lg hover:shadow-black/[0.04] dark:hover:shadow-black/30 md:p-8"
+                className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl bg-muted/35 p-6 shadow-none transition-[box-shadow,background-color] duration-300 hover:bg-muted/50 hover:shadow-xl hover:shadow-primary/10 dark:hover:shadow-black/30 md:p-8"
               >
                 <div
                   className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${tile.gradient}`}
@@ -57,13 +70,16 @@ export function FeatureStrip() {
                 <div className="relative flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between md:flex-col md:gap-8">
                   <div>
                     <p className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-none">
+                      <span className="mr-2 inline-block" aria-hidden>
+                        {tile.emoji}
+                      </span>
                       {tile.label}
                     </p>
                     <p className="mt-2 text-sm font-medium text-muted-foreground">
                       {tile.sub}
                     </p>
                   </div>
-                  <div className="shrink-0 self-start rounded-2xl bg-background/70 p-4 text-primary shadow-sm backdrop-blur-sm transition-transform group-hover:scale-[1.02] dark:bg-white/[0.06] sm:p-5">
+                  <div className="shrink-0 self-start rounded-2xl bg-background/70 p-4 text-primary shadow-sm backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 dark:bg-white/[0.06] sm:p-5">
                     <tile.icon
                       className="size-10 sm:size-12 md:size-14"
                       strokeWidth={1.1}
