@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 import { HeroGraphic } from "@/components/home/hero-graphic";
+import { HeroIntroSnippet } from "@/components/home/hero-intro-snippet";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -67,8 +68,10 @@ export function HomeHero() {
             {siteConfig.nameZh}
           </motion.p>
 
+          <HeroIntroSnippet className="mt-8 lg:mt-9" motionDelayBase={0.22} />
+
           <motion.ul
-            custom={3}
+            custom={4}
             variants={fade}
             className="mt-8 flex flex-wrap justify-center gap-2 lg:justify-start"
             aria-label="Focus areas"
@@ -90,7 +93,7 @@ export function HomeHero() {
           </motion.ul>
 
           <motion.div
-            custom={4}
+            custom={5}
             variants={fade}
             className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start"
           >
