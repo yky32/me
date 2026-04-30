@@ -34,7 +34,7 @@ export default function BlogPage() {
         {sorted.map((post) => (
           <li key={post.slug}>
             <Link href={`/blog/${post.slug}`} className="group block">
-              <Card className="h-full border-border/80 bg-card/90 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg">
+              <Card className="h-full rounded-2xl border-0 bg-muted/25 shadow-none ring-0 transition-all hover:-translate-y-0.5 hover:bg-muted/40 hover:shadow-lg hover:shadow-black/[0.04] dark:hover:shadow-black/25">
                 <CardHeader>
                   <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                     <span className="inline-flex items-center gap-1">

@@ -5,8 +5,8 @@ import { siteConfig } from "@/lib/site";
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-border/60 bg-muted/30">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+    <footer className="bg-background">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-16 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-20 lg:px-8">
         <div>
           <p className="font-medium text-foreground">{siteConfig.name}</p>
           <p className="mt-1 max-w-md text-sm text-muted-foreground">

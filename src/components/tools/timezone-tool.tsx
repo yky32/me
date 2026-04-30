@@ -177,7 +177,7 @@ export function TimezoneTool() {
           {zones.map((zone, index) => (
             <Card
               key={`${zone}-${index}`}
-              className="border-border/80 bg-card/90 shadow-sm"
+              className="border-0 bg-muted/20 shadow-none ring-0 dark:bg-white/[0.04]"
             >
               <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-3 space-y-0 pb-2">
                 <CardTitle className="text-base font-medium">
@@ -241,7 +241,7 @@ export function TimezoneTool() {
         </div>
       </div>
 
-      <Card className="h-fit border-border/80 bg-muted/20">
+      <Card className="h-fit rounded-2xl border-0 bg-muted/20 ring-0 dark:bg-white/[0.04]">
         <CardHeader>
           <CardTitle className="text-base">Favorites</CardTitle>
         </CardHeader>

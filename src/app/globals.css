@@ -50,24 +50,24 @@
 }
 
 :root {
-  /* Bright, energetic light — cool white + sky / teal accent */
-  --background: oklch(0.995 0.006 250);
-  --foreground: oklch(0.24 0.02 265);
-  --card: oklch(1 0.004 250);
-  --card-foreground: oklch(0.24 0.02 265);
-  --popover: oklch(1 0.004 250);
-  --popover-foreground: oklch(0.24 0.02 265);
+  /* Light — clean near-white canvas, whisper borders (Apple-like) */
+  --background: oklch(0.998 0.002 260);
+  --foreground: oklch(0.22 0.015 265);
+  --card: oklch(0.998 0.002 260);
+  --card-foreground: oklch(0.22 0.015 265);
+  --popover: oklch(0.998 0.002 260);
+  --popover-foreground: oklch(0.22 0.015 265);
   --primary: oklch(0.58 0.17 240);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.94 0.02 245);
-  --secondary-foreground: oklch(0.28 0.03 265);
-  --muted: oklch(0.955 0.012 245);
-  --muted-foreground: oklch(0.48 0.02 260);
-  --accent: oklch(0.93 0.04 200);
-  --accent-foreground: oklch(0.28 0.05 200);
+  --secondary: oklch(0.965 0.004 260);
+  --secondary-foreground: oklch(0.28 0.02 265);
+  --muted: oklch(0.965 0.004 260);
+  --muted-foreground: oklch(0.45 0.02 265);
+  --accent: oklch(0.96 0.012 240);
+  --accent-foreground: oklch(0.28 0.03 265);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.9 0.015 250);
-  --input: oklch(0.9 0.015 250);
+  --border: oklch(0.91 0.004 260);
+  --input: oklch(0.93 0.004 260);
   --ring: oklch(0.58 0.17 240);
   --chart-1: oklch(0.58 0.17 240);
   --chart-2: oklch(0.65 0.14 195);
@@ -86,24 +86,24 @@
 }
 
 .dark {
-  /* Decent dark — slate, not pitch black */
-  --background: oklch(0.26 0.03 265);
-  --foreground: oklch(0.96 0.01 250);
-  --card: oklch(0.3 0.03 265);
-  --card-foreground: oklch(0.96 0.01 250);
-  --popover: oklch(0.3 0.03 265);
-  --popover-foreground: oklch(0.96 0.01 250);
+  /* Dark — single calm plane, minimal edge contrast */
+  --background: oklch(0.2 0.018 265);
+  --foreground: oklch(0.96 0.008 260);
+  --card: oklch(0.2 0.018 265);
+  --card-foreground: oklch(0.96 0.008 260);
+  --popover: oklch(0.22 0.018 265);
+  --popover-foreground: oklch(0.96 0.008 260);
   --primary: oklch(0.72 0.14 230);
   --primary-foreground: oklch(0.18 0.03 265);
-  --secondary: oklch(0.34 0.03 265);
-  --secondary-foreground: oklch(0.96 0.01 250);
-  --muted: oklch(0.34 0.025 265);
-  --muted-foreground: oklch(0.72 0.02 250);
-  --accent: oklch(0.36 0.04 200);
-  --accent-foreground: oklch(0.92 0.03 195);
+  --secondary: oklch(0.26 0.02 265);
+  --secondary-foreground: oklch(0.96 0.008 260);
+  --muted: oklch(0.26 0.02 265);
+  --muted-foreground: oklch(0.68 0.02 260);
+  --accent: oklch(0.28 0.025 265);
+  --accent-foreground: oklch(0.94 0.02 250);
   --destructive: oklch(0.65 0.2 25);
-  --border: oklch(0.38 0.02 265);
-  --input: oklch(0.36 0.025 265);
+  --border: oklch(0.34 0.02 265);
+  --input: oklch(0.3 0.02 265);
   --ring: oklch(0.72 0.14 230);
   --chart-1: oklch(0.72 0.14 230);
   --chart-2: oklch(0.68 0.12 195);
@@ -153,27 +153,37 @@
   .mesh-hero-light {
     background-image:
       radial-gradient(
-        ellipse 120% 80% at 80% -20%,
-        oklch(0.92 0.06 230) 0%,
-        transparent 55%
+        ellipse 100% 70% at 70% -30%,
+        oklch(0.97 0.02 240) 0%,
+        transparent 58%
       ),
       radial-gradient(
-        ellipse 90% 60% at 0% 100%,
-        oklch(0.94 0.05 195) 0%,
-        transparent 50%
+        ellipse 80% 50% at 0% 100%,
+        oklch(0.98 0.015 200) 0%,
+        transparent 52%
       );
   }
   .mesh-hero-dark {
     background-image:
       radial-gradient(
-        ellipse 120% 80% at 80% -20%,
-        oklch(0.38 0.08 250) 0%,
-        transparent 55%
+        ellipse 100% 70% at 70% -30%,
+        oklch(0.26 0.04 250) 0%,
+        transparent 58%
       ),
       radial-gradient(
-        ellipse 90% 60% at 0% 100%,
-        oklch(0.34 0.06 200) 0%,
-        transparent 50%
+        ellipse 80% 50% at 0% 100%,
+        oklch(0.24 0.035 200) 0%,
+        transparent 52%
       );
+  }
+  /** Seamless chrome — no hard border */
+  .chrome-blur {
+    @apply bg-background/65 backdrop-blur-2xl backdrop-saturate-150 supports-[backdrop-filter]:bg-background/55;
+  }
+  .chrome-hairline {
+    box-shadow: inset 0 -1px 0 0 oklch(0 0 0 / 0.04);
+  }
+  .dark .chrome-hairline {
+    box-shadow: inset 0 -1px 0 0 oklch(1 0 0 / 0.06);
   }
 }

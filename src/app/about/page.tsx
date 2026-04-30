@@ -17,7 +17,7 @@ export default function AboutPage() {
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
         <div className="relative mx-auto w-full max-w-sm lg:mx-0">
           <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-primary/25 via-cyan-400/15 to-transparent blur-2xl dark:from-primary/30" />
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-border/80 bg-card shadow-xl">
+          <div className="relative overflow-hidden rounded-[1.75rem] bg-muted/15 shadow-2xl shadow-black/[0.05] dark:bg-white/[0.03] dark:shadow-black/50">
             <Image
               src="/wayne-avatar.svg"
               alt="Wayne Yu — portrait placeholder"

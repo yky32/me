@@ -69,7 +69,7 @@ function JsonTree({ data, depth = 0 }: { data: unknown; depth?: number }) {
       );
     }
     return (
-      <ul className="space-y-1 border-l border-border/60 pl-3" style={{ marginLeft: pad }}>
+      <ul className="space-y-1 border-l border-foreground/10 pl-3" style={{ marginLeft: pad }}>
         {data.map((item, i) => (
           <li key={i} className="font-mono text-xs text-muted-foreground">
             <span className="text-foreground/60">[{i}]</span>{" "}
@@ -89,7 +89,7 @@ function JsonTree({ data, depth = 0 }: { data: unknown; depth?: number }) {
       );
     }
     return (
-      <ul className="space-y-2 border-l border-border/60 pl-3" style={{ marginLeft: pad }}>
+      <ul className="space-y-2 border-l border-foreground/10 pl-3" style={{ marginLeft: pad }}>
         {entries.map(([k, v]) => (
           <li key={k}>
             <span className="font-mono text-sm text-primary">{k}</span>
@@ -246,7 +246,7 @@ export function JsonTool() {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="formatted" className="mt-3 flex-1">
-            <ScrollArea className="h-[min(420px,55vh)] rounded-xl border border-border/80 bg-muted/20">
+            <ScrollArea className="h-[min(420px,55vh)] rounded-2xl bg-muted/20">
               {parsed.ok === true && highlighted ? (
                 <div
                   className="p-4 text-sm [&_pre]:!m-0 [&_pre]:!bg-transparent [&_pre]:!p-0"
@@ -260,7 +260,7 @@ export function JsonTool() {
             </ScrollArea>
           </TabsContent>
           <TabsContent value="tree" className="mt-3 flex-1">
-            <ScrollArea className="h-[min(420px,55vh)] rounded-xl border border-border/80 bg-muted/20 p-4">
+            <ScrollArea className="h-[min(420px,55vh)] rounded-2xl bg-muted/20 p-4">
               {parsed.ok === true ? (
                 <JsonTree data={parsed.value} />
               ) : (

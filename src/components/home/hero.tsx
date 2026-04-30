@@ -24,18 +24,18 @@ const tags = ["Systems", "Backend", "DX"] as const;
 
 export function HomeHero() {
   return (
-    <section className="relative overflow-hidden border-b border-border/60">
+    <section className="relative overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0 mesh-hero-light dark:mesh-hero-dark"
         aria-hidden
       />
       {/* Large ambient shapes */}
       <div
-        className="pointer-events-none absolute -right-24 top-0 h-[min(70vh,520px)] w-[min(90vw,520px)] rounded-full bg-gradient-to-bl from-primary/15 via-cyan-500/10 to-transparent blur-3xl dark:from-primary/20"
+        className="pointer-events-none absolute -right-24 top-0 h-[min(70vh,520px)] w-[min(90vw,520px)] rounded-full bg-gradient-to-bl from-primary/8 via-cyan-500/5 to-transparent blur-3xl dark:from-primary/12"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-primary/10 blur-3xl dark:bg-primary/15"
+        className="pointer-events-none absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-primary/6 blur-3xl dark:bg-primary/10"
         aria-hidden
       />
 
@@ -76,7 +76,7 @@ export function HomeHero() {
             {tags.map((t) => (
               <li
                 key={t}
-                className="rounded-full border border-border/80 bg-background/80 px-4 py-1.5 text-sm font-medium text-foreground shadow-sm backdrop-blur-sm"
+                className="rounded-full bg-muted/60 px-4 py-1.5 text-sm font-medium text-foreground backdrop-blur-sm dark:bg-white/[0.06]"
               >
                 {t}
               </li>
@@ -92,7 +92,7 @@ export function HomeHero() {
               href="/tools"
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "group h-12 gap-2 rounded-full px-8 text-base shadow-lg shadow-primary/25",
+                "group h-12 gap-2 rounded-full px-8 text-base shadow-md shadow-primary/15",
               )}
             >
               Tools

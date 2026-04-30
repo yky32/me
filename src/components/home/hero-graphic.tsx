@@ -7,7 +7,7 @@ export function HeroGraphic() {
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[min(100%,420px)] select-none">
       <motion.div
-        className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-primary/20 via-cyan-500/10 to-transparent blur-3xl dark:from-primary/25"
+        className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-primary/12 via-cyan-500/6 to-transparent blur-3xl dark:from-primary/18"
         animate={{ opacity: [0.6, 1, 0.6] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         aria-hidden
@@ -37,7 +37,7 @@ export function HeroGraphic() {
           fill="url(#hero-grad-fill)"
           stroke="currentColor"
           strokeWidth="1"
-          className="text-primary/25 dark:text-primary/35"
+          className="text-primary/12 dark:text-primary/22"
         />
         {/* Grid dots */}
         {Array.from({ length: 8 }).map((_, row) =>

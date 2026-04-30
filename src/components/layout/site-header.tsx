@@ -57,8 +57,8 @@ function NavLinks({
               orientation === "row" ? "rounded-full" : "rounded-xl",
               orientation === "column" && "w-full",
               active
-                ? "bg-primary/10 text-primary"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                ? "font-semibold text-foreground"
+                : "text-muted-foreground hover:text-foreground",
             )}
           >
             {item.label}
@@ -73,16 +73,13 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/70">
+    <header className="chrome-blur chrome-hairline sticky top-0 z-50 w-full">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 sm:h-16 sm:px-6 lg:px-8">
         <Link
           href="/"
           className="group flex items-center gap-2 font-semibold tracking-tight"
         >
-          <span className="relative flex size-2.5">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary/40 opacity-75" />
-            <span className="relative inline-flex size-2.5 rounded-full bg-primary" />
-          </span>
+          <span className="inline-flex size-2 rounded-full bg-primary/90 ring-2 ring-primary/20" />
           <span className="text-foreground transition-colors group-hover:text-primary">
             {siteConfig.name}
           </span>

@@ -34,9 +34,9 @@ const tiles = [
 
 export function FeatureStrip() {
   return (
-    <section className="border-b border-border/60 py-14 sm:py-16">
+    <section className="py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid auto-rows-fr gap-3 md:grid-cols-3 md:grid-rows-2 md:gap-4">
+        <div className="grid auto-rows-fr gap-4 md:grid-cols-3 md:grid-rows-2 md:gap-5">
           {tiles.map((tile, i) => (
             <motion.div
               key={tile.href}
@@ -48,7 +48,7 @@ export function FeatureStrip() {
             >
               <Link
                 href={tile.href}
-                className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-border/70 bg-card/50 p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-xl md:p-8"
+                className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl bg-muted/35 p-6 shadow-none transition-[transform,box-shadow,background-color] duration-300 hover:-translate-y-0.5 hover:bg-muted/50 hover:shadow-lg hover:shadow-black/[0.04] dark:hover:shadow-black/30 md:p-8"
               >
                 <div
                   className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${tile.gradient}`}
@@ -63,7 +63,7 @@ export function FeatureStrip() {
                       {tile.sub}
                     </p>
                   </div>
-                  <div className="shrink-0 self-start rounded-2xl border border-border/60 bg-background/80 p-4 text-primary shadow-md backdrop-blur-sm transition-transform group-hover:scale-105 sm:p-5">
+                  <div className="shrink-0 self-start rounded-2xl bg-background/70 p-4 text-primary shadow-sm backdrop-blur-sm transition-transform group-hover:scale-[1.02] dark:bg-white/[0.06] sm:p-5">
                     <tile.icon
                       className="size-10 sm:size-12 md:size-14"
                       strokeWidth={1.1}

@@ -59,7 +59,7 @@ export default function ToolsPage() {
         {tools.map((tool) => (
           <li key={tool.href}>
             <Link href={tool.href} className="group block h-full">
-              <Card className="h-full border-border/80 bg-card/90 transition-all hover:-translate-y-1 hover:border-primary/35 hover:shadow-xl">
+              <Card className="h-full rounded-2xl border-0 bg-muted/25 shadow-none ring-0 transition-all hover:-translate-y-0.5 hover:bg-muted/40 hover:shadow-lg hover:shadow-black/[0.04] dark:hover:shadow-black/25">
                 <CardHeader>
                   <div className="mb-2 inline-flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/15">
                     <tool.icon className="size-5" aria-hidden />
