@@ -128,8 +128,8 @@ export function SiteHeader() {
     <header
       className={cn(
         "chrome-blur chrome-hairline fixed inset-x-0 top-0 z-50 w-full transform-gpu will-change-transform",
-        "transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
-        "motion-reduce:transition-opacity motion-reduce:duration-200",
+        "transition-[opacity,transform] duration-[650ms] ease-in-out",
+        "motion-reduce:transition-opacity motion-reduce:duration-500 motion-reduce:ease-in-out",
         headerVisible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none -translate-y-full opacity-0 motion-reduce:translate-y-0",
