@@ -1,6 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Binary, Braces, Clock3, KeyRound, Link2, Ruler } from "lucide-react";
+import {
+  Binary,
+  Braces,
+  CalendarClock,
+  Clock3,
+  GitCompare,
+  Hash,
+  KeyRound,
+  Link2,
+  Regex,
+  Ruler,
+  Sparkles,
+  Table2,
+} from "lucide-react";
 
 import { InnerPageSurface } from "@/components/layout/inner-page-surface";
 import {
@@ -14,7 +27,7 @@ import {
 export const metadata: Metadata = {
   title: "Tools",
   description:
-    "Interactive utilities: JSON, Base64, URL encoding, JWT decode, timezones, units, and more.",
+    "Hashes, cron, IDs, diff, regex, JSON tables, encoders, JWT, timezones, units, and more — all in the browser.",
 };
 
 const tools = [
@@ -59,6 +72,48 @@ const tools = [
     description:
       "Inspect header and payload (signature not verified). Useful when debugging auth — handle tokens carefully.",
     icon: KeyRound,
+  },
+  {
+    href: "/tools/hash",
+    title: "Hash generator",
+    description:
+      "MD5, SHA-256/384/512, and optional bcrypt — hex digests or password hashes for debugging workflows.",
+    icon: Hash,
+  },
+  {
+    href: "/tools/cron",
+    title: "Cron explainer",
+    description:
+      "Plain-language schedule plus next run times for standard five-field cron expressions.",
+    icon: CalendarClock,
+  },
+  {
+    href: "/tools/ids",
+    title: "UUID · ULID · NanoID",
+    description:
+      "Generate ids for tests and fixtures — single values or bulk lists with copy buttons.",
+    icon: Sparkles,
+  },
+  {
+    href: "/tools/diff",
+    title: "Text diff",
+    description:
+      "Line-based unified diff with highlights — ideal next to the JSON formatter.",
+    icon: GitCompare,
+  },
+  {
+    href: "/tools/regex",
+    title: "Regex tester",
+    description:
+      "JavaScript RegExp with flags, live highlighting, and capture groups.",
+    icon: Regex,
+  },
+  {
+    href: "/tools/json-table",
+    title: "JSON → table",
+    description:
+      "Flatten objects into columns, browse in a table, copy as TSV.",
+    icon: Table2,
   },
 ] as const;
 
