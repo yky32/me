@@ -136,15 +136,15 @@ export function HeroIntroSnippet({
       )}
       aria-label="Code-style introduction snippet"
     >
-      <div className="overflow-hidden rounded-[15px] bg-[#070d14] ring-1 ring-white/[0.12]">
-        <figcaption className="flex items-center justify-between gap-3 border-b border-white/[0.11] bg-black/55 px-3 py-2 sm:px-3.5">
+      <div className="overflow-hidden rounded-[15px] bg-[var(--snippet-bg)] ring-1 ring-[color:var(--snippet-border)]">
+        <figcaption className="flex items-center justify-between gap-3 border-b border-[color:var(--snippet-border)] bg-[var(--snippet-bar)] px-3 py-2 sm:px-3.5">
           <div className="flex min-w-0 items-center gap-2.5">
             <span className="flex shrink-0 gap-1" aria-hidden>
               <span className="size-2.5 rounded-full bg-[#ff5f56]" />
               <span className="size-2.5 rounded-full bg-[#febc2e]" />
               <span className="size-2.5 rounded-full bg-[#27c93f]" />
             </span>
-            <span className="truncate font-mono text-[11px] text-zinc-300 sm:text-xs">
+            <span className="truncate font-mono text-[11px] text-zinc-400 sm:text-xs">
               wayne.ts
             </span>
           </div>
@@ -155,7 +155,7 @@ export function HeroIntroSnippet({
             <button
               type="button"
               onClick={copy}
-              className="inline-flex items-center gap-1 rounded-lg border border-white/14 bg-white/[0.06] px-2 py-1 font-mono text-[11px] text-zinc-200 transition-colors hover:bg-white/[0.11] hover:text-white"
+              className="inline-flex items-center gap-1 rounded-lg border border-[color:var(--snippet-border)] bg-white/[0.06] px-2 py-1 font-mono text-[11px] text-zinc-200 transition-colors hover:bg-white/[0.11] hover:text-white"
               aria-label="Copy snippet"
             >
               {copied ? (
@@ -168,16 +168,16 @@ export function HeroIntroSnippet({
           </div>
         </figcaption>
 
-        <div className="flex bg-[#070d14] font-mono text-[11px] leading-relaxed sm:text-xs md:text-[13px]">
+        <div className="flex bg-[var(--snippet-bg)] font-mono text-[11px] leading-relaxed sm:text-xs md:text-[13px]">
           <div
-            className="select-none border-r border-white/[0.1] bg-black/40 px-2 py-3 text-right text-zinc-500 tabular-nums sm:px-3"
+            className="select-none border-r border-[color:var(--snippet-border)] bg-[var(--snippet-gutter)] px-2 py-3 text-right text-zinc-500 tabular-nums sm:px-3"
             aria-hidden
           >
             {LINES.map((_, i) => (
               <div key={i}>{i + 1}</div>
             ))}
           </div>
-          <pre className="min-w-0 flex-1 overflow-x-auto bg-[#070d14] p-3 text-left">
+          <pre className="min-w-0 flex-1 overflow-x-auto bg-[var(--snippet-bg)] p-3 text-left">
             <code className="inline-block min-w-full">
               {LINES.map((line, row) => (
                 <motion.div
