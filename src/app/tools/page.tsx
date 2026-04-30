@@ -45,19 +45,10 @@ export default function ToolsPage() {
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
       <div className="mx-auto max-w-2xl text-center">
         <p className="text-sm font-medium uppercase tracking-widest text-primary">
-          <span aria-hidden className="mr-2">
-            ✨
-          </span>
           Tools
-          <span aria-hidden className="ml-2">
-            ✨
-          </span>
         </p>
         <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-          Bright utilities for everyday work{" "}
-          <span className="inline-block" aria-hidden>
-            🛠️
-          </span>
+          Bright utilities for everyday work
         </h1>
         <p className="mt-4 text-lg text-muted-foreground">
           Opinionated, fast, and pleasant to use — built the same way I approach

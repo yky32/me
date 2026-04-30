@@ -41,9 +41,6 @@ export function TechStrip() {
             ⚡
           </span>
           Stack energy
-          <span className="ml-2 inline-block" aria-hidden>
-            ⚡
-          </span>
         </motion.p>
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-12 md:gap-x-14">
           {stack.map(({ Icon, label }, i) => (

@@ -8,7 +8,6 @@ const tiles = [
   {
     href: "/tools",
     label: "Tools",
-    emoji: "🧰",
     sub: "In the browser",
     icon: Boxes,
     layout:
@@ -18,7 +17,6 @@ const tiles = [
   {
     href: "/about",
     label: "About",
-    emoji: "🧠",
     sub: "Who I am",
     icon: Cpu,
     layout: "md:col-start-3 md:row-start-1",
@@ -27,7 +25,6 @@ const tiles = [
   {
     href: "/blog",
     label: "Writing",
-    emoji: "✍️",
     sub: "Short notes",
     icon: PenLine,
     layout: "md:col-start-3 md:row-start-2",
@@ -70,9 +67,6 @@ export function FeatureStrip() {
                 <div className="relative flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between md:flex-col md:gap-8">
                   <div>
                     <p className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-none">
-                      <span className="mr-2 inline-block" aria-hidden>
-                        {tile.emoji}
-                      </span>
                       {tile.label}
                     </p>
                     <p className="mt-2 text-sm font-medium text-muted-foreground">
