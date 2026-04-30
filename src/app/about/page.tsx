@@ -21,12 +21,13 @@ export default function AboutPage() {
           <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-primary/25 via-cyan-400/15 to-transparent blur-2xl dark:from-primary/30" />
           <div className="relative overflow-hidden rounded-[1.75rem] bg-muted/20 shadow-2xl shadow-black/[0.05] ring-1 ring-border/40 dark:bg-white/[0.04] dark:shadow-black/50 dark:ring-white/[0.06]">
             <Image
-              src="/wayne-avatar.svg"
-              alt="Wayne Yu — portrait placeholder"
-              width={400}
-              height={400}
+              src="/wayne-portrait.png"
+              alt="Wayne Yu — portrait"
+              width={800}
+              height={800}
               className="aspect-square w-full object-cover"
               priority
+              sizes="(max-width: 1024px) 100vw, 384px"
             />
           </div>
         </div>
