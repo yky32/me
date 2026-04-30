@@ -1,169 +1,31 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import {
-  Binary,
-  Braces,
-  CalendarClock,
-  Clock3,
-  GitCompare,
-  Hash,
-  KeyRound,
-  Link2,
-  Regex,
-  Ruler,
-  Sparkles,
-  Table2,
-} from "lucide-react";
 
 import { InnerPageSurface } from "@/components/layout/inner-page-surface";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { ToolsHub } from "@/components/tools/tools-hub";
 
 export const metadata: Metadata = {
   title: "Tools",
   description:
-    "Hashes, cron, IDs, diff, regex, JSON tables, encoders, JWT, timezones, units, and more — all in the browser.",
+    "Hashes, cron, IDs, diff, regex, JSON tables, encoders, JWT, timezones, units, and more — browse by category or search.",
 };
-
-const tools = [
-  {
-    href: "/tools/json",
-    title: "JSON workspace",
-    description:
-      "Format, validate, syntax-highlight, and explore JSON as an expandable tree.",
-    icon: Braces,
-  },
-  {
-    href: "/tools/timezone",
-    title: "Timezone studio",
-    description:
-      "Live multi-city clocks, favorites, and shareable URLs for your team.",
-    icon: Clock3,
-  },
-  {
-    href: "/tools/units",
-    title: "Unit converter",
-    description:
-      "Length, weight, temperature, IEC/SI data sizes, speed, volume, and indicative FX — fast conversions with swap.",
-    icon: Ruler,
-  },
-  {
-    href: "/tools/base64",
-    title: "Base64",
-    description:
-      "Encode or decode UTF-8 ↔ Base64 with optional URL-safe alphabet — handy for APIs and snippets.",
-    icon: Binary,
-  },
-  {
-    href: "/tools/url",
-    title: "URL encoder",
-    description:
-      "encodeURIComponent / decodeURIComponent with optional per-line mode for query-style strings.",
-    icon: Link2,
-  },
-  {
-    href: "/tools/jwt",
-    title: "JWT decoder",
-    description:
-      "Inspect header and payload (signature not verified). Useful when debugging auth — handle tokens carefully.",
-    icon: KeyRound,
-  },
-  {
-    href: "/tools/hash",
-    title: "Hash generator",
-    description:
-      "MD5, SHA-256/384/512, and optional bcrypt — hex digests or password hashes for debugging workflows.",
-    icon: Hash,
-  },
-  {
-    href: "/tools/cron",
-    title: "Cron explainer",
-    description:
-      "Plain-language schedule plus next run times for standard five-field cron expressions.",
-    icon: CalendarClock,
-  },
-  {
-    href: "/tools/ids",
-    title: "UUID · ULID · NanoID",
-    description:
-      "Generate ids for tests and fixtures — single values or bulk lists with copy buttons.",
-    icon: Sparkles,
-  },
-  {
-    href: "/tools/diff",
-    title: "Text diff",
-    description:
-      "Line-based unified diff with highlights — ideal next to the JSON formatter.",
-    icon: GitCompare,
-  },
-  {
-    href: "/tools/regex",
-    title: "Regex tester",
-    description:
-      "JavaScript RegExp with flags, live highlighting, and capture groups.",
-    icon: Regex,
-  },
-  {
-    href: "/tools/json-table",
-    title: "JSON → table",
-    description:
-      "Flatten objects into columns, browse in a table, copy as TSV.",
-    icon: Table2,
-  },
-] as const;
-
-const cardSurface =
-  "h-full rounded-3xl border-0 bg-muted/30 shadow-none ring-1 ring-border/50 transition-all duration-300 dark:bg-muted/25 dark:ring-white/[0.06]";
 
 export default function ToolsPage() {
   return (
     <InnerPageSurface>
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-2xl text-center">
-        <p className="text-sm font-medium uppercase tracking-widest text-primary">
-          Tools
-        </p>
-        <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-          Bright utilities for everyday work
-        </h1>
-        <p className="mt-4 text-lg text-muted-foreground">
-          Opinionated, fast, and pleasant to use — built the same way I approach
-          product-facing engineering.
-        </p>
+          <p className="text-sm font-medium uppercase tracking-widest text-primary">
+            Tools
+          </p>
+          <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+            Bright utilities for everyday work
+          </h1>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Opinionated, fast, and pleasant to use — built the same way I approach
+            product-facing engineering.
+          </p>
         </div>
-        <ul className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-        {tools.map((tool) => (
-          <li key={tool.href}>
-            <Link href={tool.href} className="group block h-full">
-              <Card
-                className={`${cardSurface} hover:-translate-y-1 hover:scale-[1.02] hover:bg-muted/45 hover:shadow-lg hover:shadow-primary/10 dark:hover:shadow-black/25`}
-              >
-                <CardHeader>
-                  <div className="mb-2 inline-flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/15">
-                    <tool.icon className="size-5" aria-hidden />
-                  </div>
-                  <CardTitle className="text-xl transition-colors group-hover:text-primary">
-                    {tool.title}
-                  </CardTitle>
-                  <CardDescription className="text-base leading-relaxed">
-                    {tool.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <span className="text-sm font-semibold text-primary">
-                    Open tool →
-                  </span>
-                </CardContent>
-              </Card>
-            </Link>
-          </li>
-        ))}
-        </ul>
+        <ToolsHub />
       </div>
     </InnerPageSurface>
   );
