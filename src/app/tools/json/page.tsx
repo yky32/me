@@ -5,14 +5,15 @@ import { ToolPageShell } from "@/components/tools/tool-page-shell";
 
 export const metadata: Metadata = {
   title: "JSON formatter",
-  description: "Format, validate, highlight, and tree-view JSON in the browser.",
+  description:
+    "Format, minify, validate with line hints, Shiki highlighting, collapsible tree, and copy-as options — all client-side.",
 };
 
 export default function JsonToolPage() {
   return (
     <ToolPageShell
       title="JSON formatter & tree"
-      description="Paste raw JSON, catch errors instantly, copy formatted output, or explore the structure as a tree."
+      description="Paste JSON, jump to errors with a line gutter, flip between pretty and minified highlights, copy in several shapes, and explore a collapsible tree."
     >
       <JsonTool />
     </ToolPageShell>

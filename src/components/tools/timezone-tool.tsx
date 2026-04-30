@@ -20,6 +20,16 @@ import {
 import { COMMON_TIMEZONES } from "@/lib/timezones";
 
 const STORAGE_FAVORITES = "tz-favorites-v1";
+const MAX_ZONES = 6;
+
+/** Hong Kong first for regional default; remainder alphabetical by IANA id */
+const ZONE_OPTIONS: string[] = [
+  "Asia/Hong_Kong",
+  ...[...COMMON_TIMEZONES]
+    .filter((z) => z !== "Asia/Hong_Kong")
+    .sort((a, b) => a.localeCompare(b)),
+];
+
 const DEFAULT_ZONES = ["Asia/Hong_Kong", "UTC", "America/New_York"] as const;
 
 function parseZonesParam(raw: string | null): string[] {
@@ -28,9 +38,10 @@ function parseZonesParam(raw: string | null): string[] {
     .split(",")
     .map((z) => z.trim())
     .filter(Boolean);
-  const valid = new Set(COMMON_TIMEZONES);
-  const filtered = parts.filter((z) => valid.has(z as (typeof COMMON_TIMEZONES)[number]));
-  return filtered.length > 0 ? filtered : [...DEFAULT_ZONES];
+  const valid = new Set(ZONE_OPTIONS);
+  const filtered = parts.filter((z) => valid.has(z));
+  const capped = filtered.slice(0, MAX_ZONES);
+  return capped.length > 0 ? capped : [...DEFAULT_ZONES];
 }
 
 function encodeZones(zones: string[]) {
@@ -50,28 +61,34 @@ export function TimezoneTool() {
     return () => window.clearInterval(id);
   }, []);
 
+  const validZoneSet = React.useMemo(() => new Set(ZONE_OPTIONS), []);
+
   React.useEffect(() => {
     try {
       const raw = localStorage.getItem(STORAGE_FAVORITES);
       if (raw) {
         const parsed = JSON.parse(raw) as unknown;
         if (Array.isArray(parsed)) {
-          setFavorites(parsed.filter((z) => typeof z === "string"));
+          const cleaned = parsed.filter(
+            (z): z is string => typeof z === "string" && validZoneSet.has(z),
+          );
+          setFavorites(cleaned);
         }
       }
     } catch {
       /* ignore */
     }
-  }, []);
+  }, [validZoneSet]);
 
   const persistFavorites = React.useCallback((next: string[]) => {
-    setFavorites(next);
+    const cleaned = next.filter((z) => validZoneSet.has(z));
+    setFavorites(cleaned);
     try {
-      localStorage.setItem(STORAGE_FAVORITES, JSON.stringify(next));
+      localStorage.setItem(STORAGE_FAVORITES, JSON.stringify(cleaned));
     } catch {
       /* ignore */
     }
-  }, []);
+  }, [validZoneSet]);
 
   const syncUrl = React.useCallback(
     (nextZones: string[]) => {
@@ -97,8 +114,12 @@ export function TimezoneTool() {
 
   const addRow = () => {
     setZones((prev) => {
+      if (prev.length >= MAX_ZONES) {
+        toast.error(`You can compare up to ${MAX_ZONES} timezones`);
+        return prev;
+      }
       const pick =
-        COMMON_TIMEZONES.find((z) => !prev.includes(z)) ?? COMMON_TIMEZONES[0];
+        ZONE_OPTIONS.find((z) => !prev.includes(z)) ?? ZONE_OPTIONS[0];
       const next = [...prev, pick];
       syncUrl(next);
       return next;
@@ -134,6 +155,10 @@ export function TimezoneTool() {
   };
 
   const applyFavorite = (zone: string) => {
+    if (zones.length >= MAX_ZONES && !zones.includes(zone)) {
+      toast.error(`Remove a row first (max ${MAX_ZONES})`);
+      return;
+    }
     if (!zones.includes(zone)) {
       setZones((prev) => {
         const next = [...prev, zone];
@@ -147,9 +172,14 @@ export function TimezoneTool() {
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_280px]">
       <div className="space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Clock className="size-4 text-primary" aria-hidden />
-            Live clocks · updates every second
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Clock className="size-4 text-primary" aria-hidden />
+              Live clocks · updates every second
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Compare up to {MAX_ZONES} zones · Hong Kong in default set · URL saves your layout
+            </p>
           </div>
           <div className="flex flex-wrap gap-2">
             <Button
@@ -167,6 +197,7 @@ export function TimezoneTool() {
               size="sm"
               className="rounded-full"
               onClick={addRow}
+              disabled={zones.length >= MAX_ZONES}
             >
               <Plus className="size-3.5" />
               Add city
@@ -194,7 +225,7 @@ export function TimezoneTool() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {COMMON_TIMEZONES.map((z) => (
+                      {ZONE_OPTIONS.map((z) => (
                         <SelectItem key={z} value={z}>
                           {z.replace(/_/g, " ")}
                         </SelectItem>
@@ -260,6 +291,7 @@ export function TimezoneTool() {
                     variant="secondary"
                     size="sm"
                     className="shrink-0 rounded-full"
+                    disabled={zones.includes(z) || zones.length >= MAX_ZONES}
                     onClick={() => applyFavorite(z)}
                   >
                     Add
@@ -270,7 +302,7 @@ export function TimezoneTool() {
           )}
           <div className="pt-2">
             <Label htmlFor="manual-zone" className="text-xs text-muted-foreground">
-              Quick pick (must match list)
+              Current URL zones token
             </Label>
             <Input
               id="manual-zone"

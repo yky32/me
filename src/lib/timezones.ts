@@ -14,6 +14,7 @@ export const COMMON_TIMEZONES = [
   "Asia/Dubai",
   "Asia/Kolkata",
   "Asia/Bangkok",
+  /** Hong Kong — listed early for regional default UX */
   "Asia/Hong_Kong",
   "Asia/Shanghai",
   "Asia/Tokyo",

@@ -36,7 +36,7 @@ const tools = [
     href: "/tools/units",
     title: "Unit converter",
     description:
-      "Length, weight, temperature, and data sizes — fast conversions with swap.",
+      "Length, weight, temperature, IEC/SI data sizes, speed, volume, and indicative FX — fast conversions with swap.",
     icon: Ruler,
   },
 ] as const;
