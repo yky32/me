@@ -133,7 +133,7 @@ export function SiteHeader() {
           className="group flex items-center gap-2 font-semibold tracking-tight"
         >
           <span className="inline-flex size-2 rounded-full bg-primary/90 ring-2 ring-primary/20" />
-          <span className="text-foreground transition-colors group-hover:text-primary">
+          <span className="text-foreground transition-colors group-hover:opacity-80">
             {siteConfig.name}
           </span>
           <span className="hidden text-muted-foreground sm:inline">

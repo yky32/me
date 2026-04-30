@@ -2,32 +2,31 @@
 
 import { motion } from "framer-motion";
 
-/** Abstract “systems / nodes” artwork — decorative only. */
+/** Neutral “systems” illustration — grayscale only. */
 export function HeroGraphic() {
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[min(100%,420px)] select-none">
       <motion.div
-        className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-primary/12 via-cyan-500/6 to-transparent blur-3xl dark:from-primary/18"
-        animate={{ opacity: [0.6, 1, 0.6] }}
+        className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-foreground/8 via-foreground/4 to-transparent blur-3xl dark:from-white/10 dark:via-white/5"
+        animate={{ opacity: [0.65, 1, 0.65] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         aria-hidden
       />
       <svg
         viewBox="0 0 440 440"
-        className="relative h-full w-full drop-shadow-sm"
+        className="relative h-full w-full text-foreground drop-shadow-sm"
         aria-hidden
       >
         <defs>
           <linearGradient id="hero-grad-ring" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#0ea5e9" />
-            <stop offset="100%" stopColor="#14b8a6" />
+            <stop offset="0%" stopColor="var(--foreground)" stopOpacity="0.32" />
+            <stop offset="100%" stopColor="var(--foreground)" stopOpacity="0.1" />
           </linearGradient>
           <linearGradient id="hero-grad-fill" x1="20%" y1="0%" x2="80%" y2="100%">
-            <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.14" />
-            <stop offset="100%" stopColor="#14b8a6" stopOpacity="0.06" />
+            <stop offset="0%" stopColor="var(--foreground)" stopOpacity="0.055" />
+            <stop offset="100%" stopColor="var(--foreground)" stopOpacity="0.018" />
           </linearGradient>
         </defs>
-        {/* Soft panel */}
         <rect
           x="48"
           y="48"
@@ -37,9 +36,8 @@ export function HeroGraphic() {
           fill="url(#hero-grad-fill)"
           stroke="currentColor"
           strokeWidth="1"
-          className="text-primary/12 dark:text-primary/22"
+          className="text-foreground/15 dark:text-white/20"
         />
-        {/* Grid dots */}
         {Array.from({ length: 8 }).map((_, row) =>
           Array.from({ length: 8 }).map((_, col) => (
             <circle
@@ -47,11 +45,10 @@ export function HeroGraphic() {
               cx={88 + col * 36}
               cy={88 + row * 36}
               r="1.5"
-              className="fill-primary/25 dark:fill-primary/35"
+              className="fill-foreground/15 dark:fill-white/20"
             />
           )),
         )}
-        {/* Orbit */}
         <ellipse
           cx="220"
           cy="220"
@@ -60,11 +57,9 @@ export function HeroGraphic() {
           fill="none"
           stroke="url(#hero-grad-ring)"
           strokeWidth="1.5"
-          strokeOpacity="0.4"
           strokeDasharray="8 14"
           transform="rotate(-18 220 220)"
         />
-        {/* Nodes */}
         {[
           [120, 168],
           [220, 128],
@@ -77,7 +72,7 @@ export function HeroGraphic() {
               cx={cx}
               cy={cy}
               r="28"
-              className="fill-background stroke-primary/40 dark:stroke-primary/50"
+              className="fill-background stroke-foreground/25 dark:stroke-white/30"
               strokeWidth="1.5"
               initial={{ scale: 0.85, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -87,45 +82,43 @@ export function HeroGraphic() {
               cx={cx}
               cy={cy}
               r="8"
-              className="fill-primary"
+              className="fill-foreground/70 dark:fill-white/75"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.35 + i * 0.06, type: "spring", stiffness: 260 }}
             />
           </motion.g>
         ))}
-        {/* Connectors */}
         <path
           d="M148 168 L200 148 L292 188 L228 260 L288 292"
           fill="none"
-          className="stroke-primary/35 dark:stroke-primary/45"
+          className="stroke-foreground/25 dark:stroke-white/25"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeDasharray="6 10"
         />
-        {/* Corner accents */}
         <path
           d="M72 100 L100 72"
-          className="stroke-primary/50"
+          className="stroke-foreground/35 dark:stroke-white/35"
           strokeWidth="2"
           strokeLinecap="round"
         />
         <path
           d="M368 72 L400 100"
-          className="stroke-primary/50"
+          className="stroke-foreground/35 dark:stroke-white/35"
           strokeWidth="2"
           strokeLinecap="round"
         />
         <path
           d="M72 340 L100 368"
-          className="stroke-cyan-500/50"
+          className="stroke-foreground/25 dark:stroke-white/25"
           strokeWidth="2"
           strokeLinecap="round"
         />
         <path
           d="M368 368 L400 340"
-          className="stroke-cyan-500/50"
+          className="stroke-foreground/25 dark:stroke-white/25"
           strokeWidth="2"
           strokeLinecap="round"
         />

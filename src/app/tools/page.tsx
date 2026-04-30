@@ -44,7 +44,7 @@ export default function ToolsPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
       <div className="mx-auto max-w-2xl text-center">
-        <p className="text-sm font-medium uppercase tracking-widest text-primary">
+        <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
           Tools
         </p>
         <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
@@ -61,10 +61,10 @@ export default function ToolsPage() {
             <Link href={tool.href} className="group block h-full">
               <Card className="h-full rounded-2xl border-0 bg-muted/25 shadow-none ring-0 transition-all hover:-translate-y-0.5 hover:bg-muted/40 hover:shadow-lg hover:shadow-black/[0.04] dark:hover:shadow-black/25">
                 <CardHeader>
-                  <div className="mb-2 inline-flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/15">
+                  <div className="mb-2 inline-flex size-11 items-center justify-center rounded-xl bg-muted text-foreground transition-colors group-hover:bg-muted/80">
                     <tool.icon className="size-5" aria-hidden />
                   </div>
-                  <CardTitle className="text-xl transition-colors group-hover:text-primary">
+                  <CardTitle className="text-xl transition-colors group-hover:text-foreground">
                     {tool.title}
                   </CardTitle>
                   <CardDescription className="text-base leading-relaxed">
@@ -72,7 +72,7 @@ export default function ToolsPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <span className="text-sm font-semibold text-primary">
+                  <span className="text-sm font-semibold text-muted-foreground">
                     Open tool →
                   </span>
                 </CardContent>

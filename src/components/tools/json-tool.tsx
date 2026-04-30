@@ -48,14 +48,14 @@ function JsonTree({ data, depth = 0 }: { data: unknown; depth?: number }) {
   }
   if (typeof data === "string") {
     return (
-      <span className="font-mono text-sm text-emerald-600 dark:text-emerald-400" style={{ paddingLeft: pad }}>
+      <span className="font-mono text-sm text-foreground/70" style={{ paddingLeft: pad }}>
         &quot;{data}&quot;
       </span>
     );
   }
   if (typeof data === "number" || typeof data === "boolean") {
     return (
-      <span className="font-mono text-sm text-sky-600 dark:text-sky-400" style={{ paddingLeft: pad }}>
+      <span className="font-mono text-sm text-foreground/75" style={{ paddingLeft: pad }}>
         {String(data)}
       </span>
     );
@@ -92,7 +92,7 @@ function JsonTree({ data, depth = 0 }: { data: unknown; depth?: number }) {
       <ul className="space-y-2 border-l border-foreground/10 pl-3" style={{ marginLeft: pad }}>
         {entries.map(([k, v]) => (
           <li key={k}>
-            <span className="font-mono text-sm text-primary">{k}</span>
+            <span className="font-mono text-sm font-medium text-foreground">{k}</span>
             <span className="text-muted-foreground">: </span>
             {typeof v === "object" && v !== null ? (
               <JsonTree data={v} depth={depth + 1} />
@@ -200,7 +200,7 @@ export function JsonTool() {
             <span>{parsed.message}</span>
           </div>
         ) : (
-          <div className="flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/5 px-3 py-2 text-sm text-emerald-700 dark:text-emerald-400">
+          <div className="flex items-center gap-2 rounded-xl border border-foreground/12 bg-muted/50 px-3 py-2 text-sm text-foreground">
             <Check className="size-4 shrink-0" aria-hidden />
             Valid JSON — explore formatted view or tree.
           </div>

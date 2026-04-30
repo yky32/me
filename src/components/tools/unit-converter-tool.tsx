@@ -187,7 +187,7 @@ export function UnitConverterTool() {
                   id="to-result"
                   readOnly
                   value={Number.isFinite(output) ? formatNumber(output) : "—"}
-                  className="rounded-xl border-primary/20 bg-primary/5 font-mono text-lg"
+                  className="rounded-xl border-transparent bg-muted/60 font-mono text-lg ring-1 ring-foreground/8 dark:ring-white/10"
                 />
                 <Select
                   value={toUnit}
