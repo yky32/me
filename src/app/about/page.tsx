@@ -17,16 +17,28 @@ export default function AboutPage() {
     <InnerPageSurface>
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
-        <div className="mx-auto w-full max-w-sm lg:mx-0">
+        <div className="group relative mx-auto w-full max-w-sm lg:mx-0">
           <div
-            className="overflow-hidden rounded-3xl shadow-[0_22px_44px_-14px_rgba(15,23,42,0.14)] dark:shadow-[0_28px_56px_-16px_rgba(0,0,0,0.55)]"
+            aria-hidden
+            className="pointer-events-none absolute -inset-8 -z-10 rounded-[2.75rem] bg-gradient-to-br from-primary/[0.22] via-cyan-400/[0.06] to-transparent opacity-90 blur-3xl dark:from-primary/[0.28] dark:via-cyan-400/[0.09]"
+          />
+          <div
+            className={cn(
+              "relative overflow-hidden rounded-2xl rounded-tr-[2.4rem] rounded-bl-[2.4rem]",
+              "shadow-[0_20px_50px_-14px_rgba(15,23,42,0.18),0_6px_18px_-6px_rgba(15,23,42,0.09)]",
+              "dark:shadow-[0_26px_64px_-18px_rgba(0,0,0,0.72),0_10px_28px_-12px_rgba(0,0,0,0.45)]",
+              "transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+              "motion-safe:group-hover:-translate-y-1",
+              "motion-safe:group-hover:shadow-[0_28px_60px_-14px_rgba(15,23,42,0.22),0_10px_24px_-8px_rgba(15,23,42,0.11)]",
+              "motion-safe:dark:group-hover:shadow-[0_32px_72px_-16px_rgba(0,0,0,0.78),0_14px_32px_-10px_rgba(0,0,0,0.5)]",
+            )}
           >
             <Image
               src="/wayne-portrait.png"
               alt="Wayne Yu — portrait"
               width={800}
               height={800}
-              className="aspect-[4/5] w-full object-cover object-center [mask-image:radial-gradient(ellipse_92%_90%_at_50%_44%,#000_58%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_92%_90%_at_50%_44%,#000_58%,transparent_100%)]"
+              className="aspect-[4/5] w-full object-cover object-center"
               priority
               sizes="(max-width: 1024px) 100vw, 384px"
             />
