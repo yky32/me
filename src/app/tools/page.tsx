@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Braces, Clock3, Ruler } from "lucide-react";
+import { Binary, Braces, Clock3, KeyRound, Link2, Ruler } from "lucide-react";
 
 import { InnerPageSurface } from "@/components/layout/inner-page-surface";
 import {
@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "Tools",
   description:
-    "Interactive utilities: JSON formatter & tree, timezone clocks, and unit converter.",
+    "Interactive utilities: JSON, Base64, URL encoding, JWT decode, timezones, units, and more.",
 };
 
 const tools = [
@@ -39,6 +39,27 @@ const tools = [
       "Length, weight, temperature, IEC/SI data sizes, speed, volume, and indicative FX — fast conversions with swap.",
     icon: Ruler,
   },
+  {
+    href: "/tools/base64",
+    title: "Base64",
+    description:
+      "Encode or decode UTF-8 ↔ Base64 with optional URL-safe alphabet — handy for APIs and snippets.",
+    icon: Binary,
+  },
+  {
+    href: "/tools/url",
+    title: "URL encoder",
+    description:
+      "encodeURIComponent / decodeURIComponent with optional per-line mode for query-style strings.",
+    icon: Link2,
+  },
+  {
+    href: "/tools/jwt",
+    title: "JWT decoder",
+    description:
+      "Inspect header and payload (signature not verified). Useful when debugging auth — handle tokens carefully.",
+    icon: KeyRound,
+  },
 ] as const;
 
 const cardSurface =
@@ -60,7 +81,7 @@ export default function ToolsPage() {
           product-facing engineering.
         </p>
         </div>
-        <ul className="mt-14 grid gap-6 md:grid-cols-3">
+        <ul className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
         {tools.map((tool) => (
           <li key={tool.href}>
             <Link href={tool.href} className="group block h-full">
