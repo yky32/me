@@ -17,15 +17,16 @@ export default function AboutPage() {
     <InnerPageSurface>
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
-        <div className="relative mx-auto w-full max-w-sm lg:mx-0">
-          <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-primary/25 via-cyan-400/15 to-transparent blur-2xl dark:from-primary/30" />
-          <div className="relative overflow-hidden rounded-[1.75rem] bg-muted/20 shadow-2xl shadow-black/[0.05] ring-1 ring-border/40 dark:bg-white/[0.04] dark:shadow-black/50 dark:ring-white/[0.06]">
+        <div className="mx-auto w-full max-w-sm lg:mx-0">
+          <div
+            className="overflow-hidden rounded-3xl shadow-[0_22px_44px_-14px_rgba(15,23,42,0.14)] dark:shadow-[0_28px_56px_-16px_rgba(0,0,0,0.55)]"
+          >
             <Image
               src="/wayne-portrait.png"
               alt="Wayne Yu — portrait"
               width={800}
               height={800}
-              className="aspect-square w-full object-cover"
+              className="aspect-[4/5] w-full object-cover object-center [mask-image:radial-gradient(ellipse_92%_90%_at_50%_44%,#000_58%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_92%_90%_at_50%_44%,#000_58%,transparent_100%)]"
               priority
               sizes="(max-width: 1024px) 100vw, 384px"
             />
