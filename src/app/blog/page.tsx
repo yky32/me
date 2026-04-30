@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Calendar, Clock } from "lucide-react";
 
+import { InnerPageSurface } from "@/components/layout/inner-page-surface";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -17,24 +18,35 @@ export const metadata: Metadata = {
   description: "Essays on distributed systems, shipping, and developer tools.",
 };
 
+const cardSurface =
+  "h-full rounded-3xl border-0 bg-muted/30 shadow-none ring-1 ring-border/50 transition-all duration-300 dark:bg-muted/25 dark:ring-white/[0.06]";
+
 export default function BlogPage() {
   const sorted = [...blogPosts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-      <div className="mx-auto max-w-2xl text-center">
-        <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">Blog</h1>
+    <InnerPageSurface>
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="mx-auto max-w-2xl text-center">
+        <p className="text-sm font-medium uppercase tracking-widest text-primary">
+          Blog
+        </p>
+        <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+          Essays &amp; notes
+        </h1>
         <p className="mt-4 text-lg text-muted-foreground">
           Notes on systems, teams, and tools — useful first, loud never.
         </p>
-      </div>
-      <ul className="mx-auto mt-14 grid max-w-3xl gap-6">
+        </div>
+        <ul className="mx-auto mt-14 grid max-w-3xl gap-6">
         {sorted.map((post) => (
           <li key={post.slug}>
             <Link href={`/blog/${post.slug}`} className="group block">
-              <Card className="h-full rounded-2xl border-0 bg-muted/25 shadow-none ring-0 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:bg-muted/40 hover:shadow-lg hover:shadow-primary/10 dark:hover:shadow-black/25">
+              <Card
+                className={`${cardSurface} hover:-translate-y-1 hover:scale-[1.01] hover:bg-muted/45 hover:shadow-lg hover:shadow-primary/10 dark:hover:shadow-black/25`}
+              >
                 <CardHeader>
                   <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                     <span className="inline-flex items-center gap-1">
@@ -77,7 +89,8 @@ export default function BlogPage() {
             </Link>
           </li>
         ))}
-      </ul>
-    </div>
+        </ul>
+      </div>
+    </InnerPageSurface>
   );
 }

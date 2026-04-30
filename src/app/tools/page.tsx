@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Braces, Clock3, Ruler } from "lucide-react";
 
+import { InnerPageSurface } from "@/components/layout/inner-page-surface";
 import {
   Card,
   CardContent,
@@ -40,10 +41,14 @@ const tools = [
   },
 ] as const;
 
+const cardSurface =
+  "h-full rounded-3xl border-0 bg-muted/30 shadow-none ring-1 ring-border/50 transition-all duration-300 dark:bg-muted/25 dark:ring-white/[0.06]";
+
 export default function ToolsPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-      <div className="mx-auto max-w-2xl text-center">
+    <InnerPageSurface>
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="mx-auto max-w-2xl text-center">
         <p className="text-sm font-medium uppercase tracking-widest text-primary">
           Tools
         </p>
@@ -54,12 +59,14 @@ export default function ToolsPage() {
           Opinionated, fast, and pleasant to use — built the same way I approach
           product-facing engineering.
         </p>
-      </div>
-      <ul className="mt-14 grid gap-6 md:grid-cols-3">
+        </div>
+        <ul className="mt-14 grid gap-6 md:grid-cols-3">
         {tools.map((tool) => (
           <li key={tool.href}>
             <Link href={tool.href} className="group block h-full">
-              <Card className="h-full rounded-2xl border-0 bg-muted/25 shadow-none ring-0 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:bg-muted/40 hover:shadow-lg hover:shadow-primary/10 dark:hover:shadow-black/25">
+              <Card
+                className={`${cardSurface} hover:-translate-y-1 hover:scale-[1.02] hover:bg-muted/45 hover:shadow-lg hover:shadow-primary/10 dark:hover:shadow-black/25`}
+              >
                 <CardHeader>
                   <div className="mb-2 inline-flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/15">
                     <tool.icon className="size-5" aria-hidden />
@@ -80,7 +87,8 @@ export default function ToolsPage() {
             </Link>
           </li>
         ))}
-      </ul>
-    </div>
+        </ul>
+      </div>
+    </InnerPageSurface>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { InnerPageSurface } from "@/components/layout/inner-page-surface";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -13,11 +14,12 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
+    <InnerPageSurface>
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
         <div className="relative mx-auto w-full max-w-sm lg:mx-0">
           <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-primary/25 via-cyan-400/15 to-transparent blur-2xl dark:from-primary/30" />
-          <div className="relative overflow-hidden rounded-[1.75rem] bg-muted/15 shadow-2xl shadow-black/[0.05] dark:bg-white/[0.03] dark:shadow-black/50">
+          <div className="relative overflow-hidden rounded-[1.75rem] bg-muted/20 shadow-2xl shadow-black/[0.05] ring-1 ring-border/40 dark:bg-white/[0.04] dark:shadow-black/50 dark:ring-white/[0.06]">
             <Image
               src="/wayne-avatar.svg"
               alt="Wayne Yu — portrait placeholder"
@@ -68,7 +70,8 @@ export default function AboutPage() {
             </Link>
           </div>
         </div>
+        </div>
       </div>
-    </div>
+    </InnerPageSurface>
   );
 }
