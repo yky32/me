@@ -35,7 +35,6 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     "Wayne Yu",
-    "伊斯高",
     "software engineer",
     "Hong Kong",
     "distributed systems",

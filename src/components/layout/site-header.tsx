@@ -147,14 +147,16 @@ export function SiteHeader() {
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 sm:h-16 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="group flex items-center gap-2 font-bold tracking-tight"
+          className="group flex min-w-0 items-center gap-2 font-bold tracking-tight"
         >
-          <span className="inline-flex size-2 rounded-full bg-primary/90 ring-2 ring-primary/20" />
-          <span className="text-foreground transition-colors group-hover:text-primary">
-            {siteConfig.name}
-          </span>
-          <span className="hidden text-muted-foreground sm:inline">
-            · {siteConfig.nameZh}
+          <span className="inline-flex size-2 shrink-0 rounded-full bg-primary/90 ring-2 ring-primary/20" />
+          <span className="flex min-w-0 flex-col gap-0 leading-tight sm:flex-row sm:items-baseline sm:gap-2">
+            <span className="truncate text-foreground transition-colors group-hover:text-primary">
+              {siteConfig.name}
+            </span>
+            <span className="hidden max-w-[11rem] truncate font-mono text-[11px] font-semibold tracking-wide text-primary sm:inline md:max-w-none">
+              {siteConfig.navTagline}
+            </span>
           </span>
         </Link>
 

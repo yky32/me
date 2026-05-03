@@ -49,7 +49,7 @@ export default function AboutPage() {
             About
           </p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-            Wayne Yu <span className="text-muted-foreground">伊斯高</span>
+            Wayne Yu
           </h1>
           <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground">
             I&apos;m a Hong Kong–based software engineer at{" "}

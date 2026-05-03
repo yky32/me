@@ -11,7 +11,6 @@ import { cn } from "@/lib/utils";
 const SNIPPET_SOURCE = `/** Rolling readme — paste anywhere */
 export const whoAmI = {
   name: "${siteConfig.name}",
-  aka: "${siteConfig.nameZh}",
   role: "Software Engineer",
   basedIn: "Hong Kong",
   focus: ["Systems", "Backend", "DX"],
@@ -37,13 +36,6 @@ const LINES: Token[][] = [
     { t: "key", v: "name" },
     { t: "sym", v: ": " },
     { t: "str", v: `"${siteConfig.name}"` },
-    { t: "sym", v: "," },
-  ],
-  [
-    { t: "sym", v: "  " },
-    { t: "key", v: "aka" },
-    { t: "sym", v: ": " },
-    { t: "str", v: `"${siteConfig.nameZh}"` },
     { t: "sym", v: "," },
   ],
   [

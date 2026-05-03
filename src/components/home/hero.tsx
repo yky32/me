@@ -65,7 +65,7 @@ export function HomeHero() {
             variants={fade}
             className="mt-2 text-2xl font-light tracking-wide text-muted-foreground sm:text-3xl"
           >
-            {siteConfig.nameZh}
+            {siteConfig.role}
           </motion.p>
 
           <HeroIntroSnippet className="mt-8 lg:mt-9" motionDelayBase={0.22} />
