@@ -154,7 +154,7 @@ export function SiteHeader() {
             <span className="truncate text-foreground transition-colors group-hover:text-primary">
               {siteConfig.name}
             </span>
-            <span className="hidden max-w-[11rem] truncate font-mono text-[11px] font-semibold tracking-wide text-primary sm:inline md:max-w-none">
+            <span className="hidden max-w-[min(14rem,42vw)] text-pretty font-mono text-[10px] font-semibold leading-snug tracking-wide text-primary sm:inline sm:text-[11px] md:max-w-[18rem] lg:max-w-[22rem]">
               {siteConfig.navTagline}
             </span>
           </span>
