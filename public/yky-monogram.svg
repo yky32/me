@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="44 30 184 142" fill="none" aria-hidden="true">
+  <title>YKY monogram</title>
+  <g
+    stroke="#4568ee"
+    stroke-width="5.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M 52 34 L 88 104 V 158" />
+    <path d="M 124 34 L 88 104" />
+    <path d="M 136 34 V 158" />
+    <path d="M 136 104 L 196 42" />
+    <path d="M 136 104 L 196 166" />
+    <path d="M 220 34 L 184 104 V 158" />
+    <path d="M 148 34 L 184 104" />
+  </g>
+</svg>

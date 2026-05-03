@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { YkyMonogram } from "@/components/brand/yky-monogram";
 import { InnerPageSurface } from "@/components/layout/inner-page-surface";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -48,7 +49,10 @@ export default function AboutPage() {
           <p className="text-sm font-medium uppercase tracking-widest text-primary">
             About
           </p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+          <div className="mt-5">
+            <YkyMonogram className="h-[3.25rem] w-auto max-w-full sm:h-14" />
+          </div>
+          <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">
             Wayne Yu
           </h1>
           <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground">
