@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { ArrowUpRight, Globe } from "lucide-react";
+import { ArrowUpRight, Globe, Smartphone } from "lucide-react";
 
 import { InstagramIcon } from "@/components/icons/instagram";
 import { XIcon } from "@/components/icons/x";
 import { InnerPageSurface } from "@/components/layout/inner-page-surface";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -17,7 +16,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Standalone products and brands with their own sites and channels — including TGT (tgt.gg) and Ordercoon on Instagram. Each destination opens from its row.",
+    "Standalone products and brands with their own sites and channels — including TGT, Ordercoon, and Depozio.",
 };
 
 type Product = {
@@ -38,6 +37,10 @@ type Product = {
   x?: string;
   /** Override X URL; defaults to x.com/{handle} when linked */
   xUrl?: string;
+  /** Row label (default: App Store) */
+  appStore?: string;
+  /** iOS App Store product URL */
+  appStoreUrl?: string;
 };
 
 const products = [
@@ -57,6 +60,16 @@ const products = [
       "Updates and drops — follow @ordercoon for the latest.",
     instagram: "ordercoon",
     tags: ["food ordering", "smart POS"],
+  },
+  {
+    name: "Depozio",
+    description:
+      "Track spending, log deposits and expenses by category, and stay on course with savings goals — quick-add widgets on iOS.",
+    website: "depozio.app",
+    websiteUrl: "https://www.depozio.app/en",
+    appStoreUrl:
+      "https://apps.apple.com/us/app/depozio/id6755875871",
+    tags: ["personal finance", "iOS"],
   },
 ] satisfies Product[];
 
@@ -100,6 +113,17 @@ function buildPresenceRows(product: Product): PresenceRow[] {
       ariaLabel: product.websiteUrl
         ? `Open website ${product.website}`
         : `Website ${product.website}`,
+    });
+  }
+
+  if (product.appStoreUrl) {
+    const label = product.appStore ?? "App Store";
+    rows.push({
+      key: "app-store",
+      icon: <Smartphone className="size-4 shrink-0 text-muted-foreground" aria-hidden />,
+      value: label,
+      href: product.appStoreUrl,
+      ariaLabel: `Open ${label} for ${product.name}`,
     });
   }
 
@@ -275,39 +299,23 @@ export default function ProductsPage() {
           </blockquote>
         </div>
 
-        <ul className="mx-auto mt-14 grid max-w-3xl gap-6 sm:grid-cols-2">
-          {products.map((p) => {
-            const presenceRows = buildPresenceRows(p);
-            const linkCount = presenceRows.filter((r) => r.href).length;
-            const rowCount = presenceRows.length;
-            return (
-              <li key={p.name}>
-                <Card className={cn(cardClass, "h-full")}>
-                  <CardHeader>
-                    <div className="min-w-0 flex-1">
-                      <CardTitle className="text-xl">{p.name}</CardTitle>
-                      <ProductPresenceRows product={p} />
-                    </div>
-                    <CardDescription className="text-base leading-relaxed">
-                      {p.description}
-                    </CardDescription>
-                    <ProductHashtags tags={p.tags} />
-                  </CardHeader>
-                  {linkCount > 0 ? (
-                    <CardContent className="pt-0">
-                      <p className="text-xs text-muted-foreground">
-                        {linkCount > 1
-                          ? "Each linked row opens a different destination — new tab."
-                          : rowCount > 1
-                            ? "The linked row opens in a new tab; other rows are labels or coming soon."
-                            : "Opens in a new tab from the row above."}
-                      </p>
-                    </CardContent>
-                  ) : null}
-                </Card>
-              </li>
-            );
-          })}
+        <ul className="mx-auto mt-14 grid max-w-5xl gap-6 sm:grid-cols-2 xl:grid-cols-3">
+          {products.map((p) => (
+            <li key={p.name}>
+              <Card className={cn(cardClass, "h-full")}>
+                <CardHeader>
+                  <div className="min-w-0 flex-1">
+                    <CardTitle className="text-xl">{p.name}</CardTitle>
+                    <ProductPresenceRows product={p} />
+                  </div>
+                  <CardDescription className="text-base leading-relaxed">
+                    {p.description}
+                  </CardDescription>
+                  <ProductHashtags tags={p.tags} />
+                </CardHeader>
+              </Card>
+            </li>
+          ))}
         </ul>
       </div>
     </InnerPageSurface>
