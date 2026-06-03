@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Standalone products and brands with their own sites and channels — including TGT, Ordercoon, and Depozio.",
+    "Standalone products and brands with their own sites and channels — including TGT, Ordercoon, Depozio, and Soccer Terminal.",
 };
 
 type Product = {
@@ -70,6 +70,14 @@ const products = [
     appStoreUrl:
       "https://apps.apple.com/us/app/depozio/id6755875871",
     tags: ["personal finance", "iOS"],
+  },
+  {
+    name: "Soccer Terminal",
+    description:
+      "Live and upcoming football on a global map — league coverage and match monitoring when you need it.",
+    website: "soccer-terminal.app",
+    websiteUrl: "https://www.soccer-terminal.app",
+    tags: ["football", "live scores"],
   },
 ] satisfies Product[];
 
