@@ -47,12 +47,12 @@ const products = [
   {
     name: "TGT",
     description:
-      "Standalone site — open the link for what it is today (landing, app, or experiment).",
-    website: "tgt.gg",
+      "Fitness coaching app — build training plans, schedule sessions, and keep coaches and clients aligned on iOS and Android.",
+    website: "www.tgt.gg",
     websiteUrl: "https://www.tgt.gg",
-    instagram: "TGT",
-    instagramSoon: true,
-    tags: ["fitness", "personal health"],
+    instagram: "tgt.hongkong",
+    instagramUrl: "https://www.instagram.com/tgt.hongkong/",
+    tags: ["fitness coaching", "training plans"],
   },
   {
     name: "Ordercoon",
