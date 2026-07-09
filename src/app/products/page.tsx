@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Standalone products and brands with their own sites and channels — including TGT, Ordercoon, Depozio, and Soccer Terminal.",
+    "Standalone products and brands with their own sites and channels — including TGT, Ordercoon, Depozio, Soccer Terminal, and Triftly.",
 };
 
 type Product = {
@@ -41,6 +41,8 @@ type Product = {
   appStore?: string;
   /** iOS App Store product URL */
   appStoreUrl?: string;
+  /** No live links yet — show as in progress */
+  comingSoon?: boolean;
 };
 
 const products = [
@@ -78,6 +80,13 @@ const products = [
     website: "soccer-terminal.app",
     websiteUrl: "https://www.soccer-terminal.app",
     tags: ["football", "live scores"],
+  },
+  {
+    name: "Triftly",
+    comingSoon: true,
+    description:
+      "Explore trips with buddies — trips, plan, and share in one place.",
+    tags: ["trips", "plan", "share"],
   },
 ] satisfies Product[];
 
@@ -313,7 +322,14 @@ export default function ProductsPage() {
               <Card className={cn(cardClass, "h-full")}>
                 <CardHeader>
                   <div className="min-w-0 flex-1">
-                    <CardTitle className="text-xl">{p.name}</CardTitle>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <CardTitle className="text-xl">{p.name}</CardTitle>
+                      {p.comingSoon ? (
+                        <span className="rounded-md bg-muted/80 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wide text-muted-foreground ring-1 ring-border/50 dark:bg-muted/50">
+                          Building
+                        </span>
+                      ) : null}
+                    </div>
                     <ProductPresenceRows product={p} />
                   </div>
                   <CardDescription className="text-base leading-relaxed">
