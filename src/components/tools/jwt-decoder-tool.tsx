@@ -83,7 +83,7 @@ export function JwtDecoderTool() {
   };
 
   return (
-    <div className="mx-auto max-w-4xl space-y-6 font-mono">
+    <div className="mx-auto max-w-6xl space-y-6 font-mono">
       <div
         className="flex gap-3 rounded-xl border border-amber-500/35 bg-amber-500/8 px-4 py-3 text-sm text-amber-950 dark:border-amber-400/25 dark:bg-amber-400/10 dark:text-amber-50"
         role="note"
@@ -98,102 +98,117 @@ export function JwtDecoderTool() {
         </div>
       </div>
 
-      <div className="space-y-3">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <Label htmlFor="jwt-in" className="text-muted-foreground">
-            JWT string
-          </Label>
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            className="rounded-full"
-            disabled={!input.trim()}
-            onClick={() => copy(input.trim(), "JWT")}
-          >
-            <Copy className="size-3.5" />
-            Copy JWT
-          </Button>
+      <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
+        <div className="space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <Label htmlFor="jwt-in" className="text-muted-foreground">
+              JWT string
+            </Label>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="rounded-full"
+              disabled={!input.trim()}
+              onClick={() => copy(input.trim(), "JWT")}
+            >
+              <Copy className="size-3.5" />
+              Copy JWT
+            </Button>
+          </div>
+          <Textarea
+            id="jwt-in"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            spellCheck={false}
+            placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+            className="min-h-[280px] resize-y text-sm leading-relaxed lg:min-h-[420px]"
+          />
+          {parsed.ok === false ? (
+            <p
+              className={cn("text-sm", input.trim() ? "text-destructive" : "text-muted-foreground")}
+              role="status"
+            >
+              {parsed.message}
+            </p>
+          ) : null}
         </div>
-        <Textarea
-          id="jwt-in"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          spellCheck={false}
-          placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-          className="min-h-[120px] resize-y text-sm leading-relaxed"
-        />
+
+        {parsed.ok ? (
+          <div className="space-y-6">
+            <section className="space-y-2">
+              <div className="flex items-center justify-between gap-2">
+                <h2 className="text-sm font-medium text-muted-foreground">Header</h2>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full"
+                  onClick={() => copy(parsed.header, "Header")}
+                >
+                  <Copy className="size-3.5" />
+                  Copy
+                </Button>
+              </div>
+              <ScrollArea className="h-[min(160px,28vh)] rounded-xl border border-border/60 bg-muted/20 p-3">
+                <pre className="whitespace-pre-wrap break-all text-xs leading-relaxed">{parsed.header}</pre>
+              </ScrollArea>
+            </section>
+
+            <section className="space-y-2">
+              <div className="flex items-center justify-between gap-2">
+                <h2 className="text-sm font-medium text-muted-foreground">Payload</h2>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full"
+                  onClick={() => copy(parsed.payload, "Payload")}
+                >
+                  <Copy className="size-3.5" />
+                  Copy
+                </Button>
+              </div>
+              {parsed.expHuman ? (
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">exp</span> → {parsed.expHuman}
+                </p>
+              ) : null}
+              <ScrollArea className="h-[min(240px,40vh)] rounded-xl border border-border/60 bg-muted/20 p-3">
+                <pre className="whitespace-pre-wrap break-all text-xs leading-relaxed">{parsed.payload}</pre>
+              </ScrollArea>
+            </section>
+          </div>
+        ) : (
+          <div
+            className="hidden rounded-xl border border-dashed border-border/60 bg-muted/10 p-6 text-sm text-muted-foreground lg:block"
+            aria-hidden
+          >
+            Header and payload appear here once a valid JWT is pasted.
+          </div>
+        )}
       </div>
 
-      {parsed.ok === false ? (
-        <p className={cn("text-sm", input.trim() ? "text-destructive" : "text-muted-foreground")} role="status">
-          {parsed.message}
-        </p>
-      ) : (
-        <div className="grid gap-6 lg:grid-cols-2">
-          <section className="space-y-2">
-            <div className="flex items-center justify-between gap-2">
-              <h2 className="text-sm font-medium text-muted-foreground">Header</h2>
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                className="rounded-full"
-                onClick={() => copy(parsed.header, "Header")}
-              >
-                <Copy className="size-3.5" />
-                Copy
-              </Button>
-            </div>
-            <ScrollArea className="h-[min(220px,40vh)] rounded-xl border border-border/60 bg-muted/20 p-3">
-              <pre className="whitespace-pre-wrap break-all text-xs leading-relaxed">{parsed.header}</pre>
-            </ScrollArea>
-          </section>
-
-          <section className="space-y-2">
-            <div className="flex items-center justify-between gap-2">
-              <h2 className="text-sm font-medium text-muted-foreground">Payload</h2>
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                className="rounded-full"
-                onClick={() => copy(parsed.payload, "Payload")}
-              >
-                <Copy className="size-3.5" />
-                Copy
-              </Button>
-            </div>
-            {parsed.expHuman ? (
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">exp</span> → {parsed.expHuman}
-              </p>
-            ) : null}
-            <ScrollArea className="h-[min(280px,45vh)] rounded-xl border border-border/60 bg-muted/20 p-3">
-              <pre className="whitespace-pre-wrap break-all text-xs leading-relaxed">{parsed.payload}</pre>
-            </ScrollArea>
-          </section>
-
-          <section className="space-y-2 lg:col-span-2">
-            <div className="flex items-center justify-between gap-2">
-              <h2 className="text-sm font-medium text-muted-foreground">Signature (raw Base64URL segment)</h2>
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                className="rounded-full"
-                onClick={() => copy(parsed.signatureB64, "Signature")}
-              >
-                <Copy className="size-3.5" />
-                Copy
-              </Button>
-            </div>
-            <ScrollArea className="max-h-24 rounded-xl border border-dashed border-border/70 bg-muted/10 p-3">
-              <pre className="break-all text-xs text-muted-foreground">{parsed.signatureB64}</pre>
-            </ScrollArea>
-          </section>
-        </div>
-      )}
+      {parsed.ok ? (
+        <section className="space-y-2">
+          <div className="flex items-center justify-between gap-2">
+            <h2 className="text-sm font-medium text-muted-foreground">Signature (raw Base64URL segment)</h2>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="rounded-full"
+              onClick={() => copy(parsed.signatureB64, "Signature")}
+            >
+              <Copy className="size-3.5" />
+              Copy
+            </Button>
+          </div>
+          <ScrollArea className="max-h-24 rounded-xl border border-dashed border-border/70 bg-muted/10 p-3">
+            <pre className="break-all text-xs text-muted-foreground">{parsed.signatureB64}</pre>
+          </ScrollArea>
+        </section>
+      ) : null}
     </div>
   );
 }
