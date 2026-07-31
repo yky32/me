@@ -45,7 +45,7 @@ type Product = {
   comingSoon?: boolean;
 };
 
-const products = [
+const products: Product[] = [
   {
     name: "Triftly",
     description:
@@ -93,7 +93,7 @@ const products = [
     websiteUrl: "https://www.soccer-terminal.app",
     tags: ["football", "live scores"],
   },
-] satisfies Product[];
+];
 
 const cardClass =
   "rounded-2xl border-0 bg-muted/30 shadow-none ring-1 ring-border/50 transition-colors hover:bg-muted/45 hover:ring-primary/25 dark:bg-muted/20 dark:ring-white/[0.06]";
