@@ -98,13 +98,13 @@ export function HomeHero() {
             className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start"
           >
             <Link
-              href="/tools"
+              href="/products"
               className={cn(
                 buttonVariants({ size: "lg" }),
                 "group h-12 gap-2 rounded-full px-8 text-base shadow-md shadow-primary/20 transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]",
               )}
             >
-              Tools
+              Products
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link

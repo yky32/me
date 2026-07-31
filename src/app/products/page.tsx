@@ -47,14 +47,26 @@ type Product = {
 
 const products = [
   {
+    name: "Triftly",
+    description:
+      "Shared trip workspace — plan days with buddies, stay in sync on the road, and split expenses fairly. Plan · Spend · Share in one place.",
+    website: "triftly.app",
+    websiteUrl: "https://www.triftly.app",
+    appStoreUrl:
+      "https://apps.apple.com/us/app/triftly-plan-spend-share/id6759971780",
+    tags: ["travel", "plan", "spend", "share", "iOS"],
+  },
+  {
     name: "TGT",
     description:
-      "Fitness coaching app — build training plans, schedule sessions, and keep coaches and clients aligned on iOS and Android.",
+      "All-in-one fitness coaching — programs, sessions, attendance, and revenue for trainers and clients, with smart routines and AI meal tools.",
     website: "www.tgt.gg",
     websiteUrl: "https://www.tgt.gg",
+    appStoreUrl:
+      "https://apps.apple.com/us/app/tgt-fitness-coaching/id6781726701",
     instagram: "tgt.hongkong",
     instagramUrl: "https://www.instagram.com/tgt.hongkong/",
-    tags: ["fitness coaching", "training plans"],
+    tags: ["fitness coaching", "training plans", "iOS"],
   },
   {
     name: "Ordercoon",
@@ -80,13 +92,6 @@ const products = [
     website: "soccer-terminal.app",
     websiteUrl: "https://www.soccer-terminal.app",
     tags: ["football", "live scores"],
-  },
-  {
-    name: "Triftly",
-    comingSoon: true,
-    description:
-      "Explore trips with buddies — trips, plan, and share in one place.",
-    tags: ["trips", "plan", "share"],
   },
 ] satisfies Product[];
 

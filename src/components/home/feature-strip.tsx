@@ -2,31 +2,31 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Boxes, Cpu, PenLine } from "lucide-react";
+import { Boxes, Cpu, Package } from "lucide-react";
 
 const tiles = [
+  {
+    href: "/products",
+    label: "Products",
+    sub: "Triftly · TGT · more",
+    icon: Package,
+    layout:
+      "md:col-span-2 md:row-span-2 min-h-[200px] md:min-h-[min(340px,42vh)]",
+    gradient: "from-primary/25 via-cyan-500/12 to-transparent",
+  },
   {
     href: "/tools",
     label: "Tools",
     sub: "In the browser",
     icon: Boxes,
-    layout:
-      "md:col-span-2 md:row-span-2 min-h-[200px] md:min-h-[min(340px,42vh)]",
-    gradient: "from-primary/25 via-cyan-500/12 to-transparent",
+    layout: "md:col-start-3 md:row-start-1",
+    gradient: "from-muted/90 to-transparent",
   },
   {
     href: "/about",
     label: "About",
     sub: "Who I am",
     icon: Cpu,
-    layout: "md:col-start-3 md:row-start-1",
-    gradient: "from-muted/90 to-transparent",
-  },
-  {
-    href: "/blog",
-    label: "Writing",
-    sub: "Short notes",
-    icon: PenLine,
     layout: "md:col-start-3 md:row-start-2",
     gradient: "from-primary/18 to-transparent",
   },
