@@ -8,7 +8,7 @@ const tiles = [
   {
     href: "/products",
     label: "Products",
-    sub: "Triftly · TGT · more",
+    sub: "Apps in the wild",
     icon: Package,
     layout:
       "md:col-span-2 md:row-span-2 min-h-[200px] md:min-h-[min(340px,42vh)]",
@@ -17,7 +17,7 @@ const tiles = [
   {
     href: "/tools",
     label: "Tools",
-    sub: "In the browser",
+    sub: "Dev utilities",
     icon: Boxes,
     layout: "md:col-start-3 md:row-start-1",
     gradient: "from-muted/90 to-transparent",

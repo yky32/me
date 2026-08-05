@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Standalone products and brands with their own sites and channels — including TGT, Ordercoon, Depozio, Soccer Terminal, and Triftly.",
+    "Shipped and shipping products with their own sites and channels — including Triftly, TGT, Ordercoon, Depozio, and Soccer Terminal.",
 };
 
 type Product = {
@@ -71,7 +71,7 @@ const products: Product[] = [
   {
     name: "Ordercoon",
     description:
-      "Updates and drops — follow @ordercoon for the latest.",
+      "Food ordering and smart POS — menus, tickets, and service flow in one stack. Follow @ordercoon for drops.",
     instagram: "ordercoon",
     tags: ["food ordering", "smart POS"],
   },
@@ -301,10 +301,11 @@ export default function ProductsPage() {
             Products
           </p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-            Things out in the wild
+            Shipped &amp; shipping
           </h1>
           <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
-            Products and brands that live on their own sites and channels.
+            I build and launch products that live on their own sites and
+            channels.
           </p>
         </div>
 

@@ -5,15 +5,18 @@ import Link from "next/link";
 import { YkyMonogram } from "@/components/brand/yky-monogram";
 import { InnerPageSurface } from "@/components/layout/inner-page-surface";
 import { buttonVariants } from "@/components/ui/button";
+import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Wayne Yu — Hong Kong software engineer at altech, focused on distributed systems and customer-centric products.",
+    "Wayne Yu — Hong Kong product builder shipping apps like Triftly and TGT, and software engineer at altech.",
 };
 
 export default function AboutPage() {
+  const linkedin = siteConfig.links.linkedin;
+
   return (
     <InnerPageSurface>
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
@@ -66,6 +69,20 @@ export default function AboutPage() {
             great engineering is measured in outcomes, not abstractions alone.
           </p>
           <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
+            Alongside that, I{" "}
+            <span className="text-foreground">ship my own products</span> —
+            travel with{" "}
+            <span className="text-foreground">Triftly</span>, fitness coaching
+            with <span className="text-foreground">TGT</span>, and more on the{" "}
+            <Link
+              href="/products"
+              className="font-medium text-foreground underline decoration-primary/40 underline-offset-4 transition-colors hover:decoration-primary"
+            >
+              Products
+            </Link>{" "}
+            page — each with its own site and channels.
+          </p>
+          <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
             I care about{" "}
             <span className="text-foreground">developer experience</span> as much
             as runtime performance: clear APIs, thoughtful defaults, and tools
@@ -75,17 +92,37 @@ export default function AboutPage() {
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Link
-              href="/tools"
+              href="/products"
               className={cn(buttonVariants(), "rounded-full px-6")}
             >
-              Try the tools
+              Products
             </Link>
             <Link
-              href="/blog"
+              href="/tools"
               className={cn(buttonVariants({ variant: "outline" }), "rounded-full px-6")}
             >
-              Read the blog
+              Tools
             </Link>
+          </div>
+          <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+            {linkedin ? (
+              <a
+                href={linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                LinkedIn
+              </a>
+            ) : null}
+            <a
+              href={siteConfig.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-muted-foreground transition-colors hover:text-primary"
+            >
+              GitHub
+            </a>
           </div>
         </div>
         </div>
