@@ -21,7 +21,7 @@ const fade = {
   }),
 };
 
-const tags = ["Systems", "Backend", "DX"] as const;
+const tags = ["Shipping", "iOS", "Travel", "Fitness"] as const;
 
 export function HomeHero() {
   return (
@@ -114,7 +114,7 @@ export function HomeHero() {
                 "group h-12 gap-1 rounded-full px-6 text-base text-muted-foreground transition-transform duration-200 hover:scale-[1.03] hover:text-foreground active:scale-[0.98]",
               )}
             >
-              Profile
+              About
               <ArrowUpRight className="size-4 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </motion.div>

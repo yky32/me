@@ -11,9 +11,10 @@ import { cn } from "@/lib/utils";
 const SNIPPET_SOURCE = `/** Rolling readme — paste anywhere */
 export const whoAmI = {
   name: "${siteConfig.name}",
-  role: "Software Engineer",
+  role: "${siteConfig.role}",
   basedIn: "Hong Kong",
-  focus: ["Systems", "Backend", "DX"],
+  products: ["Triftly", "TGT", "Depozio", "Soccer Terminal"],
+  building: "customer-facing apps",
 } as const`;
 
 type Token =
@@ -42,7 +43,7 @@ const LINES: Token[][] = [
     { t: "sym", v: "  " },
     { t: "key", v: "role" },
     { t: "sym", v: ": " },
-    { t: "str", v: `"Software Engineer"` },
+    { t: "str", v: `"${siteConfig.role}"` },
     { t: "sym", v: "," },
   ],
   [
@@ -54,14 +55,23 @@ const LINES: Token[][] = [
   ],
   [
     { t: "sym", v: "  " },
-    { t: "key", v: "focus" },
+    { t: "key", v: "products" },
     { t: "sym", v: ": [" },
-    { t: "str", v: `"Systems"` },
+    { t: "str", v: `"Triftly"` },
     { t: "sym", v: ", " },
-    { t: "str", v: `"Backend"` },
+    { t: "str", v: `"TGT"` },
     { t: "sym", v: ", " },
-    { t: "str", v: `"DX"` },
+    { t: "str", v: `"Depozio"` },
+    { t: "sym", v: ", " },
+    { t: "str", v: `"Soccer Terminal"` },
     { t: "sym", v: "]," },
+  ],
+  [
+    { t: "sym", v: "  " },
+    { t: "key", v: "building" },
+    { t: "sym", v: ": " },
+    { t: "str", v: `"customer-facing apps"` },
+    { t: "sym", v: "," },
   ],
   [
     { t: "sym", v: "}" },
