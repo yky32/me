@@ -6,7 +6,7 @@ import { ToolsHub } from "@/components/tools/tools-hub";
 export const metadata: Metadata = {
   title: "Tools",
   description:
-    "Hashes, cron, IDs, diff, regex, JSON tables, encoders, JWT, timezones, units, and more — browse by category or search.",
+    "Hashes, cron, IDs, QR codes, diff, regex, JSON tables, encoders, JWT, timezones, units, and more — browse by category or search.",
 };
 
 export default function ToolsPage() {
