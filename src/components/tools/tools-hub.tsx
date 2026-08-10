@@ -11,6 +11,7 @@ import {
   Hash,
   KeyRound,
   Link2,
+  QrCode,
   Regex,
   Ruler,
   Search,
@@ -134,6 +135,14 @@ const tools: ToolItem[] = [
     description:
       "Flatten objects into columns, browse in a table, copy as TSV.",
     icon: Table2,
+    category: "data",
+  },
+  {
+    href: "/tools/qr",
+    title: "QR code generator",
+    description:
+      "Links, text, email, call, SMS, WhatsApp, Wi‑Fi, vCard, events — colors, logo, PNG/SVG download in-browser.",
+    icon: QrCode,
     category: "data",
   },
 ];
