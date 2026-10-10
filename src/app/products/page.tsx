@@ -93,6 +93,14 @@ const products: Product[] = [
     websiteUrl: "https://www.soccer-terminal.app",
     tags: ["football", "live scores"],
   },
+  {
+    name: "LiD",
+    description:
+      "One letter between two people. Their face as they open it. Then it's gone.",
+    website: "yky.app/lid",
+    websiteUrl: "https://www.yky.app/lid",
+    tags: ["letter", "iOS"],
+  },
 ];
 
 const cardClass =

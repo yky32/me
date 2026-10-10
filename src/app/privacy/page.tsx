@@ -52,7 +52,14 @@ export default function PrivacyPage() {
         <section className="mt-12 space-y-4">
           <h2 className="text-2xl font-semibold tracking-tight">LiD</h2>
           <p className="text-pretty leading-relaxed text-muted-foreground">
-            LiD is one of the apps. It is one letter between two people. You
+            LiD is one of the apps. The page is{" "}
+            <Link
+              href="/lid"
+              className="font-medium text-foreground underline decoration-primary/40 underline-offset-4"
+            >
+              yky.app/lid
+            </Link>
+            . It is one letter between two people. You
             sign in with Apple or with an email code. The app stores the name
             you choose, and a device token so it can send a notification. The
             notification does not include the words in the letter.
