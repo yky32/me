@@ -13,7 +13,13 @@ export const whoAmI = {
   name: "${siteConfig.name}",
   role: "${siteConfig.role}",
   basedIn: "Hong Kong",
-  products: ["Triftly", "TGT", "Depozio", "Soccer Terminal"],
+  products: [
+    "Triftly",
+    "TGT",
+    "Depozio",
+    "Soccer Terminal",
+    "LiD",
+  ],
   building: "customer-facing apps",
 } as const`;
 
@@ -57,15 +63,33 @@ const LINES: Token[][] = [
     { t: "sym", v: "  " },
     { t: "key", v: "products" },
     { t: "sym", v: ": [" },
-    { t: "str", v: `"Triftly"` },
-    { t: "sym", v: ", " },
-    { t: "str", v: `"TGT"` },
-    { t: "sym", v: ", " },
-    { t: "str", v: `"Depozio"` },
-    { t: "sym", v: ", " },
-    { t: "str", v: `"Soccer Terminal"` },
-    { t: "sym", v: "]," },
   ],
+  [
+    { t: "sym", v: "    " },
+    { t: "str", v: `"Triftly"` },
+    { t: "sym", v: "," },
+  ],
+  [
+    { t: "sym", v: "    " },
+    { t: "str", v: `"TGT"` },
+    { t: "sym", v: "," },
+  ],
+  [
+    { t: "sym", v: "    " },
+    { t: "str", v: `"Depozio"` },
+    { t: "sym", v: "," },
+  ],
+  [
+    { t: "sym", v: "    " },
+    { t: "str", v: `"Soccer Terminal"` },
+    { t: "sym", v: "," },
+  ],
+  [
+    { t: "sym", v: "    " },
+    { t: "str", v: `"LiD"` },
+    { t: "sym", v: "," },
+  ],
+  [{ t: "sym", v: "  ]," }],
   [
     { t: "sym", v: "  " },
     { t: "key", v: "building" },
@@ -131,7 +155,7 @@ export function HeroIntroSnippet({
         ease: [0.22, 1, 0.36, 1],
       }}
       className={cn(
-        "font-mono relative mx-auto w-full max-w-lg lg:mx-0",
+        "font-mono relative mx-auto w-full min-w-0 max-w-lg lg:mx-0",
         // Showcase frame — gradient halo like snippet preview cards
         "rounded-2xl bg-gradient-to-br from-primary/28 via-cyan-400/18 to-transparent p-[1px] shadow-[0_24px_80px_-28px_color-mix(in_oklab,var(--color-primary)_45%,transparent)]",
         className,
@@ -151,7 +175,7 @@ export function HeroIntroSnippet({
             </span>
           </div>
           <div className="flex shrink-0 items-center gap-2">
-            <span className="rounded-md bg-primary/15 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wide text-primary">
+            <span className="hidden rounded-md bg-primary/15 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wide text-primary sm:inline">
               TypeScript
             </span>
             <button
@@ -165,6 +189,7 @@ export function HeroIntroSnippet({
               ) : (
                 <Copy className="size-3 opacity-80" aria-hidden />
               )}
+              <span className="sm:hidden">{copied ? "Copied" : "Copy"}</span>
               <span className="hidden sm:inline">{copied ? "Copied" : "Copy"}</span>
             </button>
           </div>
@@ -184,7 +209,7 @@ export function HeroIntroSnippet({
               {LINES.map((line, row) => (
                 <motion.div
                   key={row}
-                  className="whitespace-pre"
+                  className="whitespace-pre-wrap break-words"
                   initial={reduceMotion ? undefined : { opacity: 0, x: -6 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{

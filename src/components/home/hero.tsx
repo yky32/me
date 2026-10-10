@@ -44,7 +44,7 @@ export function HomeHero() {
         <motion.div
           initial="hidden"
           animate="show"
-          className="text-center lg:text-left"
+          className="text-center lg:text-left min-w-0"
         >
           <motion.p
             custom={0}
