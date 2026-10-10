@@ -6,7 +6,7 @@ import { InnerPageSurface } from "@/components/layout/inner-page-surface";
 export const metadata: Metadata = {
   title: "Support",
   description:
-    "Get help with Wayne Yu's apps, including LiD. Contact via GitHub or LinkedIn.",
+    "Contact Wayne Yu about yky.app or any of the work shipped from here.",
 };
 
 export default function SupportPage() {
@@ -17,11 +17,22 @@ export default function SupportPage() {
           Support
         </p>
         <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">
-          Get help
+          Wayne Yu
         </h1>
         <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground">
-          For LiD, or any other app on this site, send a note with the app
-          name and what happened. I read these myself.
+          yky.app is me, and the work I ship. If something on the site or in
+          one of the apps needs a hand, send a note with the name and what
+          happened. I read these myself.
+        </p>
+        <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
+          Some products also have their own site. Those are listed on{" "}
+          <Link
+            href="/products"
+            className="font-medium text-foreground underline decoration-primary/40 underline-offset-4"
+          >
+            Products
+          </Link>
+          .
         </p>
         <ul className="mt-8 space-y-3 text-lg">
           <li>
