@@ -28,6 +28,18 @@ export function SiteFooter() {
               </a>
             ) : null}
             <Link
+              href="/support"
+              className="text-muted-foreground transition-colors hover:text-primary"
+            >
+              Support
+            </Link>
+            <Link
+              href="/privacy"
+              className="text-muted-foreground transition-colors hover:text-primary"
+            >
+              Privacy
+            </Link>
+            <Link
               href={siteConfig.links.github}
               className="text-muted-foreground transition-colors hover:text-primary"
               target="_blank"
