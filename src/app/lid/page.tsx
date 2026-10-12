@@ -1,56 +1,151 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
-
-import { InnerPageSurface } from "@/components/layout/inner-page-surface";
 
 export const metadata: Metadata = {
   title: "LiD",
   description:
-    "LiD is one letter between two people. Their face as they open it. Then it's gone.",
+    "One letter between two people. Their face as they open it. Then it's gone.",
 };
 
 export default function LidPage() {
   return (
-    <InnerPageSurface>
-      <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-        <p className="text-sm font-medium uppercase tracking-widest text-primary">
-          One of the works
-        </p>
-        <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">
+    <div className="fixed inset-0 z-[80] overflow-hidden bg-[#F3EFEB] text-[#4B372F]">
+      <Star className="absolute left-[8%] top-[10%] h-10 w-10 text-[#C97C7D] sm:left-[18%] sm:top-[14%]" />
+      <Heart className="absolute right-[10%] top-[16%] h-7 w-7 text-[#C97C7D] sm:right-[20%]" />
+      <Spark className="absolute right-[16%] top-[28%] h-5 w-5 text-[#E0A060] sm:right-[24%]" />
+      <Envelope className="absolute bottom-[22%] left-[7%] h-12 w-12 -rotate-12 text-[#C97C7D] sm:left-[16%]" />
+      <Moon className="absolute bottom-[18%] right-[8%] h-8 w-8 text-[#4B372F]/70 sm:right-[18%]" />
+
+      <div className="absolute left-1/2 top-[42%] flex w-[min(82vw,420px)] -translate-x-1/2 -translate-y-1/2 flex-col items-center">
+        <p className="font-sans text-[clamp(3.4rem,12vw,5.4rem)] font-black leading-none tracking-tight text-[#3D6BFF]">
           LiD
-        </h1>
-        <p className="mt-3 text-lg text-foreground">LiD: Watch Them Open</p>
-        <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground">
-          One letter between two people. Their face as they open it. Then
-          it&apos;s gone.
         </p>
-        <div className="mt-10 space-y-4 text-pretty leading-relaxed text-muted-foreground">
-          <p>
-            You send one line. They see only an envelope until they open it.
-            Opening turns the front camera on. You get their face. Then the
-            letter and the face are gone.
-          </p>
-          <p>Nothing is saved on the phone. Nothing is kept as an archive.</p>
-          <p>Not a thread. Not a camera roll.</p>
+        <p className="mt-2 max-w-[16rem] text-center text-[15px] font-semibold leading-snug text-[#6B4CFF] sm:max-w-none sm:text-lg">
+          Their face as they open it.
+          <br />
+          Then it&apos;s gone.
+        </p>
+
+        <div className="relative mt-6 w-[min(68vw,250px)]">
+          <div className="rounded-[2rem] bg-[#F6C7C8] p-[7px] shadow-[0_18px_40px_rgba(75,55,47,0.12)]">
+            <div className="overflow-hidden rounded-[1.6rem] bg-[#FFFCFA]">
+              <div className="flex items-center justify-between px-4 pb-2 pt-3 text-[10px] text-[#4B372F]/50">
+                <span>9:41</span>
+                <span className="font-semibold text-[#4B372F]">LiD</span>
+                <span>▲</span>
+              </div>
+              <div className="space-y-3 px-3 pb-5">
+                <Card>
+                  <Seal />
+                  <div>
+                    <p className="text-[13px] font-semibold">One line</p>
+                    <p className="text-[11px] text-[#4B372F]/55">Sealed</p>
+                  </div>
+                </Card>
+                <Card className="ml-6">
+                  <Face />
+                  <div>
+                    <p className="text-[13px] font-semibold">Their face</p>
+                    <p className="text-[11px] text-[#4B372F]/55">Then gone</p>
+                  </div>
+                </Card>
+              </div>
+            </div>
+          </div>
         </div>
-        <p className="mt-10 text-sm text-muted-foreground">
-          Data practices are on the{" "}
-          <Link
-            href="/privacy"
-            className="font-medium text-foreground underline decoration-primary/40 underline-offset-4"
-          >
-            privacy page
-          </Link>
-          . Questions go to{" "}
-          <Link
-            href="/support"
-            className="font-medium text-foreground underline decoration-primary/40 underline-offset-4"
-          >
-            support
-          </Link>
-          .
-        </p>
       </div>
-    </InnerPageSurface>
+
+      <footer className="absolute inset-x-0 bottom-0 flex justify-center gap-4 px-4 pb-4 text-[11px] text-[#4B372F]/55">
+        <Link href="/privacy" className="hover:text-[#4B372F]">
+          Privacy
+        </Link>
+        <Link href="/support" className="hover:text-[#4B372F]">
+          Support
+        </Link>
+      </footer>
+    </div>
+  );
+}
+
+function Card({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`flex items-center gap-3 rounded-2xl bg-white px-3 py-3 shadow-[0_8px_18px_rgba(75,55,47,0.06)] ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
+
+function Seal() {
+  return (
+    <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#F4EFE6]">
+      <span className="h-5 w-5 rounded-full bg-[#C97C7D]" />
+    </span>
+  );
+}
+
+function Face() {
+  return (
+    <span className="grid h-10 w-10 place-items-center rounded-full bg-[#F4EFE6] text-[18px]">
+      ◠
+    </span>
+  );
+}
+
+function Star({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} aria-hidden>
+      <path
+        fill="currentColor"
+        d="M24 4l4.2 12.2L40 18l-9.4 7.2L33.6 40 24 32.8 14.4 40l3-14.8L8 18l11.8-1.8z"
+      />
+    </svg>
+  );
+}
+
+function Heart({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <path
+        fill="currentColor"
+        d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 4.6-7 9-7 9z"
+      />
+    </svg>
+  );
+}
+
+function Spark({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <path fill="currentColor" d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6z" />
+    </svg>
+  );
+}
+
+function Envelope({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} aria-hidden>
+      <rect x="6" y="12" width="36" height="24" rx="3" fill="none" stroke="currentColor" strokeWidth="2.4" />
+      <path d="M8 14l16 12L40 14" fill="none" stroke="currentColor" strokeWidth="2.4" />
+    </svg>
+  );
+}
+
+function Moon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <path
+        fill="currentColor"
+        d="M14 3a8 8 0 1 0 7 12 7 7 0 1 1-7-12z"
+      />
+    </svg>
   );
 }
