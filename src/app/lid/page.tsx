@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -27,31 +26,13 @@ export default function LidPage() {
           Then it&apos;s gone.
         </p>
 
-        <div className="relative mt-6 w-[min(68vw,250px)]">
+        <div className="relative mt-5 w-[min(46vw,210px)]">
           <div className="rounded-[2rem] bg-[#F6C7C8] p-[7px] shadow-[0_18px_40px_rgba(75,55,47,0.12)]">
-            <div className="overflow-hidden rounded-[1.6rem] bg-[#FFFCFA]">
-              <div className="flex items-center justify-between px-4 pb-2 pt-3 text-[10px] text-[#4B372F]/50">
-                <span>9:41</span>
-                <span className="font-semibold text-[#4B372F]">LiD</span>
-                <span>▲</span>
-              </div>
-              <div className="space-y-3 px-3 pb-5">
-                <Card>
-                  <Seal />
-                  <div>
-                    <p className="text-[13px] font-semibold">One line</p>
-                    <p className="text-[11px] text-[#4B372F]/55">Sealed</p>
-                  </div>
-                </Card>
-                <Card className="ml-6">
-                  <Face />
-                  <div>
-                    <p className="text-[13px] font-semibold">Their face</p>
-                    <p className="text-[11px] text-[#4B372F]/55">Then gone</p>
-                  </div>
-                </Card>
-              </div>
-            </div>
+            <img
+              src="/lid-screen.png"
+              alt="LiD sign-in screen"
+              className="block aspect-[414/900] w-full rounded-[1.55rem] object-cover object-top"
+            />
           </div>
         </div>
       </div>
@@ -65,38 +46,6 @@ export default function LidPage() {
         </Link>
       </footer>
     </div>
-  );
-}
-
-function Card({
-  children,
-  className = "",
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`flex items-center gap-3 rounded-2xl bg-white px-3 py-3 shadow-[0_8px_18px_rgba(75,55,47,0.06)] ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
-
-function Seal() {
-  return (
-    <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#F4EFE6]">
-      <span className="h-5 w-5 rounded-full bg-[#C97C7D]" />
-    </span>
-  );
-}
-
-function Face() {
-  return (
-    <span className="grid h-10 w-10 place-items-center rounded-full bg-[#F4EFE6] text-[18px]">
-      ◠
-    </span>
   );
 }
 
