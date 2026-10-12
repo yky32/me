@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-const href = "/lid-logo.png";
+const href = "/lid-tab-32.png";
 
 export function LidTabIcon() {
   useEffect(() => {

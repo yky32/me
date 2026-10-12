@@ -41,8 +41,8 @@ export function lidMetadata(): Metadata {
     },
     robots: { index: true, follow: true },
     icons: {
-      icon: [{ url: "/lid-logo.png", type: "image/png", sizes: "256x256" }],
-      shortcut: "/lid-logo.png",
+      icon: [{ url: "/lid-tab-32.png", type: "image/png", sizes: "32x32" }],
+      shortcut: "/lid-tab-32.png",
       apple: "/lid-logo.png",
     },
   };
