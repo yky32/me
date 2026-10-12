@@ -43,9 +43,16 @@ export default function LidPage() {
       <Moon className="lid-sticker absolute bottom-[18%] right-[8%] h-8 w-8 text-[#4B372F]/70 [animation-delay:-3s] sm:right-[18%]" />
 
       <div className="absolute left-1/2 top-[38%] flex w-[min(82vw,420px)] -translate-x-1/2 -translate-y-1/2 flex-col items-center">
-        <p className="lid-title font-sans text-[clamp(3.4rem,12vw,5.4rem)] font-black leading-none tracking-tight text-[#3D6BFF]">
-          LiD
-        </p>
+        <div className="lid-title flex items-center gap-3">
+          <img
+            src="/lid-logo.png"
+            alt="LiD"
+            className="h-14 w-14 rounded-[16px] shadow-[0_10px_24px_rgba(0,0,0,0.16)] sm:h-16 sm:w-16"
+          />
+          <p className="font-sans text-[clamp(3.4rem,12vw,5.4rem)] font-black leading-none tracking-tight text-[#3D6BFF]">
+            LiD
+          </p>
+        </div>
         <p className="mt-2 max-w-[16rem] text-center text-[15px] font-semibold leading-snug text-[#6B4CFF] sm:max-w-none sm:text-lg">
           Their face as they open it.
           <br />
