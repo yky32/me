@@ -8,7 +8,7 @@ export const lidPage = {
   name: "LiD",
   title: "LiD: Watch Them Open",
   description:
-    "One letter between two people. Their face as they open it. Then it's gone.",
+    "See their face when they open a letter. One line letter for two people. Sealed. Then it's gone.",
   image: "/lid-logo.png",
 } as const;
 

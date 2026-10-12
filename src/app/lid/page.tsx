@@ -51,7 +51,7 @@ export default function LidPage() {
             alt="LiD"
             className="h-[0.86em] w-[0.86em] rounded-[0.22em] shadow-[0_10px_24px_rgba(0,0,0,0.16)]"
           />
-          <p
+          <h1
             className="font-semibold leading-none text-[#4B372F]"
             style={{
               fontFamily: 'ui-rounded, "SF Pro Rounded", sans-serif',
@@ -60,7 +60,7 @@ export default function LidPage() {
             }}
           >
             LiD
-          </p>
+          </h1>
         </div>
         <p className="mt-2 max-w-[16rem] text-center text-[15px] font-semibold leading-snug text-[#6B4CFF] sm:max-w-none sm:text-lg">
           Their face as they open it.
@@ -73,6 +73,9 @@ export default function LidPage() {
           they lift it
           <span className="lid-dot px-1.5 text-[#C97C7D] [animation-delay:-1.2s]">·</span>
           you get their face
+        </p>
+        <p className="mt-2 max-w-[18rem] text-center text-[12px] leading-snug text-[#4B372F]/55">
+          See their face when they open a letter. A sealed letter for two people.
         </p>
 
         <div className="lid-phone relative mt-5 w-[min(46vw,210px)]">
