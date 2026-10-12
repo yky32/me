@@ -10,14 +10,40 @@ export const metadata: Metadata = {
 export default function LidPage() {
   return (
     <div className="fixed inset-0 z-[80] overflow-hidden bg-[#F3EFEB] text-[#4B372F]">
-      <Star className="absolute left-[8%] top-[10%] h-10 w-10 text-[#C97C7D] sm:left-[18%] sm:top-[14%]" />
-      <Heart className="absolute right-[10%] top-[16%] h-7 w-7 text-[#C97C7D] sm:right-[20%]" />
-      <Spark className="absolute right-[16%] top-[28%] h-5 w-5 text-[#E0A060] sm:right-[24%]" />
-      <Envelope className="absolute bottom-[22%] left-[7%] h-12 w-12 -rotate-12 text-[#C97C7D] sm:left-[16%]" />
-      <Moon className="absolute bottom-[18%] right-[8%] h-8 w-8 text-[#4B372F]/70 sm:right-[18%]" />
+      <style>{`
+        @keyframes lid-float {
+          0%, 100% { transform: translateY(0) rotate(var(--lid-rot, 0deg)); }
+          50% { transform: translateY(-10px) rotate(calc(var(--lid-rot, 0deg) + 6deg)); }
+        }
+        @keyframes lid-pop {
+          0% { transform: translateY(10px) scale(0.92); opacity: 0; }
+          70% { transform: translateY(-2px) scale(1.03); opacity: 1; }
+          100% { transform: none; opacity: 1; }
+        }
+        @keyframes lid-bob {
+          0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+          50% { transform: translateY(-8px) rotate(1.5deg); }
+        }
+        @keyframes lid-blink {
+          0%, 70%, 100% { opacity: 0.45; }
+          85% { opacity: 1; }
+        }
+        .lid-sticker { animation: lid-float 4.8s ease-in-out infinite; }
+        .lid-title { animation: lid-pop 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+        .lid-phone { animation: lid-bob 5.4s ease-in-out infinite; }
+        .lid-dot { animation: lid-blink 2.4s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) {
+          .lid-sticker, .lid-title, .lid-phone, .lid-dot { animation: none; }
+        }
+      `}</style>
+      <Star className="lid-sticker absolute left-[8%] top-[10%] h-10 w-10 text-[#C97C7D] sm:left-[18%] sm:top-[14%]" />
+      <Heart className="lid-sticker absolute right-[10%] top-[16%] h-7 w-7 text-[#C97C7D] [animation-delay:-1.2s] sm:right-[20%]" />
+      <Spark className="lid-sticker absolute right-[16%] top-[28%] h-5 w-5 text-[#E0A060] [animation-delay:-2.4s] sm:right-[24%]" />
+      <Envelope className="lid-sticker absolute bottom-[22%] left-[7%] h-12 w-12 text-[#C97C7D] [animation-delay:-0.8s] [--lid-rot:-12deg] sm:left-[16%]" />
+      <Moon className="lid-sticker absolute bottom-[18%] right-[8%] h-8 w-8 text-[#4B372F]/70 [animation-delay:-3s] sm:right-[18%]" />
 
       <div className="absolute left-1/2 top-[42%] flex w-[min(82vw,420px)] -translate-x-1/2 -translate-y-1/2 flex-col items-center">
-        <p className="font-sans text-[clamp(3.4rem,12vw,5.4rem)] font-black leading-none tracking-tight text-[#3D6BFF]">
+        <p className="lid-title font-sans text-[clamp(3.4rem,12vw,5.4rem)] font-black leading-none tracking-tight text-[#3D6BFF]">
           LiD
         </p>
         <p className="mt-2 max-w-[16rem] text-center text-[15px] font-semibold leading-snug text-[#6B4CFF] sm:max-w-none sm:text-lg">
@@ -27,13 +53,13 @@ export default function LidPage() {
         </p>
         <p className="mt-3 text-center text-[13px] font-medium text-[#4B372F]/70">
           Write one line
-          <span className="px-1.5 text-[#C97C7D]">·</span>
+          <span className="lid-dot px-1.5 text-[#C97C7D]">·</span>
           they lift it
-          <span className="px-1.5 text-[#C97C7D]">·</span>
+          <span className="lid-dot px-1.5 text-[#C97C7D] [animation-delay:-1.2s]">·</span>
           you get their face
         </p>
 
-        <div className="relative mt-5 w-[min(46vw,210px)]">
+        <div className="lid-phone relative mt-5 w-[min(46vw,210px)]">
           <div className="rounded-[2rem] bg-[#F6C7C8] p-[7px] shadow-[0_18px_40px_rgba(75,55,47,0.12)]">
             <img
               src="/lid-screen.png"
