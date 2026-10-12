@@ -42,7 +42,7 @@ export default function LidPage() {
       <Envelope className="lid-sticker absolute bottom-[22%] left-[7%] h-12 w-12 text-[#C97C7D] [animation-delay:-0.8s] [--lid-rot:-12deg] sm:left-[16%]" />
       <Moon className="lid-sticker absolute bottom-[18%] right-[8%] h-8 w-8 text-[#4B372F]/70 [animation-delay:-3s] sm:right-[18%]" />
 
-      <div className="absolute left-1/2 top-[42%] flex w-[min(82vw,420px)] -translate-x-1/2 -translate-y-1/2 flex-col items-center">
+      <div className="absolute left-1/2 top-[38%] flex w-[min(82vw,420px)] -translate-x-1/2 -translate-y-1/2 flex-col items-center">
         <p className="lid-title font-sans text-[clamp(3.4rem,12vw,5.4rem)] font-black leading-none tracking-tight text-[#3D6BFF]">
           LiD
         </p>
@@ -70,14 +70,21 @@ export default function LidPage() {
         </div>
       </div>
 
-      <footer className="absolute inset-x-0 bottom-0 flex justify-center gap-4 px-4 pb-4 text-[11px] text-[#4B372F]/55">
-        <Link href="/privacy" className="hover:text-[#4B372F]">
-          Privacy
-        </Link>
-        <Link href="/support" className="hover:text-[#4B372F]">
-          Support
-        </Link>
-      </footer>
+      <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 px-4 pb-4">
+        <img
+          src="/app-store.svg"
+          alt="Download on the App Store"
+          className="h-11 w-auto"
+        />
+        <footer className="flex justify-center gap-4 text-[11px] text-[#4B372F]/55">
+          <Link href="/privacy" className="hover:text-[#4B372F]">
+            Privacy
+          </Link>
+          <Link href="/support" className="hover:text-[#4B372F]">
+            Support
+          </Link>
+        </footer>
+      </div>
     </div>
   );
 }
