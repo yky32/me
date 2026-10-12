@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "LiD",
-  description:
-    "One letter between two people. Their face as they open it. Then it's gone.",
-};
+import { lidJsonLd, lidMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = lidMetadata();
 
 export default function LidPage() {
   return (
     <div className="fixed inset-0 z-[80] overflow-hidden bg-[#F3EFEB] text-[#4B372F]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(lidJsonLd()) }}
+      />
       <style>{`
         @keyframes lid-float {
           0%, 100% { transform: translateY(0) rotate(var(--lid-rot, 0deg)); }
