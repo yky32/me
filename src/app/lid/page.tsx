@@ -25,6 +25,13 @@ export default function LidPage() {
           <br />
           Then it&apos;s gone.
         </p>
+        <p className="mt-3 text-center text-[13px] font-medium text-[#4B372F]/70">
+          Write one line
+          <span className="px-1.5 text-[#C97C7D]">·</span>
+          they lift it
+          <span className="px-1.5 text-[#C97C7D]">·</span>
+          you get their face
+        </p>
 
         <div className="relative mt-5 w-[min(46vw,210px)]">
           <div className="rounded-[2rem] bg-[#F6C7C8] p-[7px] shadow-[0_18px_40px_rgba(75,55,47,0.12)]">
