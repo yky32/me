@@ -43,13 +43,13 @@ export default function LidPage() {
       <Moon className="lid-sticker absolute bottom-[18%] right-[8%] h-8 w-8 text-[#4B372F]/70 [animation-delay:-3s] sm:right-[18%]" />
 
       <div className="absolute left-1/2 top-[38%] flex w-[min(82vw,420px)] -translate-x-1/2 -translate-y-1/2 flex-col items-center">
-        <div className="lid-title flex items-center gap-3">
+        <div className="lid-title flex items-center gap-3 text-[clamp(3.4rem,12vw,5.4rem)]">
           <img
-            src="/lid-logo.png"
+            src="/lid-logo.png?v=2"
             alt="LiD"
-            className="h-14 w-14 rounded-[16px] shadow-[0_10px_24px_rgba(0,0,0,0.16)] sm:h-16 sm:w-16"
+            className="h-[0.86em] w-[0.86em] rounded-[0.22em] shadow-[0_10px_24px_rgba(0,0,0,0.16)]"
           />
-          <p className="font-sans text-[clamp(3.4rem,12vw,5.4rem)] font-black leading-none tracking-tight text-[#3D6BFF]">
+          <p className="font-sans font-black leading-none tracking-tight text-[#3D6BFF]">
             LiD
           </p>
         </div>
