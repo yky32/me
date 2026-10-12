@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { lidJsonLd, lidMetadata } from "@/lib/seo";
+import { LidTabIcon } from "./tab-icon";
 
 export const metadata: Metadata = lidMetadata();
 
 export default function LidPage() {
   return (
     <div className="fixed inset-0 z-[80] overflow-hidden bg-[#F3EFEB] text-[#4B372F]">
+      <LidTabIcon />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(lidJsonLd()) }}

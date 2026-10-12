@@ -40,6 +40,11 @@ export function lidMetadata(): Metadata {
       images: [`${siteOrigin}${lidPage.image}`],
     },
     robots: { index: true, follow: true },
+    icons: {
+      icon: [{ url: "/lid-logo.png", type: "image/png", sizes: "256x256" }],
+      shortcut: "/lid-logo.png",
+      apple: "/lid-logo.png",
+    },
   };
 }
 
