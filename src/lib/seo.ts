@@ -6,15 +6,15 @@ export const lidPage = {
   path: "/lid",
   url: `${siteOrigin}/lid`,
   name: "LiD",
-  title: "LiD: Watch Them Open",
+  title: "LiD — Wayne Yu",
   description:
-    "See their face when they open a letter. One line letter for two people. Sealed. Then it's gone.",
+    "Wayne Yu. One letter between two people. Their face as they open it. Then it's gone.",
   image: "/lid-logo.png",
 } as const;
 
 export function lidMetadata(): Metadata {
   return {
-    title: lidPage.title,
+    title: { absolute: lidPage.title },
     description: lidPage.description,
     keywords: ["LiD", "letter", "iOS", "envelope", "Wayne Yu"],
     alternates: { canonical: lidPage.url },
@@ -26,7 +26,7 @@ export function lidMetadata(): Metadata {
       description: lidPage.description,
       images: [
         {
-          url: lidPage.image,
+          url: `${siteOrigin}${lidPage.image}`,
           width: 256,
           height: 256,
           alt: "LiD app icon",
@@ -37,7 +37,7 @@ export function lidMetadata(): Metadata {
       card: "summary",
       title: lidPage.title,
       description: lidPage.description,
-      images: [lidPage.image],
+      images: [`${siteOrigin}${lidPage.image}`],
     },
     robots: { index: true, follow: true },
   };

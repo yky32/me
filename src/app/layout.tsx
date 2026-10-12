@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, Space_Mono } from "next/font/google";
+import { headers } from "next/headers";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -59,22 +60,29 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const path = (await headers()).get("x-pathname") ?? "";
+  const bare = path === "/lid";
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${fontSans.variable} ${fontMono.variable} min-h-dvh font-sans antialiased`}
       >
         <ThemeProvider>
-          <div className="flex min-h-dvh flex-col pt-14 sm:pt-16">
-            <SiteHeader />
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
-          </div>
+          {bare ? (
+            children
+          ) : (
+            <div className="flex min-h-dvh flex-col pt-14 sm:pt-16">
+              <SiteHeader />
+              <main className="flex-1">{children}</main>
+              <SiteFooter />
+            </div>
+          )}
           <Toaster richColors position="top-center" />
         </ThemeProvider>
       </body>
