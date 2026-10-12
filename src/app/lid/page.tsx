@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
+import { Nunito } from "next/font/google";
 import Link from "next/link";
+
+const lidWord = Nunito({
+  subsets: ["latin"],
+  weight: ["600"],
+});
 
 export const metadata: Metadata = {
   title: "LiD",
@@ -49,7 +55,10 @@ export default function LidPage() {
             alt="LiD"
             className="h-[0.86em] w-[0.86em] rounded-[0.22em] shadow-[0_10px_24px_rgba(0,0,0,0.16)]"
           />
-          <p className="font-sans font-black leading-none tracking-tight text-[#3D6BFF]">
+          <p
+            className={`${lidWord.className} font-semibold leading-none tracking-tight text-[#4B372F]`}
+            style={{ fontFamily: `ui-rounded, "SF Pro Rounded", ${lidWord.style.fontFamily}, sans-serif` }}
+          >
             LiD
           </p>
         </div>
