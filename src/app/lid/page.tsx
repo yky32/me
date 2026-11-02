@@ -8,7 +8,7 @@ export const metadata: Metadata = lidMetadata();
 
 export default function LidPage() {
   return (
-    <div className="fixed inset-0 z-[80] overflow-hidden bg-[#F3EFEB] text-[#4B372F]">
+    <div className="fixed inset-0 z-[80] flex min-h-dvh flex-col overflow-x-hidden overflow-y-auto bg-[#F3EFEB] text-[#4B372F]">
       <LidTabIcon />
       <script
         type="application/ld+json"
@@ -46,12 +46,14 @@ export default function LidPage() {
       <Envelope className="lid-sticker absolute bottom-[22%] left-[7%] h-12 w-12 text-[#C97C7D] [animation-delay:-0.8s] [--lid-rot:-12deg] sm:left-[16%]" />
       <Moon className="lid-sticker absolute bottom-[18%] right-[8%] h-8 w-8 text-[#4B372F]/70 [animation-delay:-3s] sm:right-[18%]" />
 
-      <div className="absolute left-1/2 top-[38%] flex w-[min(82vw,420px)] -translate-x-1/2 -translate-y-1/2 flex-col items-center">
-        <div className="lid-title flex items-center gap-3 text-[clamp(3.4rem,12vw,5.4rem)]">
+      <main className="relative z-10 mx-auto flex w-full max-w-[420px] flex-1 flex-col items-center px-4 pb-36 pt-[max(1.25rem,env(safe-area-inset-top,0px))] sm:pt-8">
+        <div className="lid-title flex shrink-0 items-center gap-3 text-[clamp(2.75rem,10vw,4.5rem)]">
           <img
             src="/lid-logo.png?v=2"
             alt="LiD"
-            className="h-[0.86em] w-[0.86em] rounded-[0.22em] shadow-[0_10px_24px_rgba(0,0,0,0.16)]"
+            width={256}
+            height={256}
+            className="h-[0.86em] w-[0.86em] shrink-0 rounded-[0.22em] object-contain shadow-[0_10px_24px_rgba(0,0,0,0.16)]"
           />
           <h1
             className="font-semibold leading-none text-[#4B372F]"
@@ -80,18 +82,21 @@ export default function LidPage() {
           See their face when they open a letter. A sealed letter for two people.
         </p>
 
-        <div className="lid-phone relative mt-5 w-[min(46vw,210px)]">
+        <div className="lid-phone relative mt-4 w-[min(42vw,200px)] max-[680px]:max-h-[34vh] sm:mt-5 sm:w-[min(46vw,210px)]">
           <div className="rounded-[2rem] bg-[#F6C7C8] p-[7px] shadow-[0_18px_40px_rgba(75,55,47,0.12)]">
             <img
               src="/lid-screen.png"
               alt="LiD sign-in screen"
-              className="block aspect-[414/900] w-full rounded-[1.55rem] object-cover object-top"
+              width={414}
+              height={900}
+              className="block aspect-[414/900] max-h-[34vh] w-full rounded-[1.55rem] object-cover object-top sm:max-h-none"
             />
           </div>
         </div>
-      </div>
+      </main>
 
-      <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 px-4 pb-4">
+      <div className="pointer-events-none sticky bottom-0 z-20 mt-auto bg-gradient-to-t from-[#F3EFEB] via-[#F3EFEB]/95 to-transparent pt-6">
+        <div className="pointer-events-auto flex flex-col items-center gap-3 px-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))]">
         <img
           src="/app-store.svg"
           alt="Download on the App Store"
@@ -105,6 +110,7 @@ export default function LidPage() {
             Support
           </Link>
         </footer>
+        </div>
       </div>
     </div>
   );
