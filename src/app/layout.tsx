@@ -66,7 +66,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const path = (await headers()).get("x-pathname") ?? "";
-  const bare = path === "/lid";
+  const bare = path === "/lid" || path === "/refraem";
 
   return (
     <html lang="en" suppressHydrationWarning>

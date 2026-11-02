@@ -94,6 +94,14 @@ const products: Product[] = [
     tags: ["football", "live scores"],
   },
   {
+    name: "Refraem",
+    description:
+      "Window layout and screen capture for Mac. Snap a window, grab the screen, mark it up. Pronounced Reframe.",
+    website: "yky.app/refraem",
+    websiteUrl: "https://www.yky.app/refraem",
+    tags: ["macOS", "window layout", "screenshot"],
+  },
+  {
     name: "LiD",
     description:
       "One letter between two people. Their face as they open it. Then it's gone.",

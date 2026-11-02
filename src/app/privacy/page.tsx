@@ -77,6 +77,27 @@ export default function PrivacyPage() {
         </section>
 
         <section className="mt-12 space-y-4">
+          <h2 className="text-2xl font-semibold tracking-tight">Refraem</h2>
+          <p className="text-pretty leading-relaxed text-muted-foreground">
+            Refraem is a menu bar app for Mac. The page is{" "}
+            <Link
+              href="/refraem"
+              className="font-medium text-foreground underline decoration-primary/40 underline-offset-4"
+            >
+              yky.app/refraem
+            </Link>
+            . It moves windows and takes screenshots on your Mac. It does not
+            ask you to sign in. Screenshots and recordings stay in the folder
+            you choose, which starts as Pictures/Refraem.
+          </p>
+          <p className="text-pretty leading-relaxed text-muted-foreground">
+            macOS asks for Accessibility so windows can be moved, and Screen
+            Recording so a capture can be made. Refraem does not send those
+            images anywhere, does not sell data, and does not show ads.
+          </p>
+        </section>
+
+        <section className="mt-12 space-y-4">
           <h2 className="text-2xl font-semibold tracking-tight">Contact</h2>
           <p className="text-pretty leading-relaxed text-muted-foreground">
             Questions go to the{" "}

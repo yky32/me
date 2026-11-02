@@ -12,6 +12,15 @@ export function middleware(request: NextRequest) {
     url.search = "";
     return NextResponse.rewrite(url);
   }
+  if (
+    request.nextUrl.pathname === "/favicon.ico" &&
+    (referer.includes("/refraem") || request.nextUrl.searchParams.get("page") === "refraem")
+  ) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/refraem-tab-32.png";
+    url.search = "";
+    return NextResponse.rewrite(url);
+  }
   const headers = new Headers(request.headers);
   headers.set("x-pathname", request.nextUrl.pathname);
   return NextResponse.next({ request: { headers } });
