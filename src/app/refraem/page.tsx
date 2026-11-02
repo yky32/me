@@ -121,8 +121,8 @@ function MacStage() {
             <div className="absolute inset-x-3 top-3 h-2 rounded-full bg-black/10" />
             <div className="absolute inset-x-3 top-7 h-2 w-2/3 rounded-full bg-black/8" />
             <svg viewBox="0 0 80 90" className="absolute inset-0 h-full w-full text-black" aria-hidden>
-              <path d="M58 18 L28 62" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
-              <path d="M28 62 l10 -2 l-2 10 z" fill="currentColor" />
+              <path d="M56 16 L36 52" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="butt" />
+              <path d="M22 70 L30 48 L44 58 Z" fill="currentColor" />
             </svg>
           </div>
         </div>
