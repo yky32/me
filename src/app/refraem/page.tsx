@@ -27,8 +27,54 @@ export default function RefraemPage() {
           0% { transform: scale(1); opacity: 0.55; }
           100% { transform: scale(1.28); opacity: 0; }
         }
+        @keyframes refraem-show-a {
+          0%, 40% { opacity: 1; }
+          50%, 90% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+        @keyframes refraem-show-b {
+          0%, 40% { opacity: 0; }
+          50%, 90% { opacity: 1; }
+          100% { opacity: 0; }
+        }
+        @keyframes refraem-split {
+          0%, 8% { width: 100%; }
+          30%, 100% { width: 58%; }
+        }
+        @keyframes refraem-pane {
+          0%, 12% { opacity: 0; }
+          30%, 42% { opacity: 1; }
+          50%, 100% { opacity: 0; }
+        }
+        @keyframes refraem-grow {
+          0%, 46% { transform: scale(0.86); opacity: 0; }
+          62%, 88% { transform: scale(1); opacity: 1; }
+          100% { transform: scale(0.86); opacity: 0; }
+        }
+        @keyframes refraem-draw {
+          0%, 54% { stroke-dashoffset: 70; }
+          74%, 88% { stroke-dashoffset: 0; }
+          100% { stroke-dashoffset: 70; }
+        }
+        @keyframes refraem-head {
+          0%, 68% { opacity: 0; }
+          76%, 88% { opacity: 1; }
+          100% { opacity: 0; }
+        }
+        @keyframes refraem-blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.25; }
+        }
         .refraem-mark { animation: refraem-float 5.2s ease-in-out infinite; }
         .refraem-title { animation: refraem-pop 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+        .refraem-scene-split { animation: refraem-show-a 9s ease-in-out infinite; }
+        .refraem-scene-rec { animation: refraem-show-b 9s ease-in-out infinite; }
+        .refraem-left { animation: refraem-split 9s ease-in-out infinite; }
+        .refraem-right { animation: refraem-pane 9s ease-in-out infinite; }
+        .refraem-rect { animation: refraem-grow 9s ease-in-out infinite; }
+        .refraem-arrow { stroke-dasharray: 70; animation: refraem-draw 9s ease-in-out infinite; }
+        .refraem-head { animation: refraem-head 9s ease-in-out infinite; }
+        .refraem-dot { animation: refraem-blink 1.1s ease-in-out infinite; }
         .refraem-download { position: relative; }
         .refraem-download::before {
           content: "";
@@ -39,22 +85,14 @@ export default function RefraemPage() {
           animation: refraem-ring 2s ease-out infinite;
           z-index: -1;
         }
-        @keyframes refraem-split {
-          0%, 18% { left: 12px; right: 12px; }
-          46%, 78% { left: 12px; right: 42%; }
-          100% { left: 12px; right: 12px; }
-        }
-        @keyframes refraem-pane {
-          0%, 28% { opacity: 0; transform: translateX(10px); }
-          46%, 78% { opacity: 1; transform: none; }
-          100% { opacity: 0; transform: translateX(10px); }
-        }
-        .refraem-split { left: 12px; right: 12px; animation: refraem-split 5.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
-        .refraem-pane { opacity: 0; animation: refraem-pane 5.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
         @media (prefers-reduced-motion: reduce) {
-          .refraem-mark, .refraem-title, .refraem-download::before, .refraem-split, .refraem-pane { animation: none; }
-          .refraem-split { left: 12px; right: 42%; }
-          .refraem-pane { opacity: 1; transform: none; }
+          .refraem-mark, .refraem-title, .refraem-download::before,
+          .refraem-scene-split, .refraem-scene-rec, .refraem-left, .refraem-right,
+          .refraem-rect, .refraem-arrow, .refraem-head, .refraem-dot { animation: none; }
+          .refraem-scene-rec { opacity: 0; }
+          .refraem-left { width: 58%; }
+          .refraem-right, .refraem-rect, .refraem-head { opacity: 1; }
+          .refraem-arrow { stroke-dashoffset: 0; }
         }
       `}</style>
       <Frame className="refraem-mark absolute left-[7%] top-[12%] h-14 w-14 text-black/15 sm:left-[16%]" />
@@ -78,9 +116,6 @@ export default function RefraemPage() {
             Refraem
           </h1>
         </div>
-        <p className="mt-3 text-center text-[13px] font-medium tracking-wide text-black/45">
-          Pronounced Reframe (ree-FRAME)
-        </p>
         <p className="mt-4 max-w-[18rem] text-center text-[17px] font-semibold leading-snug sm:max-w-none sm:text-xl">
           Window layout and screen capture
           <br />
@@ -130,28 +165,22 @@ export default function RefraemPage() {
 }
 
 const details = [
-  {
-    title: "Snap",
-    body: "Halves, thirds, and the next display.",
-  },
-  {
-    title: "Grab",
-    body: "A screen, a window, or one long page.",
-  },
-  {
-    title: "Mark",
-    body: "Draw, then Escape copies the image.",
-  },
+  { title: "Snap", cue: "Ctrl Opt", body: "Halves, thirds, and the next display." },
+  { title: "Grab", cue: "Shift Cmd 1", body: "A screen, a window, or one long page." },
+  { title: "Mark", cue: "Esc", body: "Draw on it, then copy the finished image." },
 ] as const;
 
 function Details() {
   return (
     <section className="refraem-title w-full [animation-delay:0.16s]">
-      <ul className="overflow-hidden rounded-[22px] bg-white text-left shadow-[0_22px_50px_rgba(0,0,0,0.08)] ring-1 ring-black/10">
+      <ul className="flex flex-col gap-4 text-left">
         {details.map((item) => (
-          <li key={item.title} className="border-t border-black/8 px-4 py-3.5 first:border-t-0">
-            <p className="text-[13px] font-semibold tracking-wide">{item.title}</p>
-            <p className="mt-0.5 text-[14px] leading-snug text-black/55">{item.body}</p>
+          <li key={item.title} className="border-l border-black/15 pl-4">
+            <div className="flex items-baseline justify-between gap-3">
+              <p className="text-[14px] font-semibold tracking-wide">{item.title}</p>
+              <p className="font-mono text-[11px] tracking-wide text-black/35">{item.cue}</p>
+            </div>
+            <p className="mt-1 text-[15px] leading-snug text-black/55">{item.body}</p>
           </li>
         ))}
       </ul>
@@ -174,17 +203,28 @@ function MacStage() {
           <span className="size-2.5 rounded-full bg-[#28C840]" />
           <span className="ml-2 text-[12px] font-medium text-black/45">Capture</span>
         </div>
-        <div className="relative h-[172px] bg-[#F3F3F1]">
-          <div className="refraem-split absolute top-3 bottom-3 flex flex-col justify-between rounded-xl bg-black p-3 text-white">
-            <span className="text-[11px] font-medium text-white/60">Left half</span>
-            <span className="text-2xl font-semibold tracking-tight">Snap</span>
+        <div className="relative min-h-[168px] bg-[#F3F3F1]">
+          <div className="refraem-scene-split absolute inset-3 flex gap-2 overflow-hidden">
+            <div className="refraem-left flex w-[58%] shrink-0 flex-col justify-between overflow-hidden rounded-xl bg-black p-3 text-white">
+              <span className="text-[11px] font-medium text-white/60">Left half</span>
+              <span className="text-2xl font-semibold tracking-tight">Snap</span>
+            </div>
+            <div className="refraem-right relative min-w-0 flex-1 overflow-hidden rounded-xl bg-white ring-1 ring-black/10">
+              <div className="absolute inset-x-3 top-3 h-2 rounded-full bg-black/10" />
+              <div className="absolute inset-x-3 top-7 h-2 w-2/3 rounded-full bg-black/10" />
+            </div>
           </div>
-          <div className="refraem-pane absolute top-3 right-3 bottom-3 w-[34%] overflow-hidden rounded-xl bg-white ring-1 ring-black/10">
-            <div className="absolute inset-x-3 top-3 h-2 rounded-full bg-black/10" />
-            <div className="absolute inset-x-3 top-7 h-2 w-2/3 rounded-full bg-black/8" />
+          <div className="refraem-scene-rec absolute inset-3 overflow-hidden rounded-xl bg-white ring-1 ring-black/10">
+            <div className="absolute left-3 top-3 flex items-center gap-1.5 text-[11px] font-medium text-black/70">
+              <span className="refraem-dot size-2 rounded-full bg-[#FF3B30]" />
+              Recording
+            </div>
+            <div className="absolute inset-x-3 top-9 h-2 rounded-full bg-black/10" />
+            <div className="absolute inset-x-3 top-[52px] h-2 w-2/3 rounded-full bg-black/10" />
+            <div className="refraem-rect absolute inset-x-8 bottom-3 top-12 rounded-lg ring-2 ring-black/80" />
             <svg viewBox="0 0 80 90" className="absolute inset-0 h-full w-full text-black" aria-hidden>
-              <path d="M56 16 L36 52" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="butt" />
-              <path d="M22 70 L30 48 L44 58 Z" fill="currentColor" />
+              <path className="refraem-arrow" d="M58 22 L36 58" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="butt" />
+              <path className="refraem-head" d="M24 74 L32 52 L46 62 Z" fill="currentColor" />
             </svg>
           </div>
         </div>
