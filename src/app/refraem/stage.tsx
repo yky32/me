@@ -33,6 +33,7 @@ export function RefraemStage() {
           <span className="size-2.5 rounded-full bg-[#28C840]" />
           <span className="ml-2 text-[12px] font-medium text-black/45">{scene}</span>
           {scene === "Split" ? <ShortcutCue still={!!reduce} /> : null}
+          {scene === "Capture" ? <CaptureCue still={!!reduce} /> : null}
         </div>
         <div className="relative min-h-[320px] flex-1 bg-[#F3F3F1]">
           <div key={scene} className="absolute inset-0">
@@ -137,35 +138,86 @@ function Key({ children, pressed = false }: { children: string; pressed?: boolea
   );
 }
 
+function CaptureCue({ still }: { still: boolean }) {
+  const [pressed, setPressed] = useState(still);
+
+  useEffect(() => {
+    if (still) return;
+    const timer = window.setTimeout(() => setPressed(true), 180);
+    return () => window.clearTimeout(timer);
+  }, [still]);
+
+  return (
+    <div className="ml-auto flex items-center gap-1.5">
+      <Key pressed={pressed}>Shift</Key>
+      <Key pressed={pressed}>Cmd</Key>
+      <Key pressed={pressed}>1</Key>
+    </div>
+  );
+}
+
 function Capture() {
   return (
-    <div className="relative h-full p-4">
-      <div className="space-y-2 pt-1">
-        <div className="h-2 rounded-full bg-black/10" />
-        <div className="h-2 w-4/5 rounded-full bg-black/10" />
-        <div className="h-2 w-3/5 rounded-full bg-black/8" />
-        <div className="h-2 w-2/3 rounded-full bg-black/8" />
+    <div className="relative h-full overflow-hidden">
+      <div className="absolute inset-3 flex flex-col rounded-xl bg-white p-4 ring-1 ring-black/10">
+        <div className="flex items-center gap-1.5">
+          <span className="size-2 rounded-full bg-black/15" />
+          <span className="size-2 rounded-full bg-black/15" />
+          <span className="size-2 rounded-full bg-black/15" />
+          <span className="ml-2 h-2 w-16 rounded-full bg-black/10" />
+        </div>
+        <div className="mt-4 h-3 w-2/5 rounded-full bg-black" />
+        <div className="mt-3 space-y-2">
+          <div className="h-2 rounded-full bg-black/15" />
+          <div className="h-2 w-11/12 rounded-full bg-black/10" />
+          <div className="h-2 w-4/5 rounded-full bg-black/10" />
+          <div className="h-2 w-9/12 rounded-full bg-black/10" />
+        </div>
+        <div className="mt-4 grid flex-1 grid-cols-3 gap-2">
+          <div className="rounded-lg bg-black/5" />
+          <div className="rounded-lg bg-black/10" />
+          <div className="rounded-lg bg-black" />
+        </div>
       </div>
       <motion.div
-        className="absolute rounded-lg ring-2 ring-black"
-        initial={{ top: "42%", left: "42%", width: "6%", height: "8%" }}
-        animate={{ top: "18%", left: "10%", width: "80%", height: "64%" }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-      />
-      <motion.div
-        className="pointer-events-none absolute inset-0 bg-white"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: [0, 0.9, 0] }}
-        transition={{ delay: 0.85, duration: 0.4, times: [0, 0.3, 1] }}
-      />
-      <motion.div
-        className="absolute bottom-4 right-4 flex h-20 w-28 flex-col justify-between rounded-xl bg-black p-2 text-white shadow-[0_12px_28px_rgba(0,0,0,0.2)]"
-        initial={{ opacity: 0, y: 12, scale: 0.86 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ delay: 1.05, type: "spring", stiffness: 260, damping: 22 }}
+        className="pointer-events-none absolute z-10 border-2 border-white"
+        style={{ boxShadow: "0 0 0 2400px rgba(0,0,0,0.55)" }}
+        initial={{ top: "46%", left: "42%", width: "8%", height: "10%", opacity: 0 }}
+        animate={{ top: "14%", left: "7%", width: "54%", height: "70%", opacity: 1 }}
+        transition={{ duration: 0.95, delay: 0.28, ease: [0.16, 0.8, 0.2, 1] }}
       >
-        <span className="text-[10px] text-white/60">Copied</span>
-        <span className="text-sm font-semibold">Shot</span>
+        <span className="absolute -left-[5px] -top-[5px] size-2.5 rounded-[2px] bg-white ring-1 ring-black" />
+        <span className="absolute -right-[5px] -top-[5px] size-2.5 rounded-[2px] bg-white ring-1 ring-black" />
+        <span className="absolute -bottom-[5px] -left-[5px] size-2.5 rounded-[2px] bg-white ring-1 ring-black" />
+        <span className="absolute -right-[5px] -bottom-[5px] size-2.5 rounded-[2px] bg-white ring-1 ring-black" />
+        <motion.span
+          className="absolute left-1/2 top-2 -translate-x-1/2 whitespace-nowrap rounded-full bg-black/80 px-2 py-0.5 text-[10px] font-semibold text-white"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.05, duration: 0.2 }}
+        >
+          1280 × 800
+        </motion.span>
+      </motion.div>
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-20 bg-white"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 0.92, 0] }}
+        transition={{ delay: 1.35, duration: 0.32, times: [0, 0.28, 1] }}
+      />
+      <motion.div
+        className="absolute bottom-3 right-3 z-30 w-[34%] overflow-hidden rounded-lg bg-white shadow-[0_18px_36px_rgba(0,0,0,0.28)] ring-1 ring-black/15"
+        initial={{ opacity: 0, y: 18, scale: 0.8 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ delay: 1.5, type: "spring", stiffness: 280, damping: 22 }}
+      >
+        <div className="p-2">
+          <div className="h-1.5 w-2/5 rounded-full bg-black" />
+          <div className="mt-1.5 h-1.5 rounded-full bg-black/15" />
+          <div className="mt-1 h-1.5 w-4/5 rounded-full bg-black/10" />
+          <div className="mt-1.5 h-5 rounded bg-black" />
+        </div>
+        <div className="bg-black px-2 py-1 text-[10px] font-semibold text-white">Copied</div>
       </motion.div>
     </div>
   );
