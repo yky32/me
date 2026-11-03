@@ -34,9 +34,9 @@ const tiles = [
 
 export function FeatureStrip() {
   return (
-    <section className="py-16 sm:py-20">
+    <section className="py-14 sm:py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid auto-rows-fr gap-4 md:grid-cols-3 md:grid-rows-2 md:gap-5">
+        <div className="grid auto-rows-fr gap-4 md:grid-cols-3 md:grid-rows-2 md:gap-4">
           {tiles.map((tile, i) => (
             <motion.div
               key={tile.href}

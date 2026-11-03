@@ -9,7 +9,7 @@ export const siteConfig = {
   /** Full headline for Open Graph / Twitter / SEO */
   title: "Wayne Yu — Product Builder",
   description:
-    "Hong Kong–based product builder shipping customer-facing apps — including Triftly and TGT — with engineering as the craft that gets them live.",
+    "Hong Kong–based product builder shipping customer-facing apps.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://github.com/yky32/me",
   locale: "en-HK",
   links: {

@@ -68,12 +68,12 @@ export function HomeHero() {
             {siteConfig.role}
           </motion.p>
 
-          <HeroIntroSnippet className="mt-8 lg:mt-9" motionDelayBase={0.22} />
+          <HeroIntroSnippet className="mt-8" motionDelayBase={0.22} />
 
           <motion.ul
             custom={4}
             variants={fade}
-            className="mt-8 flex flex-wrap justify-center gap-2 lg:justify-start"
+            className="mt-7 flex flex-wrap justify-center gap-2 lg:justify-start"
             aria-label="Focus areas"
           >
             {tags.map((t) => (
@@ -95,7 +95,7 @@ export function HomeHero() {
           <motion.div
             custom={5}
             variants={fade}
-            className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start"
+            className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start"
           >
             <Link
               href="/products"

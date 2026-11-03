@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { ArrowUpRight, Globe, Smartphone } from "lucide-react";
+import { ArrowUpRight, Globe, Link2, Smartphone } from "lucide-react";
 
 import { InstagramIcon } from "@/components/icons/instagram";
 import { XIcon } from "@/components/icons/x";
@@ -27,6 +27,8 @@ type Product = {
   website?: string;
   /** Destination URL for the website row (omit row link if missing) */
   websiteUrl?: string;
+  /** Extra link rows (short links, profiles, etc.) */
+  moreLinks?: readonly { label: string; href: string }[];
   /** Handle without @ */
   instagram?: string;
   /** Override Instagram URL; defaults to instagram.com/{handle} when linked */
@@ -62,6 +64,10 @@ const products: Product[] = [
       "All-in-one fitness coaching — programs, sessions, attendance, and revenue for trainers and clients, with smart routines and AI meal tools.",
     website: "www.tgt.gg",
     websiteUrl: "https://www.tgt.gg",
+    moreLinks: [
+      { label: "tgt-l.ink", href: "https://tgt-l.ink" },
+      { label: "tgt-l.ink/@wayne", href: "https://tgt-l.ink/@wayne" },
+    ],
     appStoreUrl:
       "https://apps.apple.com/us/app/tgt-fitness-coaching/id6781726701",
     instagram: "tgt.hongkong",
@@ -152,6 +158,18 @@ function buildPresenceRows(product: Product): PresenceRow[] {
         ? `Open website ${product.website}`
         : `Website ${product.website}`,
     });
+  }
+
+  if (product.moreLinks) {
+    for (const [i, link] of product.moreLinks.entries()) {
+      rows.push({
+        key: `more-${i}-${link.label}`,
+        icon: <Link2 className="size-4 shrink-0 text-muted-foreground" aria-hidden />,
+        value: link.label,
+        href: link.href,
+        ariaLabel: `Open ${link.label}`,
+      });
+    }
   }
 
   if (product.appStoreUrl) {
@@ -287,10 +305,7 @@ function ProductHashtags({ tags }: { tags?: readonly string[] }) {
   if (tags === undefined || tags.length === 0) return null;
 
   return (
-    <ul
-      className="mt-4 flex flex-wrap gap-2"
-      aria-label="Topics"
-    >
+    <ul className="flex flex-wrap gap-2" aria-label="Topics">
       {tags.map((tag) => (
         <li key={tag}>
           <span
@@ -312,7 +327,7 @@ export default function ProductsPage() {
   return (
     <InnerPageSurface>
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-        <div className="mx-auto max-w-2xl text-center">
+        <header className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-medium uppercase tracking-widest text-primary">
             Products
           </p>
@@ -323,27 +338,18 @@ export default function ProductsPage() {
             I build and launch products that live on their own sites and
             channels.
           </p>
-        </div>
-
-        <div className="mx-auto mt-4 flex justify-center px-4 sm:px-6 lg:px-8">
-          <blockquote
-            className={cn(
-              "border-l-[3px] border-primary/30 py-0.5 pl-5 text-left text-pretty text-sm italic leading-relaxed text-muted-foreground/75 sm:text-[0.9375rem]",
-              "max-w-xl sm:max-w-2xl md:max-w-3xl",
-              "lg:max-w-none lg:w-max lg:whitespace-nowrap",
-            )}
-          >
+          <blockquote className="mx-auto mt-5 max-w-xl border-l-[3px] border-primary/30 py-0.5 pl-5 text-left text-pretty text-sm italic leading-relaxed text-muted-foreground/75 sm:text-[0.9375rem]">
             Follow a row below — brand story, mission &amp; values, and
             day-to-day updates live there.
           </blockquote>
-        </div>
+        </header>
 
-        <ul className="mx-auto mt-14 grid max-w-5xl gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        <ul className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3">
           {products.map((p) => (
-            <li key={p.name}>
+            <li key={p.name} className="min-w-0">
               <Card className={cn(cardClass, "h-full")}>
-                <CardHeader>
-                  <div className="min-w-0 flex-1">
+                <CardHeader className="gap-3">
+                  <div className="min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
                       <CardTitle className="text-xl">{p.name}</CardTitle>
                       {p.comingSoon ? (

@@ -26,7 +26,7 @@ const stack = [
 export function TechStrip() {
   return (
     <section
-      className="border-y border-dashed border-primary/15 bg-gradient-to-b from-primary/[0.06] via-transparent to-cyan-500/[0.04] py-10 dark:border-primary/20 dark:from-primary/10 dark:to-cyan-500/5"
+      className="border-y border-dashed border-primary/15 bg-gradient-to-b from-primary/[0.06] via-transparent to-cyan-500/[0.04] py-8 dark:border-primary/20 dark:from-primary/10 dark:to-cyan-500/5 sm:py-10"
       aria-label="Technologies and platforms"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
