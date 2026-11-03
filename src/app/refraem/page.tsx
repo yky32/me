@@ -67,6 +67,7 @@ export default function RefraemPage() {
         </p>
 
         <MacStage />
+        <Details />
       </main>
 
       <div className="pointer-events-none sticky bottom-0 z-20 mt-auto bg-gradient-to-t from-[#F6F6F4] via-[#F6F6F4]/95 to-transparent pt-8">
@@ -94,6 +95,44 @@ export default function RefraemPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+const details = [
+  {
+    title: "Snap",
+    body: "Halves, thirds, corners, and the next display. Hold Control and Option. Change any shortcut in Settings.",
+  },
+  {
+    title: "Grab",
+    body: "The full screen, the window you click, or a region you drag. A long page stitches into one picture. Files stay in Pictures/Refraem.",
+  },
+  {
+    title: "Mark",
+    body: "Arrow, text, highlight, or blur. Escape copies the finished image, drawing included.",
+  },
+] as const;
+
+function Details() {
+  return (
+    <section className="refraem-title mt-10 w-full max-w-[440px] [animation-delay:0.16s]">
+      <p className="text-center text-[15px] font-medium leading-relaxed text-black/70">
+        It lives in the menu bar. Place the windows, then keep what is on the screen.
+      </p>
+      <div className="mt-5 overflow-hidden rounded-[22px] bg-white text-left shadow-[0_22px_50px_rgba(0,0,0,0.08)] ring-1 ring-black/10">
+        {details.map((item) => (
+          <div key={item.title} className="border-t border-black/8 px-4 py-3.5 first:border-t-0">
+            <p className="text-[13px] font-semibold">{item.title}</p>
+            <p className="mt-0.5 text-[13px] leading-snug text-black/55">{item.body}</p>
+          </div>
+        ))}
+      </div>
+      <p className="mt-4 text-center text-[12px] leading-relaxed text-black/45">
+        Apple Silicon · macOS 14 or later · free
+        <br />
+        Screenshots stay on this Mac. No account.
+      </p>
+    </section>
   );
 }
 

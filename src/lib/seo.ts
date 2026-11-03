@@ -54,7 +54,7 @@ export const refraemPage = {
   name: "Refraem",
   title: "Refraem — Wayne Yu",
   description:
-    "Wayne Yu. Window layout and screen capture for Mac. Snap a window, grab the screen, mark it up.",
+    "Wayne Yu. A menu bar app for Mac. Snap windows, grab the screen, mark it up, and copy the finished image.",
   image: "/refraem-logo.png",
   download: "https://github.com/yky32/refraem/releases/latest",
 } as const;
