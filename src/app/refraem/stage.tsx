@@ -32,6 +32,7 @@ export function RefraemStage() {
           <span className="size-2.5 rounded-full bg-[#FEBC2E]" />
           <span className="size-2.5 rounded-full bg-[#28C840]" />
           <span className="ml-2 text-[12px] font-medium text-black/45">{scene}</span>
+          {scene === "Split" ? <ShortcutCue still={!!reduce} /> : null}
         </div>
         <div className="relative min-h-[320px] flex-1 bg-[#F3F3F1]">
           <div key={scene} className="absolute inset-0">
@@ -52,7 +53,6 @@ function Split({ still }: { still: boolean }) {
 
   return (
     <div className="relative h-full">
-      <ShortcutCue still={still} />
       <motion.div
         className="absolute z-10 flex flex-col justify-end overflow-hidden rounded-xl bg-black p-4 text-white shadow-[0_16px_36px_rgba(0,0,0,0.18)]"
         initial={{ left: "8%", top: "8%", width: "84%", height: "84%" }}
@@ -113,7 +113,7 @@ function ShortcutCue({ still }: { still: boolean }) {
   const pressed = step === "press-left" || step === "press-max";
 
   return (
-    <div className="absolute left-1/2 top-3 z-30 flex -translate-x-1/2 items-center gap-1.5">
+    <div className="ml-auto flex items-center gap-1.5">
       <Key pressed={pressed}>Ctrl</Key>
       <Key pressed={pressed}>Opt</Key>
       <Key pressed={pressed}>{maximizing ? "Enter" : "←"}</Key>
