@@ -56,7 +56,7 @@ export const refraemPage = {
   description:
     "Wayne Yu. A menu bar app for Mac. Snap windows, grab the screen, mark it up, and copy the finished image.",
   image: "/refraem-logo.png",
-  download: "https://github.com/yky32/refraem/releases/latest",
+  download: "https://www.yky.app/downloads/Refraem-0.2.2-macOS.zip",
 } as const;
 
 export function refraemMetadata(): Metadata {

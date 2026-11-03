@@ -88,9 +88,6 @@ export default function RefraemPage() {
             <Link href="/support" className="hover:text-black">
               Support
             </Link>
-            <a href="https://github.com/yky32/refraem" className="hover:text-black">
-              GitHub
-            </a>
           </footer>
         </div>
       </div>
