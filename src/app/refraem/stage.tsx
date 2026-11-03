@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const scenes = ["Split", "Capture", "Record"] as const;
@@ -11,7 +11,7 @@ export function RefraemStage() {
 
   useEffect(() => {
     if (reduce) return;
-    const id = window.setInterval(() => setIndex((value) => (value + 1) % scenes.length), 3400);
+    const id = window.setInterval(() => setIndex((value) => (value + 1) % scenes.length), 6200);
     return () => window.clearInterval(id);
   }, [reduce]);
 
@@ -34,53 +34,100 @@ export function RefraemStage() {
           <span className="ml-2 text-[12px] font-medium text-black/45">{scene}</span>
         </div>
         <div className="relative min-h-[320px] flex-1 bg-[#F3F3F1]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={scene}
-              className="absolute inset-0"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-            >
-              {scene === "Split" ? <Split still={!!reduce} /> : null}
-              {scene === "Capture" ? <Capture /> : null}
-              {scene === "Record" ? <Record /> : null}
-            </motion.div>
-          </AnimatePresence>
+          <div key={scene} className="absolute inset-0">
+            {scene === "Split" ? <Split still={!!reduce} /> : null}
+            {scene === "Capture" ? <Capture /> : null}
+            {scene === "Record" ? <Record /> : null}
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
+const splitTimes = [0, 0.09, 0.22, 0.38, 0.52, 0.64, 1];
+
 function Split({ still }: { still: boolean }) {
+  const travel = still ? { duration: 0 } : { duration: 5.6, times: splitTimes, ease: "easeInOut" as const };
+
   return (
-    <div className="flex h-full items-stretch justify-center gap-2 p-3">
+    <div className="relative h-full">
       <motion.div
-        className="flex h-full flex-col justify-between overflow-hidden rounded-xl bg-black p-4 text-white"
-        initial={false}
-        animate={still ? { width: "48%" } : { width: ["46%", "72%", "26%", "46%"] }}
-        transition={still ? { duration: 0 } : { duration: 3.1, ease: "easeInOut" }}
-      >
-        <span className="text-[11px] font-medium text-white/60">Left</span>
-        <span className="text-2xl font-semibold tracking-tight">Snap</span>
-      </motion.div>
-      <motion.div
-        className="h-full overflow-hidden rounded-xl bg-white ring-1 ring-black/10"
-        initial={false}
-        animate={still ? { width: "48%" } : { width: ["46%", "26%", "72%", "46%"] }}
-        transition={still ? { duration: 0 } : { duration: 3.1, ease: "easeInOut" }}
+        className="absolute bottom-3 top-3 overflow-hidden rounded-xl bg-white ring-1 ring-black/10"
+        initial={{ left: "51%", width: "47%", opacity: 1 }}
+        animate={
+          still
+            ? { left: "51%", width: "47%", opacity: 1 }
+            : {
+                left: ["51%", "72%", "71%", "2%", "3%", "78%", "80%"],
+                width: ["47%", "26%", "27%", "66%", "64%", "8%", "6%"],
+                opacity: [1, 0.98, 1, 0.97, 0.95, 0, 0.02],
+              }
+        }
+        transition={travel}
       >
         <div className="flex h-full flex-col justify-between p-4">
           <span className="text-[11px] font-medium text-black/40">Right</span>
+          <RightWord still={still} />
           <div className="space-y-2">
             <div className="h-2 rounded-full bg-black/10" />
             <div className="h-2 w-2/3 rounded-full bg-black/10" />
           </div>
         </div>
       </motion.div>
+      <motion.div
+        className="absolute bottom-3 top-3 z-10 flex flex-col justify-between overflow-hidden rounded-xl bg-black p-4 text-white"
+        initial={{ left: "2%", width: "47%" }}
+        animate={
+          still
+            ? { left: "2%", width: "47%" }
+            : {
+                left: ["2%", "3%", "3.4%", "70%", "68%", "2%", "2.4%"],
+                width: ["47%", "68%", "67%", "28%", "30%", "96%", "95%"],
+              }
+        }
+        transition={travel}
+      >
+        <SplitWord still={still} />
+      </motion.div>
     </div>
+  );
+}
+
+function SplitWord({ still }: { still: boolean }) {
+  const [phase, setPhase] = useState<"Left" | "Maximize">("Left");
+
+  useEffect(() => {
+    if (still) return;
+    const timer = window.setTimeout(() => setPhase("Maximize"), 3300);
+    return () => window.clearTimeout(timer);
+  }, [still]);
+
+  const label = still ? "Left" : phase;
+
+  return (
+    <>
+      <span className="text-[11px] font-medium text-white/60">{label}</span>
+      <span className="text-2xl font-semibold tracking-tight">{label}</span>
+    </>
+  );
+}
+
+function RightWord({ still }: { still: boolean }) {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (still) return;
+    const on = window.setTimeout(() => setShow(true), 1700);
+    const off = window.setTimeout(() => setShow(false), 3200);
+    return () => {
+      window.clearTimeout(on);
+      window.clearTimeout(off);
+    };
+  }, [still]);
+
+  return (
+    <span className="text-2xl font-semibold tracking-tight text-black">{show && !still ? "Right" : "\u00a0"}</span>
   );
 }
 
