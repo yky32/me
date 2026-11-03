@@ -40,14 +40,15 @@ export default function RefraemPage() {
         }
       `}</style>
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-[46%] h-[720px] w-[min(1100px,92vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0)_68%)]" />
+        <div className="absolute left-1/2 top-[42%] h-[640px] w-[min(980px,88vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.9)_0%,rgba(255,255,255,0)_70%)]" />
         <div
-          className="absolute inset-0 opacity-70"
+          className="absolute inset-0"
           style={{
-            backgroundImage: "radial-gradient(rgba(17,17,17,0.045) 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-            maskImage: "radial-gradient(ellipse at 50% 46%, black 20%, transparent 72%)",
-            WebkitMaskImage: "radial-gradient(ellipse at 50% 46%, black 20%, transparent 72%)",
+            backgroundImage:
+              "linear-gradient(to right, rgba(17,17,17,0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(17,17,17,0.035) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+            maskImage: "radial-gradient(ellipse at 50% 42%, black 15%, transparent 68%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 50% 42%, black 15%, transparent 68%)",
           }}
         />
       </div>
