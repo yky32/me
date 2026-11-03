@@ -39,8 +39,22 @@ export default function RefraemPage() {
           animation: refraem-ring 2s ease-out infinite;
           z-index: -1;
         }
+        @keyframes refraem-split {
+          0%, 18% { left: 12px; right: 12px; }
+          46%, 78% { left: 12px; right: 42%; }
+          100% { left: 12px; right: 12px; }
+        }
+        @keyframes refraem-pane {
+          0%, 28% { opacity: 0; transform: translateX(10px); }
+          46%, 78% { opacity: 1; transform: none; }
+          100% { opacity: 0; transform: translateX(10px); }
+        }
+        .refraem-split { left: 12px; right: 12px; animation: refraem-split 5.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
+        .refraem-pane { opacity: 0; animation: refraem-pane 5.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
         @media (prefers-reduced-motion: reduce) {
-          .refraem-mark, .refraem-title, .refraem-download::before { animation: none; }
+          .refraem-mark, .refraem-title, .refraem-download::before, .refraem-split, .refraem-pane { animation: none; }
+          .refraem-split { left: 12px; right: 42%; }
+          .refraem-pane { opacity: 1; transform: none; }
         }
       `}</style>
       <Frame className="refraem-mark absolute left-[7%] top-[12%] h-14 w-14 text-black/15 sm:left-[16%]" />
@@ -133,11 +147,11 @@ const details = [
 function Details() {
   return (
     <section className="refraem-title w-full [animation-delay:0.16s]">
-      <ul className="flex flex-col gap-5 text-left">
+      <ul className="overflow-hidden rounded-[22px] bg-white text-left shadow-[0_22px_50px_rgba(0,0,0,0.08)] ring-1 ring-black/10">
         {details.map((item) => (
-          <li key={item.title}>
+          <li key={item.title} className="border-t border-black/8 px-4 py-3.5 first:border-t-0">
             <p className="text-[13px] font-semibold tracking-wide">{item.title}</p>
-            <p className="mt-1 text-[15px] leading-snug text-black/55">{item.body}</p>
+            <p className="mt-0.5 text-[14px] leading-snug text-black/55">{item.body}</p>
           </li>
         ))}
       </ul>
@@ -160,12 +174,12 @@ function MacStage() {
           <span className="size-2.5 rounded-full bg-[#28C840]" />
           <span className="ml-2 text-[12px] font-medium text-black/45">Capture</span>
         </div>
-        <div className="grid grid-cols-5 gap-2 bg-[#F3F3F1] p-3">
-          <div className="col-span-3 flex min-h-[148px] flex-col justify-between rounded-xl bg-black p-3 text-white">
+        <div className="relative h-[172px] bg-[#F3F3F1]">
+          <div className="refraem-split absolute top-3 bottom-3 flex flex-col justify-between rounded-xl bg-black p-3 text-white">
             <span className="text-[11px] font-medium text-white/60">Left half</span>
             <span className="text-2xl font-semibold tracking-tight">Snap</span>
           </div>
-          <div className="relative col-span-2 min-h-[148px] overflow-hidden rounded-xl bg-white ring-1 ring-black/10">
+          <div className="refraem-pane absolute top-3 right-3 bottom-3 w-[34%] overflow-hidden rounded-xl bg-white ring-1 ring-black/10">
             <div className="absolute inset-x-3 top-3 h-2 rounded-full bg-black/10" />
             <div className="absolute inset-x-3 top-7 h-2 w-2/3 rounded-full bg-black/8" />
             <svg viewBox="0 0 80 90" className="absolute inset-0 h-full w-full text-black" aria-hidden>
