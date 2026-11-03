@@ -9,17 +9,13 @@ export const metadata: Metadata = refraemMetadata();
 
 export default function RefraemPage() {
   return (
-    <div className="fixed inset-0 z-[80] flex min-h-dvh flex-col overflow-x-hidden overflow-y-auto bg-[#F6F6F4] text-[#111111]">
+    <div className="fixed inset-0 z-[80] flex min-h-dvh flex-col overflow-x-hidden overflow-y-auto bg-[#F3F2EF] text-[#111111]">
       <RefraemTabIcon />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(refraemJsonLd()) }}
       />
       <style>{`
-        @keyframes refraem-float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
-        }
         @keyframes refraem-pop {
           0% { transform: translateY(10px) scale(0.96); opacity: 0; }
           100% { transform: none; opacity: 1; }
@@ -28,7 +24,6 @@ export default function RefraemPage() {
           0% { transform: scale(1); opacity: 0.55; }
           100% { transform: scale(1.28); opacity: 0; }
         }
-        .refraem-mark { animation: refraem-float 5.2s ease-in-out infinite; }
         .refraem-title { animation: refraem-pop 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
         .refraem-download { position: relative; }
         .refraem-download::before {
@@ -41,13 +36,21 @@ export default function RefraemPage() {
           z-index: -1;
         }
         @media (prefers-reduced-motion: reduce) {
-          .refraem-mark, .refraem-title, .refraem-download::before { animation: none; }
+          .refraem-title, .refraem-download::before { animation: none; }
         }
       `}</style>
-      <Frame className="refraem-mark absolute left-[7%] top-[12%] h-14 w-14 text-black/15 sm:left-[16%]" />
-      <Frame className="refraem-mark absolute right-[8%] top-[18%] h-10 w-10 text-black/20 [animation-delay:-1.6s] sm:right-[18%]" />
-      <Lens className="refraem-mark absolute bottom-[24%] left-[10%] h-8 w-8 text-black/25 [animation-delay:-2.4s] sm:left-[18%]" />
-      <Lens className="refraem-mark absolute bottom-[20%] right-[9%] h-6 w-6 text-black/20 [animation-delay:-0.8s] sm:right-[20%]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-[46%] h-[720px] w-[min(1100px,92vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0)_68%)]" />
+        <div
+          className="absolute inset-0 opacity-70"
+          style={{
+            backgroundImage: "radial-gradient(rgba(17,17,17,0.045) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            maskImage: "radial-gradient(ellipse at 50% 46%, black 20%, transparent 72%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 50% 46%, black 20%, transparent 72%)",
+          }}
+        />
+      </div>
 
       <main className="relative z-10 mx-auto flex w-full max-w-[920px] flex-1 flex-col items-center px-6 pb-36 pt-[max(1.25rem,env(safe-area-inset-top,0px))] sm:pt-8">
         <div className="refraem-title flex shrink-0 items-center gap-3 text-[clamp(2.75rem,10vw,4.25rem)]">
@@ -84,7 +87,7 @@ export default function RefraemPage() {
         </div>
       </main>
 
-      <div className="pointer-events-none sticky bottom-0 z-20 mt-auto bg-gradient-to-t from-[#F6F6F4] via-[#F6F6F4]/95 to-transparent pt-8">
+      <div className="pointer-events-none sticky bottom-0 z-20 mt-auto bg-gradient-to-t from-[#F3F2EF] via-[#F3F2EF]/95 to-transparent pt-8">
         <div className="pointer-events-auto flex flex-col items-center gap-3 px-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))]">
           <a
             href={refraemPage.download}
@@ -137,20 +140,3 @@ function Details() {
   );
 }
 
-function Frame({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 64 64" className={className} aria-hidden>
-      <rect x="8" y="14" width="28" height="34" rx="6" fill="none" stroke="currentColor" strokeWidth="3" opacity="0.55" />
-      <rect x="22" y="14" width="32" height="36" rx="7" fill="none" stroke="currentColor" strokeWidth="3.2" />
-    </svg>
-  );
-}
-
-function Lens({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 32 32" className={className} aria-hidden>
-      <circle cx="16" cy="16" r="10" fill="none" stroke="currentColor" strokeWidth="2.4" />
-      <circle cx="16" cy="16" r="3.2" fill="currentColor" />
-    </svg>
-  );
-}
