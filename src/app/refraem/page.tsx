@@ -6,9 +6,15 @@ import { RefraemTabIcon } from "./tab-icon";
 
 export const metadata: Metadata = refraemMetadata();
 
+const details = [
+  { title: "Snap", body: "Halves, thirds, and corners." },
+  { title: "Grab", body: "The screen, one window, or a region." },
+  { title: "Mark", body: "Draw, then Escape copies it." },
+] as const;
+
 export default function RefraemPage() {
   return (
-    <div className="fixed inset-0 z-[80] flex min-h-dvh flex-col overflow-x-hidden overflow-y-auto bg-[#F6F6F4] text-[#111111]">
+    <div className="fixed inset-0 z-[80] overflow-x-hidden overflow-y-auto bg-[#F6F6F4] text-[#111111] lg:overflow-hidden">
       <RefraemTabIcon />
       <script
         type="application/ld+json"
@@ -29,113 +35,71 @@ export default function RefraemPage() {
           .refraem-mark, .refraem-title { animation: none; }
         }
       `}</style>
-      <Frame className="refraem-mark absolute left-[7%] top-[12%] h-14 w-14 text-black/15 sm:left-[16%]" />
-      <Frame className="refraem-mark absolute right-[8%] top-[18%] h-10 w-10 text-black/20 [animation-delay:-1.6s] sm:right-[18%]" />
-      <Lens className="refraem-mark absolute bottom-[24%] left-[10%] h-8 w-8 text-black/25 [animation-delay:-2.4s] sm:left-[18%]" />
-      <Lens className="refraem-mark absolute bottom-[20%] right-[9%] h-6 w-6 text-black/20 [animation-delay:-0.8s] sm:right-[20%]" />
+      <Frame className="refraem-mark pointer-events-none absolute left-[4%] top-[10%] h-12 w-12 text-black/15 lg:left-[8%]" />
+      <Frame className="refraem-mark pointer-events-none absolute right-[5%] top-[14%] h-9 w-9 text-black/20 [animation-delay:-1.6s] lg:right-[9%]" />
+      <Lens className="refraem-mark pointer-events-none absolute bottom-[12%] left-[6%] h-7 w-7 text-black/20 [animation-delay:-2.4s] lg:left-[10%]" />
+      <Lens className="refraem-mark pointer-events-none absolute bottom-[16%] right-[6%] h-5 w-5 text-black/20 [animation-delay:-0.8s] lg:right-[11%]" />
 
-      <main className="relative z-10 mx-auto flex w-full max-w-[560px] flex-1 flex-col items-center px-4 pb-40 pt-[max(1.5rem,env(safe-area-inset-top,0px))] sm:pt-10">
-        <div className="refraem-title flex shrink-0 items-center gap-3 text-[clamp(2.75rem,10vw,4.25rem)]">
-          <img
-            src="/refraem-logo.png"
-            alt=""
-            width={256}
-            height={256}
-            className="h-[0.82em] w-[0.82em] shrink-0 rounded-[0.22em] object-contain shadow-[0_12px_28px_rgba(0,0,0,0.16)]"
-          />
-          <h1
-            className="font-semibold leading-none tracking-tight"
-            style={{ fontFamily: 'ui-rounded, "SF Pro Rounded", sans-serif' }}
-          >
-            Refraem
-          </h1>
-        </div>
-        <p className="mt-3 text-center text-[13px] font-medium tracking-wide text-black/45">
-          Pronounced Reframe (ree-FRAME)
-        </p>
-        <p className="mt-4 max-w-[18rem] text-center text-[17px] font-semibold leading-snug sm:max-w-none sm:text-xl">
-          Window layout and screen capture
-          <br />
-          for Mac.
-        </p>
-        <p className="mt-3 text-center text-[13px] font-medium text-black/55">
-          Snap a window
-          <span className="px-1.5 text-black/30">·</span>
-          grab the screen
-          <span className="px-1.5 text-black/30">·</span>
-          mark it up
-        </p>
-
-        <MacStage />
-        <Details />
-      </main>
-
-      <div className="pointer-events-none sticky bottom-0 z-20 mt-auto bg-gradient-to-t from-[#F6F6F4] via-[#F6F6F4]/95 to-transparent pt-8">
-        <div className="pointer-events-auto flex flex-col items-center gap-3 px-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))]">
-          <a
-            href={refraemPage.download}
-            className="inline-flex h-11 items-center rounded-full bg-black px-6 text-[15px] font-semibold text-white shadow-[0_10px_24px_rgba(0,0,0,0.16)] hover:bg-black/85"
-          >
-            Download for Mac
-          </a>
-          <p className="max-w-[18rem] text-center text-[11px] leading-snug text-black/45">
-            macOS 14 or later, Apple Silicon. Drag it into Applications.
-          </p>
-          <footer className="flex justify-center gap-4 text-[11px] text-black/45">
-            <Link href="/privacy" className="hover:text-black">
-              Privacy
-            </Link>
-            <Link href="/support" className="hover:text-black">
-              Support
-            </Link>
-          </footer>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const details = [
-  {
-    title: "Snap",
-    body: "Halves, thirds, corners, and the next display. Hold Control and Option. Change any shortcut in Settings.",
-  },
-  {
-    title: "Grab",
-    body: "The full screen, the window you click, or a region you drag. A long page stitches into one picture. Files stay in Pictures/Refraem.",
-  },
-  {
-    title: "Mark",
-    body: "Arrow, text, highlight, or blur. Escape copies the finished image, drawing included.",
-  },
-] as const;
-
-function Details() {
-  return (
-    <section className="refraem-title mt-10 w-full max-w-[440px] [animation-delay:0.16s]">
-      <p className="text-center text-[15px] font-medium leading-relaxed text-black/70">
-        It lives in the menu bar. Place the windows, then keep what is on the screen.
-      </p>
-      <div className="mt-5 overflow-hidden rounded-[22px] bg-white text-left shadow-[0_22px_50px_rgba(0,0,0,0.08)] ring-1 ring-black/10">
-        {details.map((item) => (
-          <div key={item.title} className="border-t border-black/8 px-4 py-3.5 first:border-t-0">
-            <p className="text-[13px] font-semibold">{item.title}</p>
-            <p className="mt-0.5 text-[13px] leading-snug text-black/55">{item.body}</p>
+      <main className="relative z-10 mx-auto grid min-h-dvh w-full max-w-[1040px] items-center gap-10 px-6 py-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,440px)] lg:gap-16 lg:px-10 lg:py-8">
+        <div className="refraem-title">
+          <div className="flex items-center gap-3 text-[clamp(2.6rem,5vw,3.75rem)]">
+            <img
+              src="/refraem-logo.png"
+              alt=""
+              width={256}
+              height={256}
+              className="h-[0.82em] w-[0.82em] shrink-0 rounded-[0.22em] object-contain shadow-[0_12px_28px_rgba(0,0,0,0.16)]"
+            />
+            <h1
+              className="font-semibold leading-none tracking-tight"
+              style={{ fontFamily: 'ui-rounded, "SF Pro Rounded", sans-serif' }}
+            >
+              Refraem
+            </h1>
           </div>
-        ))}
-      </div>
-      <p className="mt-4 text-center text-[12px] leading-relaxed text-black/45">
-        Apple Silicon · macOS 14 or later · free
-        <br />
-        Screenshots stay on this Mac. No account.
-      </p>
-    </section>
+          <p className="mt-3 text-[13px] font-medium tracking-wide text-black/45">
+            Pronounced Reframe (ree-FRAME)
+          </p>
+          <p className="mt-5 max-w-[22rem] text-[19px] font-semibold leading-snug">
+            Window layout and screen capture for Mac.
+          </p>
+          <ul className="mt-6 max-w-[24rem] space-y-2.5">
+            {details.map((item) => (
+              <li key={item.title} className="grid grid-cols-[3.4rem_1fr] items-baseline gap-3 text-[14px]">
+                <span className="font-semibold">{item.title}</span>
+                <span className="text-black/55">{item.body}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 flex flex-col items-start gap-3">
+            <a
+              href={refraemPage.download}
+              className="inline-flex h-11 items-center rounded-full bg-black px-6 text-[15px] font-semibold text-white shadow-[0_10px_24px_rgba(0,0,0,0.16)] hover:bg-black/85"
+            >
+              Download for Mac
+            </a>
+            <p className="text-[12px] text-black/45">
+              macOS 14 or later, Apple Silicon. Drag it into Applications.
+            </p>
+            <footer className="flex gap-4 text-[12px] text-black/45">
+              <Link href="/privacy" className="hover:text-black">
+                Privacy
+              </Link>
+              <Link href="/support" className="hover:text-black">
+                Support
+              </Link>
+            </footer>
+          </div>
+        </div>
+        <MacStage />
+      </main>
+    </div>
   );
 }
 
 function MacStage() {
   return (
-    <div className="refraem-title relative mt-8 w-full max-w-[440px] [animation-delay:0.08s]">
+    <div className="refraem-title w-full [animation-delay:0.08s]">
       <div className="mb-2 flex items-center gap-3 rounded-xl bg-white/80 px-3 py-2 text-[11px] text-black/55 shadow-[0_8px_20px_rgba(0,0,0,0.05)] ring-1 ring-black/5">
         <span className="size-3 rounded-[4px] bg-black" />
         <span>Refraem</span>
@@ -149,11 +113,11 @@ function MacStage() {
           <span className="ml-2 text-[12px] font-medium text-black/45">Capture</span>
         </div>
         <div className="grid grid-cols-5 gap-2 bg-[#F3F3F1] p-3">
-          <div className="col-span-3 flex min-h-[148px] flex-col justify-between rounded-xl bg-black p-3 text-white">
+          <div className="col-span-3 flex min-h-[168px] flex-col justify-between rounded-xl bg-black p-3 text-white">
             <span className="text-[11px] font-medium text-white/60">Left half</span>
             <span className="text-2xl font-semibold tracking-tight">Snap</span>
           </div>
-          <div className="relative col-span-2 min-h-[148px] overflow-hidden rounded-xl bg-white ring-1 ring-black/10">
+          <div className="relative col-span-2 min-h-[168px] overflow-hidden rounded-xl bg-white ring-1 ring-black/10">
             <div className="absolute inset-x-3 top-3 h-2 rounded-full bg-black/10" />
             <div className="absolute inset-x-3 top-7 h-2 w-2/3 rounded-full bg-black/8" />
             <svg viewBox="0 0 80 90" className="absolute inset-0 h-full w-full text-black" aria-hidden>
