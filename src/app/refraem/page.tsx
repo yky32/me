@@ -79,7 +79,7 @@ export default function RefraemPage() {
             Download for Mac
           </a>
           <p className="max-w-[18rem] text-center text-[11px] leading-snug text-black/45">
-            macOS 14 or later, Apple Silicon.
+            macOS 14 or later, Apple Silicon. Drag it into Applications.
           </p>
           <footer className="flex justify-center gap-4 text-[11px] text-black/45">
             <Link href="/privacy" className="hover:text-black">
