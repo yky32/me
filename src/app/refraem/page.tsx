@@ -23,10 +23,24 @@ export default function RefraemPage() {
           0% { transform: translateY(10px) scale(0.96); opacity: 0; }
           100% { transform: none; opacity: 1; }
         }
+        @keyframes refraem-ring {
+          0% { transform: scale(1); opacity: 0.55; }
+          100% { transform: scale(1.28); opacity: 0; }
+        }
         .refraem-mark { animation: refraem-float 5.2s ease-in-out infinite; }
         .refraem-title { animation: refraem-pop 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+        .refraem-download { position: relative; }
+        .refraem-download::before {
+          content: "";
+          position: absolute;
+          inset: -1px;
+          border-radius: 9999px;
+          background: #111;
+          animation: refraem-ring 2s ease-out infinite;
+          z-index: -1;
+        }
         @media (prefers-reduced-motion: reduce) {
-          .refraem-mark, .refraem-title { animation: none; }
+          .refraem-mark, .refraem-title, .refraem-download::before { animation: none; }
         }
       `}</style>
       <Frame className="refraem-mark absolute left-[7%] top-[12%] h-14 w-14 text-black/15 sm:left-[16%]" />
@@ -76,8 +90,12 @@ export default function RefraemPage() {
         <div className="pointer-events-auto flex flex-col items-center gap-3 px-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))]">
           <a
             href={refraemPage.download}
-            className="inline-flex h-11 items-center rounded-full bg-black px-6 text-[15px] font-semibold text-white shadow-[0_10px_24px_rgba(0,0,0,0.16)] hover:bg-black/85"
+            className="refraem-download inline-flex h-[52px] items-center gap-2 rounded-full bg-black px-7 text-[16px] font-semibold text-white shadow-[0_16px_36px_rgba(0,0,0,0.28)] transition-transform hover:scale-[1.04]"
           >
+            <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden>
+              <path d="M8 1.5v8.2M4.8 7.2 8 10.6l3.2-3.4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M2.5 13.5h11" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+            </svg>
             Download for Mac
           </a>
           <p className="max-w-[18rem] text-center text-[11px] leading-snug text-black/45">
