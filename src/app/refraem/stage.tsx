@@ -206,18 +206,30 @@ function Capture() {
         transition={{ delay: 1.35, duration: 0.32, times: [0, 0.28, 1] }}
       />
       <motion.div
-        className="absolute bottom-3 right-3 z-30 w-[34%] overflow-hidden rounded-lg bg-white shadow-[0_18px_36px_rgba(0,0,0,0.28)] ring-1 ring-black/15"
+        className="absolute bottom-3 right-3 z-30 w-[46%] overflow-hidden rounded-lg bg-white shadow-[0_18px_36px_rgba(0,0,0,0.28)] ring-1 ring-black/15"
         initial={{ opacity: 0, y: 18, scale: 0.8 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ delay: 1.5, type: "spring", stiffness: 280, damping: 22 }}
       >
-        <div className="p-2">
-          <div className="h-1.5 w-2/5 rounded-full bg-black" />
-          <div className="mt-1.5 h-1.5 rounded-full bg-black/15" />
-          <div className="mt-1 h-1.5 w-4/5 rounded-full bg-black/10" />
-          <div className="mt-1.5 h-5 rounded bg-black" />
+        <div className="flex h-6 items-center gap-[3px] border-b border-black/10 px-1.5">
+          <span className="mr-0.5 text-[8px] font-semibold tracking-tight">Refraem</span>
+          <span className="mx-0.5 h-3 w-px bg-black/10" />
+          <span className="size-[9px] rounded-[2px] bg-black/80" />
+          <span className="size-[9px] rounded-[2px] ring-1 ring-black/25" />
+          <span className="size-[9px] rounded-full ring-1 ring-black/25" />
+          <span className="h-[2px] w-[9px] rounded-full bg-black/50" />
+          <span className="size-[9px] rounded-[2px] bg-black/15" />
+          <span className="ml-auto size-2.5 rounded-full bg-black ring-1 ring-black/20" />
         </div>
-        <div className="bg-black px-2 py-1 text-[10px] font-semibold text-white">Copied</div>
+        <div className="bg-[#ECECEA] p-1.5">
+          <div className="rounded-md bg-white p-1.5 ring-1 ring-black/8">
+            <div className="h-1.5 w-2/5 rounded-full bg-black" />
+            <div className="mt-1 h-1 rounded-full bg-black/15" />
+            <div className="mt-1 h-1 w-4/5 rounded-full bg-black/10" />
+            <div className="mt-1.5 h-4 rounded bg-black" />
+          </div>
+        </div>
+        <div className="border-t border-black/10 px-1.5 py-0.5 text-[9px] font-semibold text-black/55">Copied</div>
       </motion.div>
     </div>
   );
