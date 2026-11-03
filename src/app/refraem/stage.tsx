@@ -11,7 +11,7 @@ export function RefraemStage() {
 
   useEffect(() => {
     if (reduce) return;
-    const id = window.setInterval(() => setIndex((value) => (value + 1) % scenes.length), 6200);
+    const id = window.setInterval(() => setIndex((value) => (value + 1) % scenes.length), 7000);
     return () => window.clearInterval(id);
   }, [reduce]);
 
@@ -45,89 +45,95 @@ export function RefraemStage() {
   );
 }
 
-const splitTimes = [0, 0.09, 0.22, 0.38, 0.52, 0.64, 1];
+const splitTimes = [0, 0.08, 0.22, 0.4, 0.48, 0.6, 0.78, 1];
 
 function Split({ still }: { still: boolean }) {
-  const travel = still ? { duration: 0 } : { duration: 5.6, times: splitTimes, ease: "easeInOut" as const };
+  const travel = still ? { duration: 0 } : { duration: 6.2, times: splitTimes, ease: "easeInOut" as const };
 
   return (
     <div className="relative h-full">
+      <ShortcutCue still={still} />
       <motion.div
-        className="absolute bottom-3 top-3 overflow-hidden rounded-xl bg-white ring-1 ring-black/10"
-        initial={{ left: "51%", width: "47%", opacity: 1 }}
+        className="absolute z-10 flex flex-col justify-end overflow-hidden rounded-xl bg-black p-4 text-white shadow-[0_16px_36px_rgba(0,0,0,0.18)]"
+        initial={{ left: "8%", top: "8%", width: "84%", height: "84%" }}
         animate={
           still
-            ? { left: "51%", width: "47%", opacity: 1 }
+            ? { left: "3%", top: "4%", width: "47%", height: "92%" }
             : {
-                left: ["51%", "72%", "71%", "2%", "3%", "78%", "80%"],
-                width: ["47%", "26%", "27%", "66%", "64%", "8%", "6%"],
-                opacity: [1, 0.98, 1, 0.97, 0.95, 0, 0.02],
+                left: ["8%", "8.4%", "3%", "3.4%", "36%", "36.4%", "3%", "3.4%"],
+                top: ["8%", "7.6%", "4%", "4.4%", "34%", "33.4%", "4%", "4.4%"],
+                width: ["84%", "83.2%", "47%", "47.4%", "28%", "28.4%", "94%", "93.2%"],
+                height: ["84%", "83.4%", "92%", "91.4%", "32%", "32.6%", "92%", "91.2%"],
               }
         }
         transition={travel}
       >
-        <div className="flex h-full flex-col justify-between p-4">
-          <span className="text-[11px] font-medium text-black/40">Right</span>
-          <RightWord still={still} />
-          <div className="space-y-2">
-            <div className="h-2 rounded-full bg-black/10" />
-            <div className="h-2 w-2/3 rounded-full bg-black/10" />
-          </div>
-        </div>
-      </motion.div>
-      <motion.div
-        className="absolute bottom-3 top-3 z-10 flex flex-col justify-between overflow-hidden rounded-xl bg-black p-4 text-white"
-        initial={{ left: "2%", width: "47%" }}
-        animate={
-          still
-            ? { left: "2%", width: "47%" }
-            : {
-                left: ["2%", "3%", "3.4%", "70%", "68%", "2%", "2.4%"],
-                width: ["47%", "68%", "67%", "28%", "30%", "96%", "95%"],
-              }
-        }
-        transition={travel}
-      >
-        <SplitWord still={still} />
+        <WindowLabel still={still} />
       </motion.div>
     </div>
   );
 }
 
-function SplitWord({ still }: { still: boolean }) {
-  const [phase, setPhase] = useState<"Left" | "Maximize">("Left");
+function WindowLabel({ still }: { still: boolean }) {
+  const [label, setLabel] = useState(still ? "Left" : "");
 
   useEffect(() => {
     if (still) return;
-    const timer = window.setTimeout(() => setPhase("Maximize"), 3300);
-    return () => window.clearTimeout(timer);
+    const timers = [
+      window.setTimeout(() => setLabel("Left"), 1600),
+      window.setTimeout(() => setLabel(""), 2900),
+      window.setTimeout(() => setLabel("Maximize"), 4700),
+    ];
+    return () => timers.forEach((timer) => window.clearTimeout(timer));
   }, [still]);
 
-  const label = still ? "Left" : phase;
+  return <span className="text-2xl font-semibold tracking-tight">{label || "\u00a0"}</span>;
+}
+
+function ShortcutCue({ still }: { still: boolean }) {
+  const [step, setStep] = useState<"left" | "press-left" | "max" | "press-max" | "hide">(
+    still ? "press-left" : "left",
+  );
+
+  useEffect(() => {
+    if (still) return;
+    const timers = [
+      window.setTimeout(() => setStep("press-left"), 280),
+      window.setTimeout(() => setStep("hide"), 1900),
+      window.setTimeout(() => setStep("max"), 3000),
+      window.setTimeout(() => setStep("press-max"), 3400),
+      window.setTimeout(() => setStep("hide"), 5200),
+    ];
+    return () => timers.forEach((timer) => window.clearTimeout(timer));
+  }, [still]);
+
+  if (step === "hide") return null;
+
+  const maximizing = step === "max" || step === "press-max";
+  const pressed = step === "press-left" || step === "press-max";
 
   return (
-    <>
-      <span className="text-[11px] font-medium text-white/60">{label}</span>
-      <span className="text-2xl font-semibold tracking-tight">{label}</span>
-    </>
+    <div className="absolute left-1/2 top-3 z-30 flex -translate-x-1/2 items-center gap-1.5">
+      <Key pressed={pressed}>Ctrl</Key>
+      <Key pressed={pressed}>Opt</Key>
+      <Key pressed={pressed}>{maximizing ? "Enter" : "←"}</Key>
+    </div>
   );
 }
 
-function RightWord({ still }: { still: boolean }) {
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    if (still) return;
-    const on = window.setTimeout(() => setShow(true), 1700);
-    const off = window.setTimeout(() => setShow(false), 3200);
-    return () => {
-      window.clearTimeout(on);
-      window.clearTimeout(off);
-    };
-  }, [still]);
-
+function Key({ children, pressed = false }: { children: string; pressed?: boolean }) {
   return (
-    <span className="text-2xl font-semibold tracking-tight text-black">{show && !still ? "Right" : "\u00a0"}</span>
+    <motion.span
+      className="inline-flex h-7 min-w-7 items-center justify-center rounded-md px-1.5 text-[11px] font-semibold shadow-sm ring-1 ring-black/10"
+      animate={
+        pressed
+          ? { y: 2, scale: 0.94, backgroundColor: "#111111", color: "#ffffff" }
+          : { y: 0, scale: 1, backgroundColor: "#ffffff", color: "#111111" }
+      }
+      transition={{ duration: 0.12 }}
+    >
+      {children}
+    </motion.span>
   );
 }
 
