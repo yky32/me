@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Wayne Yu — Hong Kong product builder shipping apps like Triftly and TGT, and software engineer at altech.",
+    "Wayne Yu — product builder shipping Triftly, TGT, and more; software engineer at altech in Hong Kong.",
 };
 
 export default function AboutPage() {
@@ -61,17 +61,7 @@ export default function AboutPage() {
             </h1>
             <div className="mt-6 space-y-4 text-pretty text-lg leading-relaxed text-muted-foreground">
               <p>
-                I&apos;m a Hong Kong–based software engineer at{" "}
-                <span className="font-medium text-foreground">altech</span>, where I
-                help build systems that need to stay fast, observable, and honest
-                under real-world load. My work sits at the intersection of{" "}
-                <span className="text-foreground">distributed backends</span>,{" "}
-                <span className="text-foreground">platform ergonomics</span>, and{" "}
-                <span className="text-foreground">product impact</span> — because
-                great engineering is measured in outcomes, not abstractions alone.
-              </p>
-              <p>
-                Alongside that, I{" "}
+                I{" "}
                 <span className="text-foreground">ship my own products</span> —
                 travel with <span className="text-foreground">Triftly</span>, fitness
                 coaching with <span className="text-foreground">TGT</span>, and more
@@ -85,12 +75,28 @@ export default function AboutPage() {
                 page — each with its own site and channels.
               </p>
               <p>
+                By day I&apos;m a Hong Kong–based software engineer at{" "}
+                <span className="font-medium text-foreground">altech</span>, building
+                systems that stay fast, observable, and honest under real-world
+                load —{" "}
+                <span className="text-foreground">distributed backends</span>,{" "}
+                <span className="text-foreground">platform ergonomics</span>, and{" "}
+                <span className="text-foreground">product impact</span>.
+              </p>
+              <p>
                 I care about{" "}
                 <span className="text-foreground">developer experience</span> as much
                 as runtime performance: clear APIs, thoughtful defaults, and tools
                 that make the next person&apos;s day a little easier. Outside of
-                work, I enjoy refining small utilities (like the ones on this site)
-                that turn repetitive tasks into calm, predictable workflows.
+                work, I refine small utilities (like the ones on this site) and keep
+                a personal{" "}
+                <Link
+                  href="/gallery"
+                  className="font-medium text-foreground underline decoration-primary/40 underline-offset-4 transition-colors hover:decoration-primary"
+                >
+                  travel gallery
+                </Link>
+                .
               </p>
             </div>
             <div className="mt-10 flex flex-wrap items-center gap-3">

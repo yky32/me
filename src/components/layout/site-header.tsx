@@ -17,12 +17,16 @@ import {
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
+/** Primary founder-facing nav — Gallery/Blog live in the mobile sheet + footer */
 const nav = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/gallery", label: "Gallery" },
   { href: "/products", label: "Products" },
   { href: "/tools", label: "Tools" },
+] as const;
+
+const moreNav = [
+  { href: "/gallery", label: "Gallery" },
   { href: "/blog", label: "Blog" },
 ] as const;
 
@@ -30,10 +34,12 @@ function NavLinks({
   className,
   onNavigate,
   orientation = "row",
+  items = nav,
 }: {
   className?: string;
   onNavigate?: () => void;
   orientation?: "row" | "column";
+  items?: readonly { href: string; label: string }[];
 }) {
   const pathname = usePathname();
   return (
@@ -44,7 +50,7 @@ function NavLinks({
         className,
       )}
     >
-      {nav.map((item) => {
+      {items.map((item) => {
         const active =
           item.href === "/"
             ? pathname === "/"
@@ -183,12 +189,23 @@ export function SiteHeader() {
               <SheetHeader>
                 <SheetTitle>Menu</SheetTitle>
               </SheetHeader>
-              <div className="mt-8 flex flex-col gap-2">
+              <div className="mt-8 flex flex-col gap-6">
                 <NavLinks
                   orientation="column"
                   className="gap-2"
                   onNavigate={() => setMobileOpen(false)}
                 />
+                <div>
+                  <p className="px-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                    More
+                  </p>
+                  <NavLinks
+                    items={moreNav}
+                    orientation="column"
+                    className="mt-2 gap-2"
+                    onNavigate={() => setMobileOpen(false)}
+                  />
+                </div>
               </div>
             </SheetContent>
           </Sheet>

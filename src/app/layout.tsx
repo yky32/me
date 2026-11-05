@@ -25,7 +25,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL != null &&
   process.env.NEXT_PUBLIC_SITE_URL.length > 0
     ? process.env.NEXT_PUBLIC_SITE_URL
-    : "http://localhost:3000";
+    : siteConfig.url;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -51,11 +51,20 @@ export const metadata: Metadata = {
     siteName: siteConfig.title,
     title: siteConfig.title,
     description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 800,
+        height: 1000,
+        alt: `${siteConfig.name} — portrait`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
+    images: [siteConfig.ogImage],
   },
   robots: { index: true, follow: true },
 };

@@ -67,6 +67,13 @@ export function HomeHero() {
           >
             {siteConfig.role}
           </motion.p>
+          <motion.p
+            custom={3}
+            variants={fade}
+            className="mx-auto mt-4 max-w-md text-pretty text-base leading-relaxed text-muted-foreground lg:mx-0"
+          >
+            {siteConfig.pitch}
+          </motion.p>
 
           <HeroIntroSnippet className="mt-8" motionDelayBase={0.22} />
 

@@ -31,6 +31,18 @@ export function SiteFooter() {
               </a>
             ) : null}
             <Link
+              href="/gallery"
+              className="text-muted-foreground transition-colors hover:text-primary"
+            >
+              Gallery
+            </Link>
+            <Link
+              href="/blog"
+              className="text-muted-foreground transition-colors hover:text-primary"
+            >
+              Blog
+            </Link>
+            <Link
               href="/support"
               className="text-muted-foreground transition-colors hover:text-primary"
             >

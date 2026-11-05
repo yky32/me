@@ -45,11 +45,14 @@ type Product = {
   appStoreUrl?: string;
   /** No live links yet — show as in progress */
   comingSoon?: boolean;
+  /** Show in the featured row above the rest */
+  featured?: boolean;
 };
 
 const products: Product[] = [
   {
     name: "Triftly",
+    featured: true,
     description:
       "Shared trip workspace — plan days with buddies, stay in sync on the road, and split expenses fairly. Plan · Spend · Share in one place.",
     website: "triftly.app",
@@ -60,6 +63,7 @@ const products: Product[] = [
   },
   {
     name: "TGT",
+    featured: true,
     description:
       "All-in-one fitness coaching — programs, sessions, attendance, and revenue for trainers and clients, with smart routines and AI meal tools.",
     website: "www.tgt.gg",
@@ -76,8 +80,9 @@ const products: Product[] = [
   },
   {
     name: "Ordercoon",
+    comingSoon: true,
     description:
-      "Food ordering and smart POS — menus, tickets, and service flow in one stack. Follow @ordercoon for drops.",
+      "Food ordering and smart POS — menus, tickets, and service flow in one stack. Follow @ordercoon for early drops.",
     instagram: "ordercoon",
     tags: ["food ordering", "smart POS"],
   },
@@ -323,7 +328,52 @@ function ProductHashtags({ tags }: { tags?: readonly string[] }) {
   );
 }
 
+function ProductCard({ product: p }: { product: Product }) {
+  return (
+    <Card className={cn(cardClass, "h-full")}>
+      <CardHeader className="gap-3">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            <CardTitle className="text-xl">{p.name}</CardTitle>
+            {p.comingSoon ? (
+              <span className="rounded-md bg-muted/80 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wide text-muted-foreground ring-1 ring-border/50 dark:bg-muted/50">
+                Building
+              </span>
+            ) : null}
+          </div>
+          <ProductPresenceRows product={p} />
+        </div>
+        <CardDescription className="text-base leading-relaxed">
+          {p.description}
+        </CardDescription>
+        <ProductHashtags tags={p.tags} />
+      </CardHeader>
+    </Card>
+  );
+}
+
+function ProductGrid({
+  items,
+  className,
+}: {
+  items: Product[];
+  className?: string;
+}) {
+  return (
+    <ul className={cn("grid gap-5 sm:grid-cols-2 sm:gap-6", className)}>
+      {items.map((p) => (
+        <li key={p.name} className="min-w-0">
+          <ProductCard product={p} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function ProductsPage() {
+  const featured = products.filter((p) => p.featured);
+  const more = products.filter((p) => !p.featured);
+
   return (
     <InnerPageSurface>
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
@@ -344,31 +394,27 @@ export default function ProductsPage() {
           </blockquote>
         </header>
 
-        <ul className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3">
-          {products.map((p) => (
-            <li key={p.name} className="min-w-0">
-              <Card className={cn(cardClass, "h-full")}>
-                <CardHeader className="gap-3">
-                  <div className="min-w-0">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <CardTitle className="text-xl">{p.name}</CardTitle>
-                      {p.comingSoon ? (
-                        <span className="rounded-md bg-muted/80 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wide text-muted-foreground ring-1 ring-border/50 dark:bg-muted/50">
-                          Building
-                        </span>
-                      ) : null}
-                    </div>
-                    <ProductPresenceRows product={p} />
-                  </div>
-                  <CardDescription className="text-base leading-relaxed">
-                    {p.description}
-                  </CardDescription>
-                  <ProductHashtags tags={p.tags} />
-                </CardHeader>
-              </Card>
-            </li>
-          ))}
-        </ul>
+        <section className="mx-auto mt-12 max-w-5xl" aria-labelledby="featured-heading">
+          <h2
+            id="featured-heading"
+            className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground"
+          >
+            Featured
+          </h2>
+          <ProductGrid items={featured} className="mt-4 xl:grid-cols-2" />
+        </section>
+
+        {more.length > 0 ? (
+          <section className="mx-auto mt-14 max-w-5xl" aria-labelledby="more-heading">
+            <h2
+              id="more-heading"
+              className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground"
+            >
+              More
+            </h2>
+            <ProductGrid items={more} className="mt-4 xl:grid-cols-3" />
+          </section>
+        ) : null}
       </div>
     </InnerPageSurface>
   );
