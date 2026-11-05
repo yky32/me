@@ -6,13 +6,13 @@
     <description>Refraem updates</description>
     <language>en</language>
     <item>
-      <title>Version 0.2.15</title>
-      <pubDate>Thu, 05 Nov 2026 11:51:14 +0000</pubDate>
-      <sparkle:version>20</sparkle:version>
-      <sparkle:shortVersionString>0.2.15</sparkle:shortVersionString>
+      <title>Version 0.2.16</title>
+      <pubDate>Thu, 05 Nov 2026 16:48:55 +0000</pubDate>
+      <sparkle:version>21</sparkle:version>
+      <sparkle:shortVersionString>0.2.16</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[**Full Changelog**: https://github.com/yky32/refraem/compare/v0.2.14...v0.2.15]]></description>
-      <enclosure url="https://www.yky.app/downloads/Refraem-0.2.15-macOS.dmg" sparkle:edSignature="2eveJ6qDvambgS6+E+jrgUSbL1Nyh2/FZ2nC7mvElHVgSo3SRMDtbDb8rXLCNc1f3nQBEM8U6ZTuhhDN62+pDw==" length="1675955" type="application/octet-stream"/>
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[**Full Changelog**: https://github.com/yky32/refraem/compare/v0.2.15...v0.2.16]]></description>
+      <enclosure url="https://www.yky.app/downloads/Refraem-0.2.16-macOS.dmg" sparkle:edSignature="L+m7dpBDK0eDQNcHpEFq0JFRSNxPLJfA/k4nL3+Sad78m0RJQ7BxWif7YqlXpDXl1NJT+6iG3psqt7l2JjYDDQ==" length="1674263" type="application/octet-stream"/>
     </item>
   </channel>
 </rss>
