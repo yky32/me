@@ -6,18 +6,18 @@
     <description>Refraem updates</description>
     <language>en</language>
     <item>
-      <title>Version 0.2.31</title>
-      <pubDate>Tue, 17 Nov 2026 01:38:48 +0000</pubDate>
-      <sparkle:version>37</sparkle:version>
-      <sparkle:shortVersionString>0.2.31</sparkle:shortVersionString>
+      <title>Version 0.2.32</title>
+      <pubDate>Tue, 17 Nov 2026 09:02:45 +0000</pubDate>
+      <sparkle:version>38</sparkle:version>
+      <sparkle:shortVersionString>0.2.32</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[Refraem-Force-Below: 0.2.31
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[Refraem-Force-Below: 0.2.32
 
 • Improvements and bug fixes in this release.
 • Install when you're ready — Refraem restarts after updating.
 
-https://github.com/yky32/refraem/compare/v0.2.30...v0.2.31]]></description>
-      <enclosure url="https://www.yky.app/downloads/Refraem-0.2.31-macOS.dmg" sparkle:edSignature="0kWD0+R5Lo6OZdohP2X8pMEdQza0SJ0jceojkEpR3ExlmsBrwMr69AvT+IYy1e7VUhSyg4HgPIrVZzDbB7PXBw==" length="1734027" type="application/octet-stream"/>
+https://github.com/yky32/refraem/compare/v0.2.31...v0.2.32]]></description>
+      <enclosure url="https://www.yky.app/downloads/Refraem-0.2.32-macOS.dmg" sparkle:edSignature="kW2U65Rq/dILXMDE1gYSijq05b2FAmZlXqus3Pj4B7RIKj93AOuPdTncRDgm60YV65LiaN3OnBdHljY/VznDAQ==" length="1737389" type="application/octet-stream"/>
     </item>
   </channel>
 </rss>
