@@ -92,6 +92,7 @@ export default function RefraemPage() {
         <div className="pointer-events-auto flex flex-col items-center gap-3 px-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))]">
           <a
             href={refraemPage.download}
+            download="Refraem-0.2.32-macOS.dmg"
             className="refraem-download inline-flex h-[52px] items-center gap-2 rounded-full bg-black px-7 text-[16px] font-semibold text-white shadow-[0_16px_36px_rgba(0,0,0,0.28)] transition-transform hover:scale-[1.04]"
           >
             <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden>
