@@ -6,17 +6,18 @@
     <description>Refraem updates</description>
     <language>en</language>
     <item>
-      <title>Version 0.2.35</title>
-      <pubDate>Thu, 19 Nov 2026 02:12:43 +0000</pubDate>
-      <sparkle:version>43</sparkle:version>
-      <sparkle:shortVersionString>0.2.35</sparkle:shortVersionString>
+      <title>Version 0.2.36</title>
+      <pubDate>Thu, 19 Nov 2026 06:28:19 +0000</pubDate>
+      <sparkle:version>44</sparkle:version>
+      <sparkle:shortVersionString>0.2.36</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[Refraem-Force-Below: 0.2.35
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[Refraem-Force-Below: 0.2.36
 
 • Skip sudo on the Mac mini and keep the login keychain by @yky32 in https://github.com/yky32/refraem/pull/2
+• Skip Finder layout when packing the release DMG on CI by @yky32 in https://github.com/yky32/refraem/pull/3
 
-https://github.com/yky32/refraem/compare/v0.2.34...v0.2.35]]></description>
-      <enclosure url="https://www.yky.app/downloads/Refraem-0.2.35-macOS.dmg" sparkle:edSignature="z7y+obFxyP+10okadWElhi8LtGd+1KXcXE+NlbBGZ6lWteBLdkSVJkzcmF2fxevJfDrsUa0+9h4ujUQV6m8HDw==" length="1749633" type="application/octet-stream"/>
+https://github.com/yky32/refraem/compare/v0.2.34...v0.2.36]]></description>
+      <enclosure url="https://www.yky.app/downloads/Refraem-0.2.36-macOS.dmg" sparkle:edSignature="IOGInj375pX8T93y8XdD37Huaw5dvXA+WHz7ME2VS1yk+4sPCDoR+mTKU7H2WExd89kDDi870iwtnlqhol97DA==" length="1749673" type="application/octet-stream"/>
     </item>
   </channel>
 </rss>
