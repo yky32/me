@@ -6,17 +6,17 @@
     <description>Refraem updates</description>
     <language>en</language>
     <item>
-      <title>Version 0.2.42</title>
-      <pubDate>Wed, 25 Nov 2026 06:59:06 +0000</pubDate>
-      <sparkle:version>50</sparkle:version>
-      <sparkle:shortVersionString>0.2.42</sparkle:shortVersionString>
+      <title>Version 0.2.43</title>
+      <pubDate>Wed, 25 Nov 2026 07:19:42 +0000</pubDate>
+      <sparkle:version>51</sparkle:version>
+      <sparkle:shortVersionString>0.2.43</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description sparkle:descriptionFormat="plain-text"><![CDATA[Refraem-Force-Below: 0.2.42
+      <description sparkle:descriptionFormat="plain-text"><![CDATA[Refraem-Force-Below: 0.2.43
 
-• Open Folder shortcut and force-update 0.2.42 by @yky32 in https://github.com/yky32/refraem/pull/6
+• Show the full window in the editor, including traffic lights by @yky32 in https://github.com/yky32/refraem/pull/7
 
-https://github.com/yky32/refraem/compare/v0.2.41...v0.2.42]]></description>
-      <enclosure url="https://www.yky.app/downloads/Refraem-0.2.42-macOS.dmg" sparkle:edSignature="TVIjN6Z8xLxtgwBrVzk5XqMEanIMhB2b5qpG9nD4OTLbyaiQFbHAieOF/8GpHx/jhwDh+HQnirrthWehygZrDw==" length="1758576" type="application/octet-stream"/>
+https://github.com/yky32/refraem/compare/v0.2.42...v0.2.43]]></description>
+      <enclosure url="https://www.yky.app/downloads/Refraem-0.2.43-macOS.dmg" sparkle:edSignature="+9jtp9QffKGM30qQmB9IYptRhOQGmlHaZXgc7X2OOhN9MsMeLOP1ZL/n1rbXEoS6pGGJRzVv0A/shit0C9nNAA==" length="1758575" type="application/octet-stream"/>
     </item>
   </channel>
 </rss>
