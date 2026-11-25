@@ -6,18 +6,18 @@
     <description>Refraem updates</description>
     <language>en</language>
     <item>
-      <title>Version 0.2.40</title>
-      <pubDate>Tue, 24 Nov 2026 03:22:40 +0000</pubDate>
-      <sparkle:version>48</sparkle:version>
-      <sparkle:shortVersionString>0.2.40</sparkle:shortVersionString>
+      <title>Version 0.2.41</title>
+      <pubDate>Wed, 25 Nov 2026 06:46:57 +0000</pubDate>
+      <sparkle:version>49</sparkle:version>
+      <sparkle:shortVersionString>0.2.41</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
       <description sparkle:descriptionFormat="plain-text"><![CDATA[Refraem-Force-Below: 0.2.40
 
-• Improvements and bug fixes in this release.
-• Install when you're ready — Refraem restarts after updating.
+• Capture the full window, not a shadow-cropped slice by @yky32 in https://github.com/yky32/refraem/pull/4
+• Add Open Folder to the menu bar after Settings by @yky32 in https://github.com/yky32/refraem/pull/5
 
-https://github.com/yky32/refraem/compare/v0.2.39...v0.2.40]]></description>
-      <enclosure url="https://www.yky.app/downloads/Refraem-0.2.40-macOS.dmg" sparkle:edSignature="RWIQ1DIU0Kawjhbjcw7QUE5SvPdyv96x1uppK5Q9k4FVFKsjYUvxOOuZePilj8WC/OyiMylGT0qciZGNvDCfCQ==" length="1757191" type="application/octet-stream"/>
+https://github.com/yky32/refraem/compare/v0.2.40...v0.2.41]]></description>
+      <enclosure url="https://www.yky.app/downloads/Refraem-0.2.41-macOS.dmg" sparkle:edSignature="AopPL3bFUY2XfFeDuZla1UE+o4Tj+zPGuVoTPhUXDEevfxTyUqGQ6jJpG4haspNizQj9+AK8YOBHE/AM3KkUCg==" length="1758570" type="application/octet-stream"/>
     </item>
   </channel>
 </rss>
